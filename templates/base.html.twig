@@ -6,9 +6,11 @@
         <link rel="icon" href="images/icon/Sm.png">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <{{ encore_entry_link_tags('app') }}>
+            <link rel="stylesheet" 
+                href="{{ asset('bootstrap/css/bootstrap.min.css') }}"
+                type="text/css" />
         {% endblock %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
