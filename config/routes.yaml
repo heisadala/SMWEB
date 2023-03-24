@@ -1,3 +1,23 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+homepage:
+    path: /
+    controller: App\Controller\HomeController::index
+
+cars_homepage:
+    path: /cars
+    controller: App\Controller\Cars\CarsHomeController::index
+
+lego_homepage:
+    path: /lego
+    controller: App\Controller\Lego\LegoHomeController::index
+
+rental_homepage:
+    path: /rental
+    controller: App\Controller\Rental\RentalHomeController::index
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register

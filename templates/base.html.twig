@@ -2,14 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="images/icon/Sm.png">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>{% block title %}SMWEBLOU{% endblock %}</title>
+        <link rel="icon" href="images/icon/{% block icon %}Sm.png{% endblock %}">
+
         {% block stylesheets %}
-            <{{ encore_entry_link_tags('app') }}>
+            {{ encore_entry_link_tags('app') }}
             <link rel="stylesheet" 
                 href="{{ asset('bootstrap/css/bootstrap.min.css') }}"
                 type="text/css" />
+           <link rel="stylesheet" 
+                href="{{ asset('css/variables.css') }}"
+                type="text/css" />          
+            <link rel="stylesheet" 
+                href="{{ asset('css/basics.css') }}"
+                type="text/css" />
+            <link rel="stylesheet" 
+                href="{{ asset('css/style.css') }}"
+                type="text/css" />
+        {% endblock %}
+        {% block background %}
+        <style>
+            body {
+                --sm-bg-home: url('images/background/Sm.jpg');
+                background-image: var(--sm-bg-home);
+            }
+        </style>
         {% endblock %}
 
         {% block javascripts %}
@@ -17,6 +34,13 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block header %}{% endblock %}
+        {% block news %}{% endblock %}
+        <div class='row  justify-content-between' style='height: 20px;'></div>
+        {% block navbar %}{% endblock %}
+        <div class='row  justify-content-between' style='height: 20px;'></div>
+        {% block content %}{% endblock %}
+        <div class='row  justify-content-between' style='height: 100px;'></div>
+        {% block footer %}{% endblock %}
     </body>
 </html>

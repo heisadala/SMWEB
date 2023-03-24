@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    line-height: normal;
+    background-color: var(--sm-html-bg-color);
+}
+
+body {
+    font-size: var(--sm-html-font-size);
+    font-family: var(--sm-html-font);
+    background-color: var(--sm-body-bg-color);
+    color: var(--sm-body-color);
+    overscroll-behavior-x: none;
+    font-weight: bolder;
+    overflow: scroll;
+}

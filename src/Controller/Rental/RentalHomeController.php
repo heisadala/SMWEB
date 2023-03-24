@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Rental;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,21 +8,19 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class RentalHomeController extends AbstractController
 {
-    /**
-     * 
-     */
+
     public function index(): Response
     {
         $db = $this->getParameter('app.database_name');
 
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-            'title' => 'Meine Homepage',
+        return $this->render('rental/index.html.twig', [
+            'controller_name' => 'RentalHomeController',
+            'title' => 'Rental',
             'loglevel' => $_SERVER['LOG_LEVEL'],
             'db' => $db,
-            'icon' => 'Sm.png'
+            'icon' => 'Rental.png'
         ]);
     }
 

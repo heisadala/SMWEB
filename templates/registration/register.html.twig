@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {# {{ form_row(registrationForm.agreeTerms) }} #}
+        <select class="form-select" aria-label="Roles">
+            <option selected>Open this select menu</option>
+            <option value="1">ADMIN</option>
+            <option value="2">USER</option>
+            <option value="3">PUBLIC</option>
+        </select>
+
+        <button type="submit" class="btn btn-info">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
