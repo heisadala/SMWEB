@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\DatabaseTableRepository;
+use App\Repository\HomeTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DatabaseTableRepository::class)
+ * @ORM\Entity(repositoryClass=HomeTableRepository::class)
  */
-class DatabaseTable
+class HomeTable
 {
     /**
      * @ORM\Id
@@ -21,11 +21,10 @@ class DatabaseTable
      * @ORM\Column(type="string", length=20)
      */
     private $name;
-
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+/**
+     * @ORM\Column(type="string", length=20)
      */
-    private $db_name;
+    private $table;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
@@ -58,16 +57,14 @@ class DatabaseTable
 
         return $this;
     }
-
-    public function getDbName(): ?string
+    public function getTable(): ?string
     {
-        return $this->db_name;
+        return $this->table;
     }
-
-    public function setDbName(?string $db_name): self
+    
+    public function setTable(string $table): self
     {
-        $this->db_name = $db_name;
-
+        $this->table = $table;
         return $this;
     }
 

@@ -1,8 +1,268 @@
-body {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    background-position: center center;
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap';
+.text-beige {
+  color: rgb(233, 214, 184);
 }
+
+.bg-beige {
+  background-color: rgb(233, 214, 184);
+}
+
+.border-beige {
+  border-color: rgb(233, 214, 184);
+}
+
+.text-blue {
+  color: rgb(15, 38, 243);
+}
+
+.bg-blue {
+  background-color: rgb(15, 38, 243);
+}
+
+.border-blue {
+  border-color: rgb(15, 38, 243);
+}
+
+.text-darkgrey {
+  color: rgb(88, 97, 114);
+}
+
+.bg-darkgrey {
+  background-color: rgb(88, 97, 114);
+}
+
+.border-darkgrey {
+  border-color: rgb(88, 97, 114);
+}
+
+.text-green {
+  color: rgb(140, 213, 11);
+}
+
+.bg-green {
+  background-color: rgb(140, 213, 11);
+}
+
+.border-green {
+  border-color: rgb(140, 213, 11);
+}
+
+.text-iceblue {
+  color: rgb(87, 134, 180);
+}
+
+.bg-iceblue {
+  background-color: rgb(87, 134, 180);
+}
+
+.border-iceblue {
+  border-color: rgb(87, 134, 180);
+}
+
+.text-lightblue {
+  color: rgb(113, 187, 198);
+}
+
+.bg-lightblue {
+  background-color: rgb(113, 187, 198);
+}
+
+.border-lightblue {
+  border-color: rgb(113, 187, 198);
+}
+
+.text-lightgrey {
+  color: rgb(220, 228, 231);
+}
+
+.bg-lightgrey {
+  background-color: rgb(220, 228, 231);
+}
+
+.border-lightgrey {
+  border-color: rgb(220, 228, 231);
+}
+
+.text-red {
+  color: rgb(227, 67, 41);
+}
+
+.bg-red {
+  background-color: rgb(227, 67, 41);
+}
+
+.border-red {
+  border-color: rgb(227, 67, 41);
+}
+
+.text-turquoise {
+  color: rgb(13, 183, 191);
+}
+
+.bg-turquoise {
+  background-color: rgb(13, 183, 191);
+}
+
+.border-turquoise {
+  border-color: rgb(13, 183, 191);
+}
+
+.text-white {
+  color: rgb(255, 255, 255);
+}
+
+.bg-white {
+  background-color: rgb(255, 255, 255);
+}
+
+.border-white {
+  border-color: rgb(255, 255, 255);
+}
+
+.text-03-beige {
+  color: rgba(233, 214, 184, 0.3);
+}
+
+.bg-03-beige {
+  background-color: rgba(233, 214, 184, 0.3);
+}
+
+.border-03-beige {
+  border-color: rgba(233, 214, 184, 0.3);
+}
+
+.text-03-blue {
+  color: rgba(15, 38, 243, 0.3);
+}
+
+.bg-03-blue {
+  background-color: rgba(15, 38, 243, 0.3);
+}
+
+.border-03-blue {
+  border-color: rgba(15, 38, 243, 0.3);
+}
+
+.text-03-darkgrey {
+  color: rgba(88, 97, 114, 0.3);
+}
+
+.bg-03-darkgrey {
+  background-color: rgba(88, 97, 114, 0.3);
+}
+
+.border-03-darkgrey {
+  border-color: rgba(88, 97, 114, 0.3);
+}
+
+.text-03-green {
+  color: rgba(140, 213, 11, 0.3);
+}
+
+.bg-03-green {
+  background-color: rgba(140, 213, 11, 0.3);
+}
+
+.border-03-green {
+  border-color: rgba(140, 213, 11, 0.3);
+}
+
+.text-03-iceblue {
+  color: rgba(87, 134, 180, 0.3);
+}
+
+.bg-03-iceblue {
+  background-color: rgba(87, 134, 180, 0.3);
+}
+
+.border-03-iceblue {
+  border-color: rgba(87, 134, 180, 0.3);
+}
+
+.text-03-lightblue {
+  color: rgba(113, 187, 198, 0.3);
+}
+
+.bg-03-lightblue {
+  background-color: rgba(113, 187, 198, 0.3);
+}
+
+.border-03-lightblue {
+  border-color: rgba(113, 187, 198, 0.3);
+}
+
+.text-03-lightgrey {
+  color: rgba(220, 228, 231, 0.3);
+}
+
+.bg-03-lightgrey {
+  background-color: rgba(220, 228, 231, 0.3);
+}
+
+.border-03-lightgrey {
+  border-color: rgba(220, 228, 231, 0.3);
+}
+
+.text-03-red {
+  color: rgba(227, 67, 41, 0.3);
+}
+
+.bg-03-red {
+  background-color: rgba(227, 67, 41, 0.3);
+}
+
+.border-03-red {
+  border-color: rgba(227, 67, 41, 0.3);
+}
+
+.text-03-turquoise {
+  color: rgba(13, 183, 191, 0.3);
+}
+
+.bg-03-turquoise {
+  background-color: rgba(13, 183, 191, 0.3);
+}
+
+.border-03-turquoise {
+  border-color: rgba(13, 183, 191, 0.3);
+}
+
+.text-03-white {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.bg-03-white {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.border-03-white {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+html {
+  line-height: normal;
+  background-color: rgb(87, 134, 180);
+}
+
+body {
+  font-size: 62, 5%;
+  font-family: "Montserrat";
+  color: rgb(15, 38, 243);
+  background-color: rgb(255, 255, 255);
+}
+
+.burger-icon {
+  background-color: rgb(233, 214, 184);
+}
+
+.navbar-toggler {
+  background-color: rgb(233, 214, 184);
+}
+
+.navbar-toggler-icon {
+  background-color: rgb(233, 214, 184);
+}
+
+.navbar-nav, .nav-item, .nav-link {
+  color: rgb(233, 214, 184);
+}/*# sourceMappingURL=style.css.map */

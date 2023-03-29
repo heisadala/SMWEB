@@ -1,0 +1,45 @@
+@use '_colors';
+@use '_fonts';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap';
+
+
+$sm-html-font: fonts.$sm-montserrat-font;
+$sm-html-font-size: fonts.$sm-montserrat-font-size;
+$sm-html-bg-color: colors.$sm-iceblue-color;
+
+$sm-body-bg-color: colors.$sm-white-color;
+$sm-body-color: colors.$sm-blue-color;
+$sm-body-font: fonts.$sm-montserrat-font;
+$sm-body-font-size: fonts.$sm-montserrat-font-size;
+
+$sm-navbar-color: colors.$sm-beige-color;
+
+$sm-burgericon-color: colors.$sm-beige-color;
+
+html {
+    line-height: normal;
+    background-color: $sm-html-bg-color;
+}
+
+body {
+    font-size: $sm-body-font-size;
+    font-family: $sm-body-font;
+    color: $sm-body-color;
+    background-color: $sm-body-bg-color;
+}
+
+.burger-icon {
+    background-color: $sm-burgericon-color;
+}
+
+.navbar-toggler {
+    background-color: $sm-burgericon-color;
+}
+
+.navbar-toggler-icon {
+    background-color: $sm-burgericon-color;
+}
+
+.navbar-nav, .nav-item, .nav-link {
+    color: $sm-navbar-color;
+}

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\DatabaseTableRepository;
+use App\Repository\SubdomainTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DatabaseTableRepository::class)
+ * @ORM\Entity(repositoryClass=SubdomainTableRepository::class)
  */
-class DatabaseTable
+class SubdomainTable
 {
     /**
      * @ORM\Id
@@ -25,17 +25,7 @@ class DatabaseTable
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $db_name;
-
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
     private $icon;
-
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $background;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
@@ -59,18 +49,6 @@ class DatabaseTable
         return $this;
     }
 
-    public function getDbName(): ?string
-    {
-        return $this->db_name;
-    }
-
-    public function setDbName(?string $db_name): self
-    {
-        $this->db_name = $db_name;
-
-        return $this;
-    }
-
     public function getIcon(): ?string
     {
         return $this->icon;
@@ -79,18 +57,6 @@ class DatabaseTable
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
-
-        return $this;
-    }
-
-    public function getBackground(): ?string
-    {
-        return $this->background;
-    }
-
-    public function setBackground(?string $background): self
-    {
-        $this->background = $background;
 
         return $this;
     }
