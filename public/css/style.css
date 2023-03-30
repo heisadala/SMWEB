@@ -1,4 +1,17 @@
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap';
+:root {
+  --sm-beige-color: rgb(233, 214, 184);
+  --sm-blue-color: rgb(15, 38, 243);
+  --sm-darkgrey-color: rgb(88, 97, 114);
+  --sm-green-color: rgb(140, 213, 11);
+  --sm-iceblue-color: rgb(87, 134, 180);
+  --sm-lightblue-color: rgb(113, 187, 198);
+  --sm-lightgrey-color: rgb(220, 228, 231);
+  --sm-red-color: rgb(227, 67, 41);
+  --sm-turquoise-color: rgb(13, 183, 191);
+  --sm-white-color: rgb(255, 255, 255);
+}
+
 .text-beige {
   color: rgb(233, 214, 184);
 }

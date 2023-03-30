@@ -35,13 +35,17 @@ class HomeController extends AbstractController
         }
         $debug->debug ($db->getIcon());
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',
-            'title' => 'Meine Homepage',
-            'db' => $db->getName(),
+            'title' => 'Home SMWEB',
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => $_SERVER['HOST'],
+            'news' => '',
+            'show_navbar' => true,
+            'db' => $db->getName(),
+
+            'server_base' => $_SERVER['BASE'],
             'subdomains' => $subdomains,
             'databases' => $databases,
         ]);

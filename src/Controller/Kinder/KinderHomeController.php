@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Rental;
+namespace App\Controller\Kinder;
 
 use App\Repository\DatabaseTableRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,7 +12,7 @@ use App\Service\Debug;
 
 
 
-class RentalHomeController extends AbstractController
+class KinderHomeController extends AbstractController
 {
     /**
      * 
@@ -21,13 +21,13 @@ class RentalHomeController extends AbstractController
                             DatabaseTableRepository $databaseTableRepository
                         ): Response
     {
-        $db = $databaseTableRepository->findOneBy(array('name' => 'RENTAL'));
+        $db = $databaseTableRepository->findOneBy(array('name' => 'KINDER'));
 
         $debug->debug ($db->getName());
 
         return $this->render('index.html.twig', [
-            'controller_name' => 'RentalHomeController',
-            'title' => 'Home RENTAL',
+            'controller_name' => 'KinderHomeController',
+            'title' => 'Home KINDER',
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => $_SERVER['HOST'],

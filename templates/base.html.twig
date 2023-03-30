@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}SMWEBLOU{% endblock %}</title>
-        <link rel="shortcut icon" href="images/icon/{% block icon %}Sm.png{% endblock %}">
+        <link rel="shortcut icon" href="{{ server_base }}/images/icon/{% block icon %}Sm.png{% endblock %}">
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -21,7 +21,7 @@
         {% block background %}
         <style> 
             :root {
-                --sm-bg: url('images/background/Sm.jpg');
+                --sm-bg: url('{{ server_base }}/images/background/Sm.jpg');
             }
         </style>
         {% endblock %}
@@ -38,7 +38,13 @@
     </head>
     <body>
         {% block header %}{% endblock %}
-        {% block news %}{% endblock %}
+        
+        <div class='row  justify-content-between'>
+            <div class='d-sm-flex p-2 justify-content-center fs-5' 
+                style='background-image: linear-gradient(45deg, var(--sm-green-color) 0%, var(--sm-turquoise-color) 100%);'>
+                <div>{% block news %}{% endblock %}</div>
+            </div>
+        </div>
         <div class='row  justify-content-between' style='height: 20px;'></div>
         {% block navbar %}{% endblock %}
         <div class='row  justify-content-between' style='height: 20px;'></div>

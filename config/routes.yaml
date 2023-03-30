@@ -7,15 +7,19 @@ homepage:
     controller: App\Controller\HomeController::index
 
 cars_homepage:
-    path: /cars
+    path: /DB/CARS
     controller: App\Controller\Cars\CarsHomeController::index
 
 lego_homepage:
-    path: /lego
+    path: /DB/LEGO
     controller: App\Controller\Lego\LegoHomeController::index
 
+kinder_homepage:
+    path: /DB/KINDER
+    controller: App\Controller\Kinder\KinderHomeController::index
+
 rental_homepage:
-    path: /rental
+    path: /DB/RENTAL
     controller: App\Controller\Rental\RentalHomeController::index
 
 app_register:

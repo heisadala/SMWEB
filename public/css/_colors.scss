@@ -28,6 +28,14 @@ $colors-03: ("beige": $sm-beige-03-color, "blue": $sm-blue-03-color, "darkgrey":
           "iceblue": $sm-iceblue-03-color, "lightblue": $sm-lightblue-03-color, "lightgrey": $sm-lightgrey-03-color, "red": $sm-red-03-color,
           "turquoise": $sm-turquoise-03-color, "white": $sm-white-03-color);
 
+:root {           
+    @each $name, $color in $colors {
+        --sm-#{$name}-color: #{$color};
+    }
+}
+        
+        
+        
 @each $name, $color in $colors {
     .text-#{$name} {
         color: $color;
@@ -51,3 +59,4 @@ $colors-03: ("beige": $sm-beige-03-color, "blue": $sm-blue-03-color, "darkgrey":
         border-color: $color;
     }
 }
+

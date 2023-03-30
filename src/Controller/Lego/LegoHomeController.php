@@ -2,45 +2,40 @@
 
 namespace App\Controller\Lego;
 
+use App\Repository\DatabaseTableRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\Debug;
+
+
 
 class LegoHomeController extends AbstractController
 {
-
-    public function index(): Response
+    /**
+     * 
+     */
+    public function index(Debug $debug, 
+                            DatabaseTableRepository $databaseTableRepository
+                        ): Response
     {
-        $db = $this->getParameter('app.database_name');
+        $db = $databaseTableRepository->findOneBy(array('name' => 'LEGO'));
 
-        return $this->render('lego/index.html.twig', [
+        $debug->debug ($db->getName());
+
+        return $this->render('index.html.twig', [
             'controller_name' => 'LegoHomeController',
-            'title' => 'Lego',
-            'loglevel' => $_SERVER['LOG_LEVEL'],
-            'db' => $db,
-            'icon' => 'Lego.png'
+            'title' => 'Home LEGO',
+            'icon' => $db->getIcon(),
+            'background' => $db->getBackground(),
+            'header_title' => $_SERVER['HOST'],
+            'news' => '',
+            'show_navbar' => false,
+            'db' => $db->getName(),
+            'server_base' => $_SERVER['BASE'],
+
         ]);
     }
-
-    /**
-     * @Route("/", name="mailer")
-     */
-    // public function index(MailerInterface $mailer)
-    // {
-    //     $email = (new Email())
-    //         ->from('contact@smweblou.fr')
-    //         ->to('kremer22700@gmail.com')
-    //         ->subject('This e-mail is for testing purpose')
-    //         ->text('This is the text version')
-    //         ->html('<p>This is the HTML version</p>')
-    //     ;
-
-    //     $mailer->send($email);
-
-    //     return $this->render('home/index.html.twig', [
-    //         'controller_name' => 'MailController',
-    //     ]);
-    // }
 }
