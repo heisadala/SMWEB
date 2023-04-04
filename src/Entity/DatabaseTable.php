@@ -25,7 +25,7 @@ class DatabaseTable
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $db_name;
+    private $table_name;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
@@ -61,12 +61,12 @@ class DatabaseTable
 
     public function getDbName(): ?string
     {
-        return $this->db_name;
+        return $this->table_name;
     }
 
-    public function setDbName(?string $db_name): self
+    public function setDbName(?string $table_name): self
     {
-        $this->db_name = $db_name;
+        $this->table_name = $table_name;
 
         return $this;
     }
@@ -103,6 +103,18 @@ class DatabaseTable
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getTableName(): ?string
+    {
+        return $this->table_name;
+    }
+
+    public function setTableName(?string $table_name): self
+    {
+        $this->table_name = $table_name;
 
         return $this;
     }

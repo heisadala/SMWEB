@@ -6,6 +6,10 @@ homepage:
     path: /
     controller: App\Controller\HomeController::index
 
+database_homepage:
+    path: /DB
+    controller: App\Controller\Database\DatabaseHomeController::index
+
 cars_homepage:
     path: /DB/CARS
     controller: App\Controller\Cars\CarsHomeController::index

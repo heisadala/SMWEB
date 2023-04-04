@@ -21,7 +21,7 @@
             <div class='col align-self-center text-center'>
                 <img src="{{ server_base }}/images/logo/Seestern.png" width='64' height='64' class='img-fluid'>
             </div>
-            <div class='col align-self-center text-center bg-yellow rounded-top'>
+            <div class='col align-self-center text-center text-white rounded-top'>
                 <h1>{% block header_title %} {{ header_title }} {% endblock %}</h1>
             </div>
             <div class='col align-self-center text-center'>
@@ -34,12 +34,15 @@
 {% block news %} {{ news }} {% endblock %}
 
 {% block navbar %}
-    {% if show_navbar %}
+    {% if show_navbar is defined and show_navbar == true%}
         {% include ( "#{db|lower}/navbar.html.twig" ) %}
     {% endif %}
 {% endblock %}
 
 {% block content %}
+    {% if show_table is defined and show_table == true %}
+        {% include ( "#{db|lower}/table.html.twig" ) %}
+    {% endif %}
 {# <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -57,4 +60,8 @@
 {% endblock %}
 
 {% block footer %}
+
+{% endblock %}
+{% block java %}
+        {% include ( "#{db|lower}/js.html.twig" ) %}
 {% endblock %}

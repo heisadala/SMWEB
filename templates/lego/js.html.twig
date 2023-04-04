@@ -1,0 +1,15 @@
+<script>
+    $('tr').click(function() {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+            document.getElementById("primaryKey").innerHTML = 'primaryKey';
+        }
+        else {
+            $(this).addClass('selected').siblings().removeClass('selected');
+            cells = $(this).find('td');
+            reference=document.getElementById("primaryKeyPlace").innerHTML;
+            selected_ref = cells.eq(reference).html();
+            document.getElementById("primaryKey").innerHTML = selected_ref;
+        }
+    });
+</script>

@@ -20,22 +20,17 @@
                             DATABASE</a>
                         <ul class="dropdown-menu bg-iceblue">
                             {% for database in databases %}
-                                <li class="dropdown-item text-beige d-flex gap-2 align-items-center">
-                                    <a href="{{ server_base }}{{ database.url }}" class="nav-link" target='_blank'>
-                                    <img src="{{ server_base }}/images/icon/{{ database.icon }}" width='16' height='16' class='img-fluid'>
-                                    {{ database.name }}</a>
-                                </li>
+                                {% if not loop.first %}
+                                    <li class="dropdown-item text-beige d-flex gap-2 align-items-center">
+                                        <a href="{{ server_base }}{{ database.url }}" class="nav-link" target='_blank'>
+                                        <img src="{{ server_base }}/images/icon/{{ database.icon }}" width='16' height='16' class='img-fluid'>
+                                        {{ database.name }}</a>
+                                    </li>
+                                {% endif %}
                             {% endfor %}
 
                         </ul>
                     </li>
-                    {% for subdomain in subdomains %}
-                        <li class="nav-item">
-                            <a href="{{ subdomain.url }}" class="nav-link" target='_blank'>
-                            <img src="{{ server_base }}/images/icon/{{ subdomain.icon }}" width='16' height='16' class='img-fluid'>
-                            {{ subdomain.name }}</a>
-                        </li>
-                    {% endfor %}
                 </ul>
             </div>
         </div>

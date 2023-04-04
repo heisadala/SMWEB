@@ -1,0 +1,66 @@
+<style>
+.t_lego > thead {
+    font-size: larger;
+    color: var(--sm-white-color);
+    background: var(--sm-iceblue-color);
+}
+.t_lego > tbody {
+    font-size: smaller;
+    background: var(--sm-lightblue-color);
+}
+td .hover_img { position:relative; }
+td .hover_img span { position:absolute; display:none; z-index:99; }
+td:hover .hover_img  span { display:block; }
+
+.t_lego tbody tr.selected {background-color: orange;}
+
+</style>
+
+<div class='row  justify-content-between' style='height: 20px;'></div>
+<div class='row  justify-content-between'>
+    <div class="col-md-1"></div>
+    <div class="col-md-10 border rounded table-responsive-sm bg-iceblue">
+        <div class="table-responsive-sm">
+        <table class="table t_lego table-hover">
+            <thead>
+                <tr>
+                    {% for header in table_header_fields %}
+                        <th> {{ header.Field |upper }} &nbsp;&nbsp;&nbsp;
+                        <a href='?sort={{ header.Field |upper }}&order={{ asc_or_desc }}'>
+                        <i class='material-icons' style='color: white'>keyboard_arrow_{{ up_or_down }}</i></a>
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                    {% set color = 'white' %}
+                    {% for row in lego_table_content %}
+                        {% for theme in lego_theme_content %}
+                            {% if theme.name == row.theme %}
+                                {% set color = theme.color %}
+                            {% endif %}
+                        {% endfor %}
+                        <tr>
+                        <td> {{ row.reference }} </td>
+                        <td><div class='hover_img'> {{ row.name }} 
+                            <span><img src='https://images.brickset.com/sets/large/{{ row.reference }}-1.jpg' width='192' height='192'/></span>
+                        </div>
+                        </td>
+                        <td><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></td>
+                        <td> {{ row.price }} </td>
+                        <td> {{ row.date|date("d-m-Y") }} </td>
+                        <td> {{ row.cond }} </td>
+                        <td><a href={{ row.url }} target='_blank'> {{ row.url }} </a></td>
+                        </tr>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <p id='primaryKey' hidden>primaryKey</p>
+    <p id='primaryKeyPlace' hidden>{{ primary_key_column }}</p>
+    <div class='col-md-1'></div>
+</div>
+<div class='row  justify-content-between' style='height: 100px;'></div>
+
