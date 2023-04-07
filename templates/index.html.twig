@@ -43,6 +43,9 @@
     {% if show_table is defined and show_table == true %}
         {% include ( "#{db|lower}/table.html.twig" ) %}
     {% endif %}
+    {% if show_form is defined and show_form == true %}
+        {% include ( "#{db|lower}/form.html.twig" ) %}
+    {% endif %}
 {# <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -63,5 +66,7 @@
 
 {% endblock %}
 {% block java %}
+    {% if inc_java is defined and inc_java == true %}
         {% include ( "#{db|lower}/js.html.twig" ) %}
+    {% endif %}
 {% endblock %}

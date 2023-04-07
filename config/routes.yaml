@@ -18,6 +18,18 @@ lego_homepage:
     path: /DB/LEGO
     controller: App\Controller\Lego\LegoHomeController::index
 
+lego_add:
+    path: /DB/LEGO/ADD
+    controller: App\Controller\Lego\LegoHomeController::add
+
+lego_update:
+    path: /DB/LEGO/UPDATE
+    controller: App\Controller\Lego\LegoHomeController::update
+
+lego_delete:
+    path: /DB/LEGO/DELETE
+    controller: App\Controller\Lego\LegoHomeController::delete
+
 kinder_homepage:
     path: /DB/KINDER
     controller: App\Controller\Kinder\KinderHomeController::index

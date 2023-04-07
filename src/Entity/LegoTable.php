@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\LegoTableRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=LegoTableRepository::class)
  */
@@ -13,12 +13,19 @@ class LegoTable
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @Assert\Type(
+     *     type="integer",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
+    #[Assert\NotBlank]
+
     private $reference;
 
     /**
      * @ORM\Column(type="string", length=128)
      */
+    #[Assert\NotBlank]
     private $name;
 
     /**
@@ -29,6 +36,7 @@ class LegoTable
     /**
      * @ORM\Column(type="decimal", precision=6, scale=2, nullable=true)
      */
+    #[Assert\NotBlank]
     private $price;
 
     /**
@@ -39,7 +47,7 @@ class LegoTable
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
      */
-    private $cond;
+    private $condition;
 
     /**
      * @ORM\Column(type="string", length=512, nullable=true)
@@ -105,14 +113,14 @@ class LegoTable
         return $this;
     }
 
-    public function getCond(): ?string
+    public function getCondition(): ?string
     {
-        return $this->cond;
+        return $this->condition;
     }
 
-    public function setCond(?string $cond): self
+    public function setCondition(?string $condition): self
     {
-        $this->cond = $cond;
+        $this->condition = $condition;
 
         return $this;
     }

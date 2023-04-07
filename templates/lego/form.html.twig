@@ -1,0 +1,39 @@
+<style>
+.required::after {
+    content: ' *';
+    color: orange;
+}
+
+
+</style>
+<div class='row  justify-content-between' style='height: 20px;'></div>
+<div class='row  justify-content-between'>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 border rounded bg-iceblue">
+        <div class="container text-white mt-3">
+            {{ form_start(lego_form,  {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <p class='text-center'><b>ITEM</b></p>
+
+            {{ form_label(lego_form.reference) }}
+            {{ form_widget(lego_form.reference) }}
+            {# <i class="fv-bootstrap-icon-input-group glyphicon glyphicon-ok-sign" style="pointer-events: none; display:block;"></i> #}
+            {# {{ form_label(lego_form.reference, null, {
+                'label': lego_form.reference,
+                'label_attr': {'class': 'required'}
+
+            })}}
+            {{ form_widget(lego_form.reference) }}  #}
+
+            {{ form_end(lego_form) }}
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+
+</div>
+
+<script>
+function myFunction(val) {
+   document.forms['lego_add']['lego_add_url'].value = "https://brickset.com/sets/" + val + "-1";
+}
+</script>

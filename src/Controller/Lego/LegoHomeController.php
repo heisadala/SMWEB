@@ -2,12 +2,20 @@
 
 namespace App\Controller\Lego;
 
+use App\Entity\LegoTable;
+use App\Form\LegoAddType;
 use App\Repository\DatabaseTableRepository;
+use App\Repository\FormTableRepository;
 use App\Repository\LegoTableRepository;
 use App\Repository\LegoThemeRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Service\Debug;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+
 
 
 
@@ -37,7 +45,6 @@ class LegoHomeController extends AbstractController
     {
         $name = 'LEGO';
 
-
         $db = $databaseTableRepository->findOneBy(array('name' => $name));
         $table_header_fields = $legoTableRepository->fetch_header_fields_from_table($db->getTableName());
 
@@ -61,13 +68,14 @@ class LegoHomeController extends AbstractController
 
         return $this->render('index.html.twig', [
             'controller_name' => 'LegoHomeController',
-            'title' => 'Home LEGO' . $name,
+            'title' => 'Home ' . $name,
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => "LEGO INVENTORY",
             'news' => '',
-            'show_navbar' => false,
+            'show_navbar' => true,
             'show_table' => true,
+            'inc_java' => true,
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'table_header_fields' => $table_header_fields,
@@ -81,4 +89,55 @@ class LegoHomeController extends AbstractController
 
         ]);
     }
+
+
+    public function add(FormTableRepository $formTableRepository,
+                        Request $request,
+                        EntityManagerInterface $em
+                        ): Response
+    {
+        $name = 'LEGO';
+
+        $form_db = $formTableRepository->findOneBy(array('name' => $name . '_ADD'));
+
+        $lego_table = new LegoTable();
+        $form = $this->createForm(LegoAddType::class, $lego_table);
+
+        $form-> handlerequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+             $em->persist($lego_table);
+             $em->flush();
+             return $this->redirectToRoute('lego_homepage');
+        }
+
+        return $this->render('index.html.twig',[
+                             'controller_name' => 'LegoHomeController',
+                             'title' => 'ADD ' . $name,
+                             'icon' => $form_db->getIcon(),
+                             'background' => $form_db->getBackground(),
+                             'header_title' => "ADD LEGO",
+                             'server_base' => $_SERVER['BASE'],
+                             'db' => 'LEGO',
+                             'news' => '',
+                             'show_form' => true,
+                             'lego_form' => $form->createView(),
+
+                             ]
+                            );
+
+    }
+
+    public function delete(int $id,
+                            LegoTableRepository $legoTableRepository
+                            ): Response
+    {
+
+        $article = $legoTableRepository->getRepository(Article::class)->findBy(['id' => $id])[0];
+
+        // L'article est supprimé
+        $legoTableRepository->remove($article);
+
+        return $this->redirectToRoute('lego_homepage');
+    }
+
 }
