@@ -44,7 +44,6 @@ class HomeController extends AbstractController
             'news' => '',
             'show_navbar' => true,
             'db' => $db->getName(),
-
             'server_base' => $_SERVER['BASE'],
             'subdomains' => $subdomains,
             'databases' => $databases,
