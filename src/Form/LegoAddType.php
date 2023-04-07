@@ -36,7 +36,8 @@ class LegoAddType extends AbstractType
                     'placeholder' => 'Reference *',
                     'oninput'=> 'myFunction(this.value)',
                 ],
-                'required' => true
+                'required' => true,
+                'label' => 'reference'
             ])
             ->add('name', TextType::class, [
                 'attr' => [
@@ -51,7 +52,10 @@ class LegoAddType extends AbstractType
                     return $repo->createQueryBuilder('lego_theme')
                     ->orderBy('lego_theme.name', 'ASC');
                 },
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'choice_value' => 'name',
+                'placeholder' => false
+
             ])
 
             ->add('price')
@@ -67,7 +71,9 @@ class LegoAddType extends AbstractType
                     return $repo->createQueryBuilder('lego_condition')
                     ->orderBy('lego_condition.name', 'ASC');
                 },
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'choice_value' => 'name',
+                'placeholder' => false
             ])
             ->add('url', null, [
                     'attr' => [

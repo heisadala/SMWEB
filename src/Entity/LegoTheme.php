@@ -55,4 +55,9 @@ class LegoTheme
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
