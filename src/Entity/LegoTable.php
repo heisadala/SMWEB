@@ -47,7 +47,7 @@ class LegoTable
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
      */
-    private $condition;
+    private $state;
 
     /**
      * @ORM\Column(type="string", length=512, nullable=true)
@@ -113,14 +113,14 @@ class LegoTable
         return $this;
     }
 
-    public function getCondition(): ?string
+    public function getState(): ?string
     {
-        return $this->condition;
+        return $this->state;
     }
 
-    public function setCondition(?string $condition): self
+    public function setState(?string $state): self
     {
-        $this->condition = $condition;
+        $this->state = $state;
 
         return $this;
     }

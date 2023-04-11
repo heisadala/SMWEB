@@ -30,19 +30,21 @@ class LegoAddType extends AbstractType
         // // dd($allowedThemes);
 
         $builder
-            ->add('reference', NumberType::class, [
+            ->add('reference', null, [
                 'attr' => [
-                    'class' => 'has-success',
-                    'placeholder' => 'Reference *',
-                    'oninput'=> 'myFunction(this.value)',
+                    'placeholder' => '123 *',
+                    'oninput'=> 'legoFormCheckValidity(this)',
+                    'type' => 'number',
+                    // 'oninput'=> "setCustomValidity('')",
+                    // 'oninvalid' => "myErrorFunction(this.value)",
                 ],
                 'required' => true,
-                'label' => 'reference'
             ])
             ->add('name', TextType::class, [
                 'attr' => [
                     // 'class' => 'is-valid',
                     'placeholder' => 'Name *',
+                    'oninput'=> 'legoFormCheckValidity(this)',
                 ],
                 'required' => true
             ])
@@ -54,18 +56,26 @@ class LegoAddType extends AbstractType
                 },
                 'choice_label' => 'name',
                 'choice_value' => 'name',
-                'placeholder' => false
+                'placeholder' => false,
+                'required' => false
 
             ])
 
-            ->add('price')
+            ->add('price', null, [
+                'attr' => [
+                    // 'class' => 'is-valid',
+                    'value' => '0,00',
+                ],
+                'required' => false,
+            ])
             ->add('date', BirthdayType::class, [
                 'years' => range(date('Y') - 70, date('Y') - 0),
                 'format' => 'dd-MMMM-yyyy',
-                'data' => new \DateTime('now')
+                'data' => new \DateTime('now'),
+                'required' => false
                 
             ])
-            ->add('condition', EntityType::class, [
+            ->add('state', EntityType::class, [
                 'class' => LegoCondition::class,
                 'query_builder' => function (EntityRepository $repo) {
                     return $repo->createQueryBuilder('lego_condition')
@@ -73,14 +83,19 @@ class LegoAddType extends AbstractType
                 },
                 'choice_label' => 'name',
                 'choice_value' => 'name',
-                'placeholder' => false
+                'placeholder' => false,
+                'required' => false
             ])
             ->add('url', null, [
                     'attr' => [
                         'readonly' => true,
                     ],
                 ])
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'disabled' => true,
+                ],
+            ])
         ;
     }
 

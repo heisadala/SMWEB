@@ -1,9 +1,13 @@
-{# <style>
+<style>
 .required::after {
     content: ' *';
     color: orange;
 }
-</style> #}
+
+.invalid-feedback {
+    background-color: pink;
+}
+</style>
 
 
 <div class='row  justify-content-between' style='height: 20px;'></div>
@@ -14,9 +18,18 @@
             {{ form_start(lego_form,  {'attr': {'novalidate': 'novalidate'}}) }}
 
             <p class='text-center'><b>ITEM</b></p>
-
+            {# --------------- #}
+            {# required fields #}
+            {# --------------- #}
             {{ form_label(lego_form.reference) }}
             {{ form_widget(lego_form.reference) }}
+            <div class='invalid-feedback' id='lego_add_reference_feedback'></div>
+
+            {{ form_label(lego_form.name) }}
+            {{ form_widget(lego_form.name) }}
+            <div class='invalid-feedback' id='lego_add_name_feedback'></div>
+            {# {{ form_errors(lego_form.reference) }} #}
+            {# {{ form_row(lego_form.reference) }} #}
             {# <i class="fv-bootstrap-icon-input-group glyphicon glyphicon-ok-sign" style="pointer-events: none; display:block;"></i> #}
             {# {{ form_label(lego_form.reference, null, {
                 'label': lego_form.reference,
@@ -33,7 +46,61 @@
 </div>
 
 <script>
-function myFunction(val) {
-   document.forms['lego_add']['lego_add_url'].value = "https://brickset.com/sets/" + val + "-1";
+function legoFormCheckValidity(element) {
+
+    var error = false;
+    document.getElementById('lego_add_submit').disabled = false;
+
+    var reference = document.forms['lego_add']['lego_add_reference'];
+    var reference_feedback = document.getElementById("lego_add_reference_feedback");
+    reference_feedback.innerHTML = "";
+
+    var name = document.forms['lego_add']['lego_add_name'];
+    var name_feedback = document.getElementById("lego_add_name_feedback");
+    name_feedback.innerHTML = "";
+
+    if (!reference.checkValidity()) {
+        reference_feedback.innerHTML = "Please provide valid number";
+        document.forms['lego_add']['lego_add_url'].value = "https://brickset.com/sets/";
+
+        error = true;
+    } else {
+        if ((element.id).localeCompare(reference.id) == 0) {
+            document.forms['lego_add']['lego_add_url'].value = "https://brickset.com/sets/" + element.value + "-1";
+        }
+    }
+    if (!name.checkValidity()) {
+        name_feedback.innerHTML = "Please provide valid name";
+        error = true;
+    }
+
+    document.forms['lego_add'].classList.add('was-validated');
+
+    if (error) {
+        document.getElementById('lego_add_submit').disabled = true;
+    }
 }
+
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+{# (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})() #}
+
 </script>

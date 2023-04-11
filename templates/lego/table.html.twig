@@ -49,7 +49,7 @@ td:hover .hover_img  span { display:block; }
                         <td><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></td>
                         <td> {{ row.price }} </td>
                         <td> {{ row.date|date("d-m-Y") }} </td>
-                        <td> {{ row.condition }} </td>
+                        <td> {{ row.state }} </td>
                         <td><a href={{ row.url }} target='_blank'> {{ row.url }} </a></td>
                         </tr>
                     {% endfor %}

@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Service\Debug;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mime\Message;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 
@@ -93,10 +95,12 @@ class LegoHomeController extends AbstractController
 
     public function add(FormTableRepository $formTableRepository,
                         Request $request,
-                        EntityManagerInterface $em
+                        EntityManagerInterface $em,
+                        ValidatorInterface $validator
                         ): Response
     {
         $name = 'LEGO';
+        $errors = [];
 
         $form_db = $formTableRepository->findOneBy(array('name' => $name . '_ADD'));
 
@@ -104,10 +108,17 @@ class LegoHomeController extends AbstractController
         $form = $this->createForm(LegoAddType::class, $lego_table);
 
         $form-> handlerequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+             // dd($lego_table);
              $em->persist($lego_table);
              $em->flush();
              return $this->redirectToRoute('lego_homepage');
+        }
+
+        elseif ($form->isSubmitted()) {
+            // dd($form);
+            $errors = $validator->validate($lego_table);
         }
 
         return $this->render('index.html.twig',[
@@ -121,7 +132,7 @@ class LegoHomeController extends AbstractController
                              'news' => '',
                              'show_form' => true,
                              'lego_form' => $form->createView(),
-
+                             'error_ref_message' =>''
                              ]
                             );
 
