@@ -14,14 +14,57 @@ td:hover .hover_img  span { display:block; }
 
 .t_lego tbody tr.selected {background-color: orange;}
 
+#lego_search_form {
+  display: flex;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  margin: 0 0 20px;
+}
+input[type="search"] {
+  border: none;
+  background: white;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+}
+
+input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 #1183d6;
+  border-color: #1183d6;
+  outline: none;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+input.nosubmit {
+  width: 260px;
+  border: 1px solid #555;
+  display: block;
+  padding: 9px 4px 9px 40px;
+  background: white 
+  url("https://www.smweblou.fr/DEV_SMWEB/public/images/icon/search.svg") no-repeat 8px center;
+  background-size: 24px
+}
+
 </style>
 
 <div class='row  justify-content-between' style='height: 20px;'></div>
 <div class='row  justify-content-between'>
     <div class="col-md-1"></div>
     <div class="col-md-10 border rounded table-responsive-sm bg-iceblue">
-        <div class="table-responsive-sm">
-        <table class="table t_lego table-hover">
+        <div id='lego_table_div' class="table-responsive-sm">
+        <div class='mt-2'>
+                <form id="lego_search_form" class="nosubmit justify-content-end ">
+                <input id="lego_search" type="search" class="nosubmit rounded" placeholder="Search ...">
+                </form>
+        </div>
+        <table id="lego_table" class="table t_lego table-hover table-sm">
             <thead>
                 <tr>
                     {% for header in table_header_fields %}
@@ -60,7 +103,9 @@ td:hover .hover_img  span { display:block; }
     </div>
     <p id='primaryKey' hidden>primaryKey</p>
     <p id='primaryKeyPlace' hidden>{{ primary_key_column }}</p>
+    <p id='primaryKeyName' hidden>{{ primary_key_name }}</p>
     <div class='col-md-1'></div>
 </div>
 <div class='row  justify-content-between' style='height: 100px;'></div>
+
 

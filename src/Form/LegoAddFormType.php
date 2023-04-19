@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LegoAddType extends AbstractType
+class LegoAddFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -91,7 +91,7 @@ class LegoAddType extends AbstractType
                         'readonly' => true,
                     ],
                 ])
-            ->add('submit', SubmitType::class, [
+            ->add('Add', SubmitType::class, [
                 'attr' => [
                     'disabled' => true,
                 ],

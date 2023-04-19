@@ -11,6 +11,9 @@
             <link rel="stylesheet" 
                 href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" 
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                type="text/css" />          
+            <link rel="stylesheet" 
                 href="{{ asset('bootstrap/css/bootstrap.min.css') }}"
                 type="text/css" />
            <link rel="stylesheet" 
@@ -19,7 +22,7 @@
             <link rel="stylesheet" 
                 href="{{ asset('css/basics.css') }}"
                 type="text/css" />
-        {% endblock %}
+         {% endblock %}
 
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -36,6 +39,13 @@
             integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" 
             crossorigin="anonymous">
         </script>
+        <script 
+            src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js">
+        </script>
+
+        <script src="{{ asset('js/form.js') }}"></script>"
+        <script src="{{ asset('js/table.js') }}"></script>"
+
         {# <script 
             src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js" 
             integrity="sha256-Lsk+CDPOzTapLoAzWW0G/WeQeViS3FMzywpzPZV8SXk=" 

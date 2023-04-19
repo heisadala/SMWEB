@@ -1,0 +1,65 @@
+<style>
+.required::after {
+    content: ' *';
+    color: orange;
+}
+
+.invalid-feedback {
+    background-color: pink;
+}
+</style>
+
+
+<nav style="--bs-breadcrumb-divider: '>>>';"  aria-label="breadcrumb">
+    <div class="container-fluid">
+        <ul class="breadcrumb" style="align-items: center;">
+            <li class="breadcrumb-item"><a href='{{ path('homepage') }}'><img src="{{ server_base }}/images/logo/Seestern.png" width="32px" height="32px"></img></a></li>
+            <li class="breadcrumb-item"><a href='{{ path('database_homepage') }}'><img src="{{ server_base }}/images/icon/Database.png" width="32px" height="32px"></img></a></li>
+            <li class="breadcrumb-item"><a href='{{ path('lego_homepage') }}'><img src="{{ server_base }}/images/icon/Lego.png" width="32px" height="32px"></img></a></li>
+            <li class="breadcrumb-item active" aria-current="page">LEGO DELETE</li>
+        </ul>
+    </div>
+</nav>
+
+<div class='row  justify-content-between' style='height: 20px;'></div>
+<div class='row  justify-content-between'>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 border rounded bg-iceblue">
+        <div class="container text-white mt-3">
+            {{ form_start(lego_form,  {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <p class='text-center'><b>ITEM</b></p>
+
+            {{ form_end(lego_form) }}
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+
+</div>
+
+<script>
+
+
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+{# (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})() #}
+
+</script>

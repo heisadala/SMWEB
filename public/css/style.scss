@@ -16,6 +16,10 @@ $sm-navbar-color: colors.$sm-beige-color;
 
 $sm-burgericon-color: colors.$sm-beige-color;
 
+$sm-breadcrumb-color: colors.$sm-beige-color;
+
+$sm-dataTables-length-color: colors.$sm-red-color;
+
 html {
     line-height: normal;
     background-color: $sm-html-bg-color;
@@ -43,3 +47,20 @@ body {
 .navbar-nav, .nav-item, .nav-link {
     color: $sm-navbar-color;
 }
+
+.breadcrumb-item > a {
+    color: $sm-breadcrumb-color;
+    text-decoration: none;
+}
+.breadcrumb-item:before {
+    color: $sm-breadcrumb-color;
+}
+
+.breadcrumb-item:hover {
+    color: $sm-breadcrumb-color;
+}
+
+.breadcrumb-item.active {
+    color: $sm-breadcrumb-color;
+}
+

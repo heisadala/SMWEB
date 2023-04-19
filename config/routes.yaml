@@ -27,7 +27,7 @@ lego_update:
     controller: App\Controller\Lego\LegoHomeController::update
 
 lego_delete:
-    path: /DB/LEGO/DELETE
+    path: /DB/LEGO/DELETE/{pk_name}/{ref}
     controller: App\Controller\Lego\LegoHomeController::delete
 
 kinder_homepage:

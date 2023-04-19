@@ -32,6 +32,9 @@ $colors-03: ("beige": $sm-beige-03-color, "blue": $sm-blue-03-color, "darkgrey":
     @each $name, $color in $colors {
         --sm-#{$name}-color: #{$color};
     }
+    --bs-breadcrumb-item-active-color: rgb(233,214,184, 0.3);
+    --dt-row-selected: rgb(243, 218, 173);
+    --bs-pagination-disabled-bg: rgb(113,187,198);
 }
         
         

@@ -10,6 +10,9 @@
   --sm-red-color: rgb(227, 67, 41);
   --sm-turquoise-color: rgb(13, 183, 191);
   --sm-white-color: rgb(255, 255, 255);
+  --bs-breadcrumb-item-active-color: rgb(233,214,184, 0.3);
+  --dt-row-selected: rgb(243, 218, 173);
+  --bs-pagination-disabled-bg: rgb(113,187,198);
 }
 
 .text-beige {
@@ -277,5 +280,22 @@ body {
 }
 
 .navbar-nav, .nav-item, .nav-link {
+  color: rgb(233, 214, 184);
+}
+
+.breadcrumb-item > a {
+  color: rgb(233, 214, 184);
+  text-decoration: none;
+}
+
+.breadcrumb-item:before {
+  color: rgb(233, 214, 184);
+}
+
+.breadcrumb-item:hover {
+  color: rgb(233, 214, 184);
+}
+
+.breadcrumb-item.active {
   color: rgb(233, 214, 184);
 }/*# sourceMappingURL=style.css.map */
