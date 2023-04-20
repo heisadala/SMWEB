@@ -59,11 +59,23 @@ input.nosubmit {
     <div class="col-md-1"></div>
     <div class="col-md-10 border rounded table-responsive-sm bg-iceblue">
         <div id='lego_table_div' class="table-responsive-sm">
-        <div class='mt-2'>
-                <form id="lego_search_form" class="nosubmit justify-content-end ">
-                <input id="lego_search" type="search" class="nosubmit rounded" placeholder="Search ...">
+                <div class='row'>
+                <div id='lego_dropdown' class="dropdown mt-2 col-md-2">
+                <span><img src='https://www.smweblou.fr/DEV_SMWEB/public/images/icon/table-with-header.png' width='64' height='64'></span>
+                    <button id='lego_dropdown_button' class="btn btn-secondary dropdown-toggle justify-content-begin" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ show_row_number }}
+                    </button>
+                    <ul id='lego_dropdown_menu' class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">5</a></li>
+                        <li><a class="dropdown-item" href="#">10</a></li>
+                        <li><a class="dropdown-item" href="#">20</a></li>
+                    </ul>
+                </div>
+                <div class='col-md-10 mt-2'>
+                <form id="lego_search_form" class="nosubmit justify-content-end">
+                    <input id="lego_search" type="search" class="nosubmit rounded" placeholder="Search ..." value="" >
                 </form>
-        </div>
+                </div></div>
         <table id="lego_table" class="table t_lego table-hover table-sm">
             <thead>
                 <tr>
@@ -104,6 +116,7 @@ input.nosubmit {
     <p id='primaryKey' hidden>primaryKey</p>
     <p id='primaryKeyPlace' hidden>{{ primary_key_column }}</p>
     <p id='primaryKeyName' hidden>{{ primary_key_name }}</p>
+    <p id='showRowNumber' hidden>{{ show_row_number }}</p>
     <div class='col-md-1'></div>
 </div>
 <div class='row  justify-content-between' style='height: 100px;'></div>

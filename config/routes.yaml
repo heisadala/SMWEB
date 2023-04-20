@@ -15,8 +15,10 @@ cars_homepage:
     controller: App\Controller\Cars\CarsHomeController::index
 
 lego_homepage:
-    path: /DB/LEGO
+    path: /DB/LEGO/{rowNumbers}
     controller: App\Controller\Lego\LegoHomeController::index
+    defaults:  
+        rowNumbers: 10 
 
 lego_add:
     path: /DB/LEGO/ADD

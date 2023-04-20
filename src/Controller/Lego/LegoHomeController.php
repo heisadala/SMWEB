@@ -38,7 +38,7 @@ class LegoHomeController extends AbstractController
     /**
      * 
      */
-    public function index(Debug $debug, 
+    public function index(int $rowNumbers, Debug $debug, 
                         DatabaseTableRepository $databaseTableRepository, 
                         LegoTableRepository $legoTableRepository,
                         LegoThemeRepository $legoThemeRepository
@@ -72,7 +72,7 @@ class LegoHomeController extends AbstractController
             'title' => 'Home ' . $app,
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
-            'header_title' => "LEGO INVENTORY",
+            'header_title' => "",
             'news' => '',
             'show_navbar' => true,
             'show_table' => true,
@@ -84,6 +84,7 @@ class LegoHomeController extends AbstractController
             'lego_theme_content' => $lego_theme_content,
             'primary_key_name' => $primary_key_name,
             'primary_key_column' => $primary_key_column,
+            'show_row_number' => $rowNumbers,
             'asc_or_desc' => $asc_or_desc,
             'up_or_down' => $up_or_down
 

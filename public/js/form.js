@@ -31,3 +31,4 @@ function Delete()
       window.open("https://www.smweblou.fr/DEV_SMWEB/public/DB/LEGO/DELETE/" + name + '/' + reference, '_blank').focus;
   }
 }
+
