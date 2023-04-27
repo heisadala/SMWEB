@@ -6,6 +6,7 @@ $sm-green-color: rgb(140, 213, 11);
 $sm-iceblue-color: rgb(87,134,180);
 $sm-lightblue-color: rgb(113,187,198);
 $sm-lightgrey-color: rgb(220,228,231);
+$sm-orange-color: rgb(255,165,0);
 $sm-red-color: rgb(227,67,41);
 $sm-turquoise-color: rgb(13, 183, 191);
 $sm-white-color: rgb(255, 255, 255);
@@ -17,23 +18,25 @@ $sm-green-03-color: rgb(140, 213, 11, 0.3);
 $sm-iceblue-03-color: rgb(87,134,180, 0.3);
 $sm-lightblue-03-color: rgb(113,187,198, 0.3);
 $sm-lightgrey-03-color: rgb(220,228,231, 0.3);
+$sm-orange-03-color: rgb(255,165,0, 0.3);
 $sm-red-03-color: rgb(227,67,41, 0.3);
 $sm-turquoise-03-color: rgb(13, 183, 191, 0.3);
 $sm-white-03-color: rgb(255, 255, 255, 0.3);
 
 $colors: ("beige": $sm-beige-color, "blue": $sm-blue-color, "darkgrey": $sm-darkgrey-color, "green": $sm-green-color,
-          "iceblue": $sm-iceblue-color, "lightblue": $sm-lightblue-color, "lightgrey": $sm-lightgrey-color, "red": $sm-red-color,
-          "turquoise": $sm-turquoise-color, "white": $sm-white-color);
+          "iceblue": $sm-iceblue-color, "lightblue": $sm-lightblue-color, "lightgrey": $sm-lightgrey-color, 
+          "orange": $sm-orange-color, "red": $sm-red-color, "turquoise": $sm-turquoise-color, "white": $sm-white-color);
 $colors-03: ("beige": $sm-beige-03-color, "blue": $sm-blue-03-color, "darkgrey": $sm-darkgrey-03-color, "green": $sm-green-03-color,
-          "iceblue": $sm-iceblue-03-color, "lightblue": $sm-lightblue-03-color, "lightgrey": $sm-lightgrey-03-color, "red": $sm-red-03-color,
+          "iceblue": $sm-iceblue-03-color, "lightblue": $sm-lightblue-03-color, "lightgrey": $sm-lightgrey-03-color, 
+          "orange": $sm-orange-03-color, "red": $sm-red-03-color,
           "turquoise": $sm-turquoise-03-color, "white": $sm-white-03-color);
 
 :root {           
     @each $name, $color in $colors {
         --sm-#{$name}-color: #{$color};
     }
-    --bs-breadcrumb-item-active-color: rgb(233,214,184, 0.3);
-    --dt-row-selected: rgb(243, 218, 173);
+    --bs-breadcrumb-divider-color: var(--bs-warning);
+    --dt-row-selected: var(--sm-orange-color);
     --bs-pagination-disabled-bg: rgb(113,187,198);
 }
         

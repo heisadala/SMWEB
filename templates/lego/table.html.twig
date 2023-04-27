@@ -1,124 +1,85 @@
-<style>
-.t_lego > thead {
-    font-size: larger;
-    color: var(--sm-white-color);
-    background: var(--sm-iceblue-color);
-}
-.t_lego > tbody {
-    font-size: smaller;
-    background: var(--sm-lightblue-color);
-}
-td .hover_img { position:relative; }
-td .hover_img span { position:absolute; display:none; z-index:99; }
-td:hover .hover_img  span { display:block; }
+<script src="{{ asset('js/table.js') }}"></script>"
 
-.t_lego tbody tr.selected {background-color: orange;}
-
-#lego_search_form {
-  display: flex;
-  padding: 0;
-  border: none;
-  border-radius: 5px;
-  margin: 0 0 20px;
-}
-input[type="search"] {
-  border: none;
-  background: white;
-  margin: 0;
-  padding: 7px 8px;
-  font-size: 14px;
-  color: inherit;
-  border: 1px solid transparent;
-  border-radius: inherit;
-}
-
-input[type="search"]:focus {
-  box-shadow: 0 0 3px 0 #1183d6;
-  border-color: #1183d6;
-  outline: none;
-}
-
-input[type="search"]::placeholder {
-  color: #bbb;
-}
-
-input.nosubmit {
-  width: 260px;
-  border: 1px solid #555;
-  display: block;
-  padding: 9px 4px 9px 40px;
-  background: white 
-  url("https://www.smweblou.fr/DEV_SMWEB/public/images/icon/search.svg") no-repeat 8px center;
-  background-size: 24px
-}
-
-</style>
-
-<div class='row  justify-content-between' style='height: 20px;'></div>
-<div class='row  justify-content-between'>
-    <div class="col-md-1"></div>
-    <div class="col-md-10 border rounded table-responsive-sm bg-iceblue">
-        <div id='lego_table_div' class="table-responsive-sm">
-                <div class='row'>
-                <div id='lego_dropdown' class="dropdown mt-2 col-md-2">
-                <span><img src='https://www.smweblou.fr/DEV_SMWEB/public/images/icon/table-with-header.png' width='64' height='64'></span>
-                    <button id='lego_dropdown_button' class="btn btn-secondary dropdown-toggle justify-content-begin" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<div id='sm-body-lego-table-row-1' class='row  justify-content-between' style='height: 10px;'></div>
+<div id='sm-body-lego-table-row-2' class='row  justify-content-between'>
+    <div id='sm-body-lego-table-row-2-col-1' class="col-md-1"></div>
+    <div id='sm-body-lego-table-row-2-col-2' class="col-md-10 border rounded table-responsive-sm bg-iceblue">
+        <div id='sm-body-lego-table-div' class="table-responsive-sm">
+            <div id='sm-body-lego-table-table-menu' class='row'>
+                <div id='sm-body-lego-table-table-dropdown' class="dropdown mt-2 col-md-2">
+                    <span>
+                        <img src='{{ server_base }}/images/icon/rows-144.png' 
+                            alt='NUMBER OF ROWS' 
+                            title='NUMBER OF ROWS' 
+                            width='64' 
+                            height='64'>
+                    </span>
+                    <button id='sm-body-lego-table-table-dropdown-button' 
+                        class="btn btn-secondary dropdown-toggle justify-content-begin" 
+                        type="button" 
+                        data-bs-toggle="dropdown" 
+                        aria-expanded="false">
                         {{ show_row_number }}
                     </button>
-                    <ul id='lego_dropdown_menu' class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">5</a></li>
-                        <li><a class="dropdown-item" href="#">10</a></li>
-                        <li><a class="dropdown-item" href="#">20</a></li>
+                    <ul id='sm-body-lego-table-table-dropdown-menu' class="dropdown-menu">
+                        <li><a id='sm-body-lego-table-table-dropdown-item-5' class="dropdown-item" href="#">5</a></li>
+                        <li><a id='sm-body-lego-table-table-dropdown-item-10' class="dropdown-item" href="#">10</a></li>
+                        <li><a id='sm-body-lego-table-table-dropdown-item-20' class="dropdown-item" href="#">20</a></li>
                     </ul>
                 </div>
-                <div class='col-md-10 mt-2'>
-                <form id="lego_search_form" class="nosubmit justify-content-end">
-                    <input id="lego_search" type="search" class="nosubmit rounded" placeholder="Search ..." value="" >
-                </form>
-                </div></div>
-        <table id="lego_table" class="table t_lego table-hover table-sm">
-            <thead>
-                <tr>
-                    {% for header in table_header_fields %}
-                        <th> {{ header.Field |upper }} &nbsp;&nbsp;&nbsp;
-                        <a href='?sort={{ header.Field |upper }}&order={{ asc_or_desc }}'>
-                        <i class='material-icons' style='color: white'>keyboard_arrow_{{ up_or_down }}</i></a>
-                        </th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                    {% set color = 'white' %}
-                    {% for row in lego_table_content %}
-                        {% for theme in lego_theme_content %}
-                            {% if theme.name == row.theme %}
-                                {% set color = theme.color %}
-                            {% endif %}
+                <div id='sm-body-lego-table-table-col-2' class='col-md-10 mt-2'>
+                    <form id="sm-body-lego-table-table-search-form" class="nosubmit justify-content-end">
+                        <input id="sm-body-lego-table-table-search" 
+                            type="search" 
+                            class="nosubmit rounded" 
+                            placeholder="Search ..." 
+                            value="" >
+                    </form>
+                </div>
+            </div>
+            <table id='sm-body-lego-table-table' class="table t_lego table-hover table-sm">
+                <thead>
+                    <tr>
+                        {% for header in table_header_fields %}
+                            <th> {{ header.Field |upper }} &nbsp;&nbsp;&nbsp;
+                            <a href='?sort={{ header.Field |upper }}&order={{ asc_or_desc }}'>
+                            <i class='material-icons' style='color: white'>keyboard_arrow_{{ up_or_down }}</i></a>
+                            </th>
                         {% endfor %}
-                        <tr>
-                        <td> {{ row.reference }} </td>
-                        <td><div class='hover_img'> {{ row.name }} 
-                            <span><img src='https://images.brickset.com/sets/large/{{ row.reference }}-1.jpg' width='192' height='192'/></span>
-                        </div>
-                        </td>
-                        <td><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></td>
-                        <td> {{ row.price }} </td>
-                        <td> {{ row.date|date("d-m-Y") }} </td>
-                        <td> {{ row.state }} </td>
-                        <td><a href={{ row.url }} target='_blank'> {{ row.url }} </a></td>
-                        </tr>
-                    {% endfor %}
-                </tr>
-            </tbody>
-        </table>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% set color = 'white' %}
+                        {% for row in lego_table_content %}
+                            {% for theme in lego_theme_content %}
+                                {% if theme.name == row.theme %}
+                                    {% set color = theme.color %}
+                                {% endif %}
+                            {% endfor %}
+                            <tr>
+                            <td> {{ row.reference }} </td>
+                            <td><div class='hover_img'> {{ row.name }} 
+                                <span><img src='https://images.brickset.com/sets/large/{{ row.reference }}-1.jpg' width='192' height='192'/></span>
+                            </div>
+                            </td>
+                            <td><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></td>
+                            <td> {{ row.price }} </td>
+                            <td> {{ row.date|date("d-m-Y") }} </td>
+                            <td> {{ row.state }} </td>
+                            <td><a href={{ row.url }} target='_blank'> {{ row.url }} </a></td>
+                            </tr>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <p id='primaryKey' hidden>primaryKey</p>
     <p id='primaryKeyPlace' hidden>{{ primary_key_column }}</p>
     <p id='primaryKeyName' hidden>{{ primary_key_name }}</p>
     <p id='showRowNumber' hidden>{{ show_row_number }}</p>
-    <div class='col-md-1'></div>
+    <div id='sm-body-lego-table-row-2-col-3' class='col-md-1'></div>
 </div>
-<div class='row  justify-content-between' style='height: 100px;'></div>
+<div id='sm-body-lego-table-row-3' class='row  justify-content-between' style='height: 100px;'></div>
 
 

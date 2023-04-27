@@ -94,7 +94,9 @@ class LegoAddFormType extends AbstractType
             ->add('Add', SubmitType::class, [
                 'attr' => [
                     'disabled' => true,
+                    'class' => 'btn-warning'
                 ],
+                
             ])
         ;
     }

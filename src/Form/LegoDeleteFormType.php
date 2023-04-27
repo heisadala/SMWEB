@@ -29,6 +29,9 @@ class LegoDeleteFormType extends AbstractType
             ->add('state')
             ->add('url')
             ->add('Delete', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn-warning'
+                ],
             ])
         ;
     }

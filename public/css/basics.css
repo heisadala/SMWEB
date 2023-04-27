@@ -1,24 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    outline: none;
-}
-
-html,
-body {
-    height: 100%;
-    width: 100%;
-}
-
-body {
-    overscroll-behavior-x: none;
-    font-weight: bolder;
-    overflow: scroll;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center center;
-}
 
 @media screen and (max-width: 1024px) {
     .F ul {
@@ -31,21 +10,6 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-}
-.burger-icon {
-    display: none;
-}
-
-@media screen and (max-width: 1024px) {
-    .burger-icon {
-        display: flex;
-        flex-direction: column;
-        align-items:flex-end;
-        margin-top: 11px;
-        padding-right: 20px;
-        font-size: 0.5rem;
-        background-color: var(--sm-burgericon-color);
     }
 }
 

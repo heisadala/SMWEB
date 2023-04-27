@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} {{ title }} {% endblock %}
+
 {% block icon %}{{ icon }}{% endblock %}
 
 {% block stylesheets %}
@@ -8,27 +9,39 @@
 {% endblock %}
 
 {% block background %}
-<style> 
-    :root {
-        --sm-bg: url('{{ server_base }}/images/background/{{ background }}' );
-    }
-</style>
+    <style> 
+        :root {
+            --sm-bg: url('{{ server_base }}/images/background/{{ background }}');
+        }
+    </style>
 {% endblock %}
 
 {% block header %}
-    <div class='container-fluid'>
-        <header class='row'>
-            <div class='col align-self-center text-center'>
-                <img src="{{ server_base }}/images/logo/Seestern.png" width='88' height='88' class='img-fluid'>
+    <div id='sm-body-header-container' class='container-fluid'>
+        <header id='sm-body-header-row-1' class='row'>
+            <div id='sm-body-header-row-1-col-1' class='col m-2'>
+                <img id='sm-body-header-logo-img' 
+                    class='img-fluid'
+                    src="{{ server_base }}/images/logo/Seestern.png">
             </div>
-            <div class='col align-self-center text-center text-white rounded-top'>
-                <h1>{% block header_title %} {{ header_title }} {% endblock %}
-                    <img src="{{ server_base }}/images/icon/Inventory.png" id='img-inventory' alt='INVENTORY' title='INVENTORY' width='96' height='96' class='img-fluid'>
-                </h1>
-                
+            <div id='sm-body-header-title' class='col align-self-center text-center text-white'>
+                {% if header_title is defined and header_title != '' %}
+                    <h1>{% block header_title %} {{ header_title }} {% endblock %}</h1>
+                {% endif %}
+                {% if header_image is defined and header_image != '' %}
+                        <img src="{{ server_base }}/images/icon/{{ header_image }}.png" 
+                            id='sm-body-header-title-img-{{ header_image }}' 
+                            alt={{ header_image }} 
+                            title={{ header_image }} 
+                            width='96' 
+                            height='96' 
+                            class='img-fluid'>
+                {% endif %}
             </div>
-            <div class='col align-self-center text-center'>
-                <img src="{{ server_base }}/images/logo/Seestern.png" width='88' height='88' class='img-fluid'>
+            <div id='sm-body-header-flag' class='col m-2'>
+                <img id='sm-body-header-flag-img'  
+                    class='img-fluid'
+                    src="{{ server_base }}/images/flag/united_kingdom_flag.png">
             </div>
         </header>
     </div>
@@ -37,7 +50,7 @@
 {% block news %} {{ news }} {% endblock %}
 
 {% block navbar %}
-    {% if show_navbar is defined and show_navbar == true%}
+    {% if show_navbar is defined and show_navbar == true %}
         {% include ( "#{db|lower}/navbar.html.twig" ) %}
     {% endif %}
 {% endblock %}
@@ -55,25 +68,10 @@
     {% if show_form is defined and show_form == 'UPDATE' %}
         {% include ( "#{db|lower}/update_form.html.twig" ) %}
     {% endif %}
-{# <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}!  {{ db }}✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/volume2/web/DEV_SMWEB/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/volume2/web/DEV_SMWEB/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div> #}
 {% endblock %}
 
-{% block footer %}
+{% block footer %} {% endblock %}
 
-{% endblock %}
 {% block java %}
     {% if inc_java is defined and inc_java == true %}
         {% include ( "#{db|lower}/js.table.html.twig" ) %}

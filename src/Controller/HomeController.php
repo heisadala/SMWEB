@@ -40,7 +40,7 @@ class HomeController extends AbstractController
             'title' => 'Home SMWEB',
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
-            'header_title' => $_SERVER['HOST'],
+            'header_title' => $_SERVER['HTTP_HOST'],
             'news' => '',
             'show_navbar' => true,
             'db' => $db->getName(),

@@ -1,59 +1,265 @@
 @use '_colors';
 @use '_fonts';
-@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap';
+// @import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap';
 
 
 $sm-html-font: fonts.$sm-montserrat-font;
-$sm-html-font-size: fonts.$sm-montserrat-font-size;
+// $sm-html-font-size: fonts.$sm-montserrat-font-size;
 $sm-html-bg-color: colors.$sm-iceblue-color;
 
 $sm-body-bg-color: colors.$sm-white-color;
 $sm-body-color: colors.$sm-blue-color;
 $sm-body-font: fonts.$sm-montserrat-font;
-$sm-body-font-size: fonts.$sm-montserrat-font-size;
+// $sm-body-font-size: fonts.$sm-montserrat-font-size;
 
-$sm-navbar-color: colors.$sm-beige-color;
+$sm-navbar-color: var(--bs-warning);
 
-$sm-burgericon-color: colors.$sm-beige-color;
+$sm-burgericon-color: var(--sm-iceblue-color);
 
-$sm-breadcrumb-color: colors.$sm-beige-color;
+$sm-breadcrumb-color: var(--bs-warning);
 
 $sm-dataTables-length-color: colors.$sm-red-color;
 
+// standard
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
 html {
     line-height: normal;
-    background-color: $sm-html-bg-color;
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 body {
-    font-size: $sm-body-font-size;
+    overscroll-behavior-x: none;
+    overflow: scroll;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
     font-family: $sm-body-font;
     color: $sm-body-color;
-    background-color: $sm-body-bg-color;
+    background-color: transparent;
+}
+// ////////////
+// HEADER
+// ////////////
+#sm-body-header-logo-img {
+    max-width: 10%;
+} 
+
+#sm-body-header-flag {
+    text-align-last: end;
+    align-self: center;
 }
 
-.burger-icon {
+#sm-body-header-flag-img {
+    max-width: 7.5%;
+}
+
+@media screen and (max-width: 1024px) {
+    #sm-body-header-logo-img {
+        max-width: 50%;
+    }
+    #sm-body-header-flag-img {
+        max-width: 40%;
+    }
+}
+
+// ////////////
+// NEWS
+// ////////////
+#sm-body-news-content {
+    background-image: linear-gradient(45deg, var(--sm-green-color) 0%, var(--sm-turquoise-color) 100%)
+}
+
+@media screen and (max-width: 1024px) {
+    #sm-body-news-content {
+        font-size: 2rem;
+    }
+}
+// ////////////
+// NAVBAR
+// ////////////
+#sm-body-home-navbar,
+#sm-body-db-navbar
+{
+    font-size: x-large;
+}
+
+#sm-body-home-navbar-dropdown-menu,
+#sm-body-db-navbar-dropdown-menu
+
+{
+    font-size: large;
+}
+
+#sm-body-home-navbar-navbar-brand {
+    max-width: 100%;
+}
+
+#sm-body-home-navbar-nav-link-img,
+img[id^='sm-body-home-navbar-dropdown-item-img-'],
+img[id^='sm-body-home-navbar-subdomain-img-'],
+#sm-body-db-navbar-nav-link-img,
+img[id^='sm-body-db-navbar-dropdown-item-img-'],
+img[id^='sm-body-db-navbar-subdomain-img-']
+{
+    max-width: 48px;
+}
+
+#sm-body-home-navbar-navbar-toggler-text 
+{
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    #sm-body-home-navbar,
+    #sm-body-db-navbar
+    {
+        font-size: xx-large;
+    }
+    #sm-body-home-navbar-dropdown-menu,
+    #sm-body-db-navbar-dropdown-menu,
+    #sm-body-lego-add-form-col-2,
+    #lego_add_form_Add,
+    .form-control, .form-select
+    {
+        font-size: x-large;
+    }
+    #sm-body-home-navbar-nav-link-img,
+    img[id^='sm-body-home-navbar-dropdown-item-img-'],
+    img[id^='sm-body-home-navbar-subdomain-img-'],
+    #sm-body-db-navbar-nav-link-img,
+    img[id^='sm-body-db-navbar-dropdown-item-img-'],
+    img[id^='sm-body-db-navbar-subdomain-img-'] 
+    {
+        max-width: 128px;
+    }
+    #sm-body-home-navbar-navbar-toggler-text
+    {
+        display: contents;
+        font-size: xx-large;
+        letter-spacing: .1rem;
+        margin-top: 1px;
+    }
+    .form-control,
+    .form-select,
+    #sm-body-lego-add-form-col-2
+    {
+        line-height: 3;
+    }
+}
+
+.navbar-toggler, .navbar-toggler::after, .navbar-toggler::before {
     background-color: $sm-burgericon-color;
+    color: var(--bs-warning);
+    width: 132px;
+    height: 132px;
+    font-size: 3rem;
+    box-sizing: unset;
 }
 
-.navbar-toggler {
+.navbar-toggler-icon, .navbar-toggler-icon:after, .navbar-toggler-icon:before {
     background-color: $sm-burgericon-color;
+    box-sizing: unset;
+    color: var(--bs-warning);
+    background-image: var(--sm-toggler-icon);
 }
-
-.navbar-toggler-icon {
-    background-color: $sm-burgericon-color;
-}
-
 .navbar-nav, .nav-item, .nav-link {
     color: $sm-navbar-color;
 }
 
+// ////////////
+// LEGO
+// ////////////
+
+.t_lego > thead {
+    font-size: larger;
+    color: var(--sm-white-color);
+    background: var(--sm-iceblue-color);
+}
+.t_lego > tbody {
+    font-size: smaller;
+    background: var(--sm-lightblue-color);
+}
+td .hover_img { position:relative; }
+td .hover_img span { position:absolute; display:none; z-index:99; }
+td:hover .hover_img  span { display:block; }
+
+.t_lego tbody tr.selected {background-color: orange;}
+
+#sm-body-lego-table-table-search-form {
+  display: flex;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  margin: 0 0 20px;
+}
+
+input[type="search"] {
+  border: none;
+  background: white;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+}
+
+input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 #1183d6;
+  border-color: #1183d6;
+  outline: none;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+input.nosubmit {
+  width: 260px;
+  border: 1px solid #555;
+  display: block;
+  padding: 9px 4px 9px 40px;
+  background: white 
+  var(--sm-search-icon) no-repeat 8px center;
+  background-size: 24px
+}
+
+.required::after {
+    content: ' *';
+    color: orange;
+}
+
+.invalid-feedback {
+    background-color: pink;
+}
+
+// ////////////
+// BREADCRUMB
+// ////////////
 .breadcrumb-item > a {
     color: $sm-breadcrumb-color;
     text-decoration: none;
 }
-.breadcrumb-item:before {
+.breadcrumb-item + .breadcrumb-item:before {
     color: $sm-breadcrumb-color;
+    padding-top: 18px;
 }
 
 .breadcrumb-item:hover {

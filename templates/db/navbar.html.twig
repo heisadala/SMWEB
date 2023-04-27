@@ -1,34 +1,39 @@
-     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <img class="navbar-brand " src="{{ server_base }}/images/logo/Seestern.png" width="40px" height="48px"></img>
-            <button 
-                class="navbar-toggler" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" 
-                aria-expanded="false" 
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  
-                            role="button" aria-expanded="false">
-                            <img src="{{ server_base }}/images/icon/Database.png" width='16' height='16' class='img-fluid'>
+     <nav id='sm-body-db-navbar' class="navbar navbar-expand">
+        <div id='sm-body-db-navbar-container' class="container-fluid">
+            <a id='sm-body-db-navbar-navbar-brand-link' href='{{ server_base }}'>
+            <img id='sm-body-db-navbar-navbar-brand' 
+                class="navbar-brand img-fluid" 
+                src="{{ server_base }}/images/icon/squared-menu-96.png"
+                alt='HOME'
+                title='HOME'
+            >
+            </a>
+            <div id="sm-body-db-navbar-navbar-collapse" class="navbar-collapse">
+                <ul id="sm-body-db-navbar-navbar-collapse-ul" class="navbar-nav">
+                    <li id="sm-body-db-navbar-navbar-collapse-item" class="nav-item dropdown">
+                        <a id="sm-body-db-navbar-nav-link" 
+                            class="nav-link dropdown-toggle" 
+                            data-bs-toggle="dropdown"  
+                            role="button" 
+                            aria-expanded="false">
+                            <img id='sm-body-db-navbar-nav-link-img' 
+                                class='img-fluid' 
+                                src="{{ server_base }}/images/icon/Database.png">
                             DATABASE</a>
-                        <ul class="dropdown-menu bg-iceblue">
+                        <ul id='sm-body-db-navbar-dropdown-menu' class="dropdown-menu bg-iceblue">
                             {% for database in databases %}
-                                {% if not loop.first %}
-                                    <li class="dropdown-item text-beige d-flex gap-2 align-items-center">
-                                        <a href="{{ server_base }}{{ database.url }}" class="nav-link" target='_blank'>
-                                        <img src="{{ server_base }}/images/icon/{{ database.icon }}" width='16' height='16' class='img-fluid'>
-                                        {{ database.name }}</a>
-                                    </li>
-                                {% endif %}
+                                <li id='sm-body-db-navbar-dropdown-item-{{ database.id }}' 
+                                    class="dropdown-item d-flex gap-2 align-items-center">
+                                    <a id='sm-body-db-navbar-dropdown-item-link-{{ database.id }}' 
+                                        class="nav-link" 
+                                        href="{{ server_base }}{{ database.url }}" 
+                                        target='_blank'>
+                                    <img id='sm-body-db-navbar-dropdown-item-img-{{ database.id }}' 
+                                        class='img-fluid'
+                                        src="{{ server_base }}/images/icon/{{ database.icon }}">
+                                    {{ database.name }}</a>
+                                </li>
                             {% endfor %}
-
                         </ul>
                     </li>
                 </ul>

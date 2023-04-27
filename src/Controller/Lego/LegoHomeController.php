@@ -73,10 +73,10 @@ class LegoHomeController extends AbstractController
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => "",
+            'header_image' => "Inventory",
             'news' => '',
             'show_navbar' => true,
             'show_table' => true,
-            'inc_java' => true,
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'table_header_fields' => $table_header_fields,
@@ -87,8 +87,6 @@ class LegoHomeController extends AbstractController
             'show_row_number' => $rowNumbers,
             'asc_or_desc' => $asc_or_desc,
             'up_or_down' => $up_or_down
-
-
         ]);
     }
 
@@ -120,7 +118,8 @@ class LegoHomeController extends AbstractController
                              'title' => $form_title . ' ' . $app . ' ITEM',
                              'icon' => $form_db->getIcon(),
                              'background' => $form_db->getBackground(),
-                             'header_title' => $form_title . ' ' . $app . ' ITEM',
+                             'header_title' => '',
+                             'header_image' => "add-item",
                              'server_base' => $_SERVER['BASE'],
                              'db' => $app,
                              'news' => '',
@@ -162,7 +161,8 @@ class LegoHomeController extends AbstractController
             'title' => $form_title . ' ' . $app . ' ITEM',
             'icon' => $form_db->getIcon(),
             'background' => $form_db->getBackground(),
-            'header_title' => $form_title . ' ' . $app . ' ITEM',
+            'header_title' => '',
+            'header_image' => "delete-item",
             'server_base' => $_SERVER['BASE'],
             'db' => $app,
             'news' => '',
