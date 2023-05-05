@@ -5,11 +5,11 @@
 
 
 $sm-html-font: fonts.$sm-montserrat-font;
-// $sm-html-font-size: fonts.$sm-montserrat-font-size;
-$sm-html-bg-color: colors.$sm-iceblue-color;
+$sm-html-bg-color: Aqua;
 
-$sm-body-bg-color: colors.$sm-white-color;
-$sm-body-color: colors.$sm-blue-color;
+$sm-body-bg-color: MidnightBlue;
+$sm-body-header-color: MidnightBlue;;
+$sm-body-color: colors.$sm-lightblue-color;
 $sm-body-font: fonts.$sm-montserrat-font;
 // $sm-body-font-size: fonts.$sm-montserrat-font-size;
 
@@ -51,30 +51,34 @@ body {
     background-size: cover;
     background-position: center center;
     font-family: $sm-body-font;
-    color: $sm-body-color;
-    background-color: transparent;
+    background-color: $sm-body-bg-color;
 }
 // ////////////
 // HEADER
 // ////////////
-#sm-body-header-logo-img {
-    max-width: 10%;
+.sm-body-header-container {
+    background-image: linear-gradient(to right, SeaShell, Aqua, SeaShell );
+    color: $sm-body-header-color;
+}
+
+.sm-body-header-logo {
+    max-width: 15%;
 } 
 
-#sm-body-header-flag {
+.sm-body-header-flag {
     text-align-last: end;
     align-self: center;
 }
 
-#sm-body-header-flag-img {
+.sm-body-header-flag-img {
     max-width: 7.5%;
 }
 
 @media screen and (max-width: 1024px) {
-    #sm-body-header-logo-img {
+    .sm-body-header-logo {
         max-width: 50%;
     }
-    #sm-body-header-flag-img {
+    .sm-body-header-flag-img {
         max-width: 40%;
     }
 }
@@ -82,127 +86,92 @@ body {
 // ////////////
 // NEWS
 // ////////////
-#sm-body-news-content {
+.sm-body-news-content {
     background-image: linear-gradient(45deg, var(--sm-green-color) 0%, var(--sm-turquoise-color) 100%)
 }
 
 @media screen and (max-width: 1024px) {
-    #sm-body-news-content {
+    .sm-body-news-content {
         font-size: 2rem;
     }
 }
 // ////////////
 // NAVBAR
 // ////////////
-#sm-body-home-navbar,
-#sm-body-db-navbar
+.navbar
 {
     font-size: x-large;
 }
-
-#sm-body-home-navbar-dropdown-menu,
-#sm-body-db-navbar-dropdown-menu
-
+.navbar-nav
 {
-    font-size: large;
+    --bs-nav-link-hover-color: var(--sm-red-color);
+    color: var(--bs-warning);
+
 }
 
-#sm-body-home-navbar-navbar-brand {
-    max-width: 100%;
+.sm-lego-brand {
+    width: 96px;
+    height: 96px;    
+}
+// ////////////
+// GALLERY
+// ////////////
+.sm-card-database-img {
+    width: 100%;
+    height: 8vw;    
 }
 
-#sm-body-home-navbar-nav-link-img,
-img[id^='sm-body-home-navbar-dropdown-item-img-'],
-img[id^='sm-body-home-navbar-subdomain-img-'],
-#sm-body-db-navbar-nav-link-img,
-img[id^='sm-body-db-navbar-dropdown-item-img-'],
-img[id^='sm-body-db-navbar-subdomain-img-']
-{
-    max-width: 48px;
-}
-
-#sm-body-home-navbar-navbar-toggler-text 
-{
-    display: none;
+.sm-card-subdomain-img {
+    width: 70%;
+    height: 8vw;
 }
 
 @media screen and (max-width: 1024px) {
-    #sm-body-home-navbar,
-    #sm-body-db-navbar
-    {
-        font-size: xx-large;
+    .sm-card-database-img  {
+        width: 80%;
+        height: 10vw;
     }
-    #sm-body-home-navbar-dropdown-menu,
-    #sm-body-db-navbar-dropdown-menu,
-    #sm-body-lego-add-form-col-2,
-    #lego_add_form_Add,
-    .form-control, .form-select
-    {
-        font-size: x-large;
+    .sm-card-subdomain-img  {
+        width: 50%;
+        height: 10vw;
     }
-    #sm-body-home-navbar-nav-link-img,
-    img[id^='sm-body-home-navbar-dropdown-item-img-'],
-    img[id^='sm-body-home-navbar-subdomain-img-'],
-    #sm-body-db-navbar-nav-link-img,
-    img[id^='sm-body-db-navbar-dropdown-item-img-'],
-    img[id^='sm-body-db-navbar-subdomain-img-'] 
-    {
-        max-width: 128px;
-    }
-    #sm-body-home-navbar-navbar-toggler-text
-    {
-        display: contents;
-        font-size: xx-large;
-        letter-spacing: .1rem;
-        margin-top: 1px;
-    }
-    .form-control,
-    .form-select,
-    #sm-body-lego-add-form-col-2
-    {
-        line-height: 3;
-    }
-}
-
-.navbar-toggler, .navbar-toggler::after, .navbar-toggler::before {
-    background-color: $sm-burgericon-color;
-    color: var(--bs-warning);
-    width: 132px;
-    height: 132px;
-    font-size: 3rem;
-    box-sizing: unset;
-}
-
-.navbar-toggler-icon, .navbar-toggler-icon:after, .navbar-toggler-icon:before {
-    background-color: $sm-burgericon-color;
-    box-sizing: unset;
-    color: var(--bs-warning);
-    background-image: var(--sm-toggler-icon);
-}
-.navbar-nav, .nav-item, .nav-link {
-    color: $sm-navbar-color;
-}
-
+} 
+   
+@media screen and (max-width: 780px) {
+        .sm-card-database-img  {
+            width: 60%;
+            height: 10vw;
+        }
+        .sm-card-subdomain-img  {
+            width: 50%;
+            height: 10vw;
+        }}    
+ 
 // ////////////
 // LEGO
 // ////////////
 
-.t_lego > thead {
+.sm-lego-table > thead {
     font-size: larger;
     color: var(--sm-white-color);
     background: var(--sm-iceblue-color);
 }
-.t_lego > tbody {
+.sm-lego-table > tbody {
     font-size: smaller;
     background: var(--sm-lightblue-color);
 }
+
 td .hover_img { position:relative; }
 td .hover_img span { position:absolute; display:none; z-index:99; }
 td:hover .hover_img  span { display:block; }
 
-.t_lego tbody tr.selected {background-color: orange;}
+.sm-lego-table tbody tr.selected {background-color: orange;}
 
-#sm-body-lego-table-table-search-form {
+.sm-gallery-card {
+    background-color: white;
+}
+
+.sm-lego-table-search-form {
   display: flex;
   padding: 0;
   border: none;
@@ -241,6 +210,37 @@ input.nosubmit {
   background-size: 24px
 }
 
+.list-icon {
+    width: 32px;
+    height: 32px;
+    background: white 
+    var(--sm-list-icon) no-repeat 0px center;
+    background-size: 24px;
+    display: block;
+
+}
+.chevron-down-icon {
+    width: 32px;
+    height: 32px;
+    background: white 
+    var(--sm-chevron-down-icon) no-repeat 0px center;    
+    background-size: 24px;
+    display: block;
+}
+#sm-list-menu, #sm-gallery-menu  {
+    text-decoration: none;
+}
+
+.sm-table-dropdown, .sm-gallery-dropdown {
+    text-align: end;
+}
+.sm-table-dropdown-ul, .sm-gallery-dropdown-ul {
+    background-color: midnightblue;
+}
+.sm-table-dropdown-ul li a, .sm-gallery-dropdown-ul li a {
+    color: var(--bs-info);
+}
+
 .required::after {
     content: ' *';
     color: orange;
@@ -249,6 +249,11 @@ input.nosubmit {
 .invalid-feedback {
     background-color: pink;
 }
+
+// #sm-body-lego-card-img {
+//     width:auto;
+//     height:auto;
+// }
 
 // ////////////
 // BREADCRUMB

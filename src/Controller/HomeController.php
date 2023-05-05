@@ -43,6 +43,7 @@ class HomeController extends AbstractController
             'header_title' => $_SERVER['HTTP_HOST'],
             'news' => '',
             'show_navbar' => true,
+            'show_gallery' => true,
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'subdomains' => $subdomains,

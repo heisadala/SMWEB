@@ -1,0 +1,79 @@
+<script src="{{ asset('js/gallery.js') }}"></script>
+
+<div class='row'>
+    <div class="col-md-1"></div>
+    <div class="col-md-10 ">
+        <div class="dropdown sm-gallery-dropdown">
+            <a id='sm-gallery-menu' class="dropdown-toggle" 
+                data-bs-toggle="dropdown"  
+                role="button" 
+                aria-expanded="false">
+                <img class='img-fluid' 
+                    src="{{ server_base }}/images/icon/thumbnail-50.png">
+            </a>
+            <ul class="dropdown-menu sm-gallery-dropdown-ul">
+                <li class="dropdown-item d-flex gap-2 align-items-center">
+                <a id='sm-gallery-menu' href="{{ server_base }}/DB/LEGO/HOME/table/10" >List
+                    <img class='img-fluid' src="{{ server_base }}/images/icon/list-60.png">
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class='col-md-1'></div>
+</div>
+<div class='row' style='height: 10px;'></div>
+
+<div class='row  justify-content-between'>
+    <div class="col-md-1"></div>
+    <div class="col-md-10 border rounded bg-iceblue">
+        <div class='row'>
+            <div class="mt-2 col-md-10">
+            </div>
+            <div class='col-md-2 mt-2'>
+                <form class="nosubmit justify-content-end sm-lego-table-search-form">
+                    <input type="search" 
+                        class="nosubmit rounded" id="sm-lego-table-search-input" 
+                        placeholder="Search ..." 
+                        value="" >
+                </form>
+            </div>            
+        </div>
+
+        <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 mt-2 sm-lego-gallery">
+            {% set color = 'white' %}
+            {% for row in lego_table_content %}
+                {% for theme in lego_theme_content %}
+                    {% if theme.name == row.theme %}
+                        {% set color = theme.color %}
+                    {% endif %}
+                {% endfor %}
+
+                <div class="col card-col">
+
+                    <div class="card h-100 sm-gallery-card">
+                        <img src='https://images.brickset.com/sets/large/{{ row.reference }}-1.jpg' 
+                            class='card-img mx-auto sm-card-database-img'/>
+                        <div class="sm-gallery-card-pk" hidden>{{ loop.index }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate"><a href={{ row.url }} target='_blank'> {{ row.name }} </a></h5>
+                            <p class="card-text" id="sm-gallery-card-reference-{{ loop.index }}"> {{ row.reference }} </p>
+                            <p class="card-text" id="sm-gallery-card-theme-{{ loop.index }}"><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></p>
+                            <p class="card-text" id="sm-gallery-card-price-{{ loop.index }}"> {{ row.price }} </p>
+                            <p class="card-text" id="sm-gallery-card-state-{{ loop.index }}"> {{ row.state }} </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class='row' style='height: 20px;'></div>
+    </div>
+    <p id='primaryKey' hidden>primaryKey</p>
+    <p id='primaryKeyPlace' hidden>{{ primary_key_column }}</p>
+    <p id='primaryKeyName' hidden>{{ primary_key_name }}</p>
+    <p id='showRowNumber' hidden>{{ show_row_number }}</p>
+    <div class='col-md-1'></div>
+</div>
+<div class='row  justify-content-between' style='height: 10px;'></div>
+
+

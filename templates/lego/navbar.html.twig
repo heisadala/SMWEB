@@ -1,21 +1,29 @@
-<nav id='sm-body-lego-navbar' class="navbar bg-body-tertiary">
-  <div id='sm-body-lego-navbar-container' class="container-fluid justify-content-start">
-    <a id='sm-body-lego-navbar-navbar-brand-link' href='{{ server_base }}'>
-    <img id='sm-body-lego-navbar-navbar-brand' 
-        class="img-fluid" 
+<nav class="navbar">
+  <div class="container-fluid justify-content-start">
+    <a href='{{ server_base }}'>
+    <img class="img-fluid" 
         src="{{ server_base }}/images/icon/squared-menu-96.png"
         alt='HOME'
         title='HOME'
     >
     </a>
-    <a id='sm-body-lego-navbar-link-add' class="navbar-brand" href='{{ path('lego_add') }}'>
-      <img src="{{ server_base }}/images/icon/add-row-144.png" alt='ADD ITEM' title='ADD ITEM' width="96px" height="96px" ></img>
+    <a class="navbar-brand" href='{{ path('lego_add') }}'>
+      <img class='sm-lego-brand' src="{{ server_base }}/images/icon/add-row-144.png" 
+        alt='ADD ITEM' 
+        title='ADD ITEM'>
+      </img>
     </a>
-    <a id='sm-body-lego-navbar-link-edit' class="navbar-brand" href='{{ path('homepage') }}'>
-      <img src="{{ server_base }}/images/icon/edit-row-144.png" alt='EDIT ITEM' title='EDIT ITEM' width="96px" height="96px" ></img>
+    <a class="navbar-brand" href='#'>
+      <img id='sm-lego-navbar-link-edit-img' class='sm-lego-brand' src="{{ server_base }}/images/icon/edit-row-144.png" 
+        alt='EDIT ITEM' 
+        title='EDIT ITEM'>
+      </img>
     </a>
-    <a id='sm-body-lego-navbar-link-delete' class="navbar-brand" href='#'>
-      <img id='sm-body-lego-navbar-link-delete-img' src="{{ server_base }}/images/icon/delete-row-144.png" alt='DELETE ITEM' title='DELETE ITEM' width="96px" height="96px" ></img>
+    <a class="navbar-brand" href='#'>
+      <img id='sm-lego-navbar-link-delete-img' class='sm-lego-brand' src="{{ server_base }}/images/icon/delete-row-144.png" 
+        alt='DELETE ITEM' 
+        title='DELETE ITEM'>
+      </img>
     </a>
   </div>
 </nav>

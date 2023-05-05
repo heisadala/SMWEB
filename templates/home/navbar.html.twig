@@ -1,40 +1,35 @@
-     <nav id='sm-body-home-navbar' class="navbar navbar-expand-lg">
-        <div id='sm-body-home-navbar-container' class="container-fluid">
-            <a id='sm-body-home-navbar-navbar-brand-link' href='{{ server_base }}'>
-            <img id='sm-body-home-navbar-navbar-brand' 
-                class="img-fluid" 
+     <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href='{{ server_base }}'>
+            <img class="img-fluid" 
                 src="{{ server_base }}/images/icon/squared-menu-96.png"
                 alt='HOME'
                 title='HOME'
             >
             </a>
-            <button 
-                id='sm-body-home-navbar-navbar-toggler'
+            {# <button 
                 class="navbar-toggler m-2" 
                 type="button" 
                 data-bs-toggle="collapse" 
-                data-bs-target="#sm-body-home-navbar-navbar-collapse" 
-                aria-controls="sm-body-home-navbar-navbar-collapse" 
+                data-bs-target="#sm-body-home-navbar-collapse" 
+                aria-controls="sm-body-home-navbar-collapse" 
                 aria-expanded="false" 
                 aria-label="Toggle navigation">
-                <span id='sm-body-home-navbar-div-button-span-navbar-toggler-icon'
-                    class="navbar-toggler-icon"></span>
-                <i id='sm-body-home-navbar-navbar-toggler-text' class='label'>MENU</i>
+                <span class="navbar-toggler-icon"></span>
+                <i class='label'>MENU</i>
             </button>
             
-            <div id="sm-body-home-navbar-navbar-collapse" class="navbar-collapse collapse">
-                <ul id="sm-body-home-navbar-navbar-collapse-ul" class="navbar-nav">
-                    <li id="sm-body-home-navbar-navbar-collapse-item" class="nav-item dropdown">
-                        <a id="sm-body-home-navbar-nav-link" 
-                            class="nav-link dropdown-toggle" 
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" 
                             data-bs-toggle="dropdown"  
                             role="button" 
                             aria-expanded="false">
-                            <img id='sm-body-home-navbar-nav-link-img' 
-                                class='img-fluid' 
+                            <img class='img-fluid sm-navbar-dropdown-img' 
                                 src="{{ server_base }}/images/icon/Database.png">
                             DATABASE</a>
-                        <ul id='sm-body-home-navbar-dropdown-menu' class="dropdown-menu bg-iceblue">
+                        <ul class="dropdown-menu bg-iceblue">
                             {% for database in databases %}
                                 <li id='sm-body-home-navbar-dropdown-item-{{ database.id }}' 
                                     class="dropdown-item d-flex gap-2 align-items-center">
@@ -63,6 +58,6 @@
                         </li>
                     {% endfor %}
                 </ul>
-            </div>
+            </div> #}
         </div>
     </nav>

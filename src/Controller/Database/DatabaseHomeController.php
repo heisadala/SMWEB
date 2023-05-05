@@ -38,6 +38,7 @@ class DatabaseHomeController extends AbstractController
             'header_image' => "Database",
             'news' => '',
             'show_navbar' => true,
+            'show_gallery' => true,
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'databases' => $databases,

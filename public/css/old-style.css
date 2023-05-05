@@ -1,0 +1,93 @@
+   
+.sm-navbar-dropdown-img {
+    max-width: 48px;
+}
+
+
+#sm-body-db-navbar
+{
+    font-size: x-large;
+}
+
+#sm-body-home-navbar-dropdown-menu,
+#sm-body-db-navbar-dropdown-menu
+
+{
+    font-size: large;
+}
+
+#sm-body-home-navbar-navbar-brand {
+    max-width: 100%;
+}
+
+#sm-body-home-navbar-nav-link-img,
+img[id^='sm-body-home-navbar-dropdown-item-img-'],
+img[id^='sm-body-home-navbar-subdomain-img-'],
+#sm-body-db-navbar-nav-link-img,
+img[id^='sm-body-db-navbar-dropdown-item-img-'],
+img[id^='sm-body-db-navbar-subdomain-img-']
+{
+    max-width: 48px;
+}
+
+#sm-body-home-navbar-navbar-toggler-text 
+{
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .sm-body-home-navbar,
+    #sm-body-db-navbar
+    {
+        font-size: xx-large;
+    }
+    #sm-body-home-navbar-dropdown-menu,
+    #sm-body-db-navbar-dropdown-menu,
+    #sm-body-lego-add-form-col-2,
+    #lego_add_form_Add,
+    .form-control, .form-select
+    {
+        font-size: x-large;
+    }
+    #sm-body-home-navbar-nav-link-img,
+    img[id^='sm-body-home-navbar-dropdown-item-img-'],
+    img[id^='sm-body-home-navbar-subdomain-img-'],
+    #sm-body-db-navbar-nav-link-img,
+    img[id^='sm-body-db-navbar-dropdown-item-img-'],
+    img[id^='sm-body-db-navbar-subdomain-img-'] 
+    {
+        max-width: 128px;
+    }
+    #sm-body-home-navbar-navbar-toggler-text
+    {
+        display: contents;
+        font-size: xx-large;
+        letter-spacing: .1rem;
+        margin-top: 1px;
+    }
+    .form-control,
+    .form-select,
+    #sm-body-lego-add-form-col-2
+    {
+        line-height: 3;
+    }
+}
+
+.navbar-toggler, .navbar-toggler::after, .navbar-toggler::before {
+    background-color: $sm-burgericon-color;
+    color: var(--bs-warning);
+    width: 132px;
+    height: 132px;
+    font-size: 3rem;
+    box-sizing: unset;
+}
+
+.navbar-toggler-icon, .navbar-toggler-icon:after, .navbar-toggler-icon:before {
+    background-color: $sm-burgericon-color;
+    box-sizing: unset;
+    color: var(--bs-warning);
+    background-image: var(--sm-toggler-icon);
+}
+.navbar-nav, .nav-item, .nav-link {
+    color: $sm-navbar-color;
+}

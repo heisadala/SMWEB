@@ -8,40 +8,28 @@
     {{ parent() }}
 {% endblock %}
 
-{% block background %}
-    <style> 
-        :root {
-            --sm-bg: url('{{ server_base }}/images/background/{{ background }}');
-        }
-    </style>
-{% endblock %}
-
 {% block header %}
-    <div id='sm-body-header-container' class='container-fluid'>
-        <header id='sm-body-header-row-1' class='row'>
-            <div id='sm-body-header-row-1-col-1' class='col m-2'>
-                <img id='sm-body-header-logo-img' 
-                    class='img-fluid'
+    <div class='container-fluid sm-body-header-container' >
+        <header class='row'>
+            <div class='col m-2'>
+                <img class='img-fluid sm-body-header-logo'
                     src="{{ server_base }}/images/logo/Seestern.png">
             </div>
-            <div id='sm-body-header-title' class='col align-self-center text-center text-white'>
+            <div class='col align-self-center text-center'>
                 {% if header_title is defined and header_title != '' %}
                     <h1>{% block header_title %} {{ header_title }} {% endblock %}</h1>
                 {% endif %}
                 {% if header_image is defined and header_image != '' %}
-                        <img src="{{ server_base }}/images/icon/{{ header_image }}.png" 
-                            id='sm-body-header-title-img-{{ header_image }}' 
+                        <img class='img-fluid'
+                            src="{{ server_base }}/images/icon/header/{{ header_image }}.png" 
                             alt={{ header_image }} 
                             title={{ header_image }} 
-                            width='96' 
-                            height='96' 
-                            class='img-fluid'>
+                            >
                 {% endif %}
             </div>
-            <div id='sm-body-header-flag' class='col m-2'>
-                <img id='sm-body-header-flag-img'  
-                    class='img-fluid'
-                    src="{{ server_base }}/images/flag/united_kingdom_flag.png">
+            <div class='col m-2 sm-body-header-flag'>
+                <img class='img-fluid sm-body-header-flag-img'
+                    src="{{ server_base }}/images/flag/united_kingdom_flag_128.png">
             </div>
         </header>
     </div>
@@ -59,14 +47,17 @@
     {% if show_table is defined and show_table == true %}
         {% include ( "#{db|lower}/table.html.twig" ) %}
     {% endif %}
+    {% if show_gallery is defined and show_gallery == true %}
+        {% include ( "#{db|lower}/gallery.html.twig" ) %}
+    {% endif %}
     {% if show_form is defined and show_form == 'ADD' %}
         {% include ( "#{db|lower}/add_form.html.twig" ) %}
     {% endif %}
     {% if show_form is defined and show_form == 'DELETE' %}
         {% include ( "#{db|lower}/delete_form.html.twig" ) %}
     {% endif %}
-    {% if show_form is defined and show_form == 'UPDATE' %}
-        {% include ( "#{db|lower}/update_form.html.twig" ) %}
+    {% if show_form is defined and show_form == 'EDIT' %}
+        {% include ( "#{db|lower}/edit_form.html.twig" ) %}
     {% endif %}
 {% endblock %}
 

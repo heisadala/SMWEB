@@ -15,18 +15,19 @@ cars_homepage:
     controller: App\Controller\Cars\CarsHomeController::index
 
 lego_homepage:
-    path: /DB/LEGO/HOME/{rowNumbers}
+    path: /DB/LEGO/HOME/{viewFormat}/{rowNumbers}
     controller: App\Controller\Lego\LegoHomeController::index
     defaults:  
+        viewFormat: 'table' 
         rowNumbers: 10 
 
 lego_add:
     path: /DB/LEGO/ADD
     controller: App\Controller\Lego\LegoHomeController::add
 
-lego_update:
-    path: /DB/LEGO/UPDATE
-    controller: App\Controller\Lego\LegoHomeController::update
+lego_edit:
+    path: /DB/LEGO/EDIT/{pk_name}/{ref}
+    controller: App\Controller\Lego\LegoHomeController::edit
 
 lego_delete:
     path: /DB/LEGO/DELETE/{pk_name}/{ref}

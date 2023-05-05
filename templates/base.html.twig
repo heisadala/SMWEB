@@ -45,22 +45,12 @@
             crossorigin="anonymous">
         </script>
 
-        {% block background %}
-            <style> 
-                :root {
-                    --sm-bg: url('{{ server_base }}/images/background/Sm.jpg');
-                }
-            </style>
-        {% endblock %}
-
         <style>
             :root {
                 --sm-toggler-icon: url('{{ server_base }}/images/icon/burger-182.png');
                 --sm-search-icon: url('{{ server_base }}/images/icon/search.svg') ;
-            }
-
-            html {
-                background-image: var(--sm-bg);
+                --sm-list-icon: url('{{ server_base }}/images/icon/list.svg') ;
+                --sm-chevron-down-icon: url('{{ server_base }}/images/icon/chevron-down.svg') ;
             }
         </style>
 
@@ -80,30 +70,25 @@
         {# ##################
         #      news 
         # ##################}
-        <div id='sm-body-news-row_1' class='row justify-content-between'>
-            <div id='sm-body-news-content'  class='d-flex m-1 p-1 justify-content-center text-red'>
-                <div id='sm-body-news-text'>{% block news %}{% endblock %}</div>
+        <div class='row justify-content-between'>
+            <div class='d-flex m-1 p-1 justify-content-center text-red sm-body-news-content'>
+                <div>{% block news %}{% endblock %}</div>
             </div>
         </div>
-        <div id='sm-body-news-row_2' 
-            class='row  justify-content-between' 
+        <div class='row  justify-content-between' 
             style='height: 10px;'>
         </div>
         {# ##################
         #      navbar 
         # ##################}
         {% block navbar %}{% endblock %}
-        <div id='sm-body-navbar-row_1' 
-            class='row  justify-content-between' 
-            style='height: 20px;'>
-        </div>
+
         {# ##################
         #      content 
         # ##################}
         {% block content %}{% endblock %}
-        <div id='sm-body-content-row_1' 
-            class='row  justify-content-between' 
-            style='height: 100px;'>
+        <div class='row  justify-content-between' 
+            style='height: 10px;'>
         </div>
         {# ##################
         #      footer 
