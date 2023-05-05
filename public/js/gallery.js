@@ -56,6 +56,7 @@ $(document).ready(function () {
         else {
 	        var reference=document.getElementById("primaryKey").innerHTML
             var name=document.getElementById("primaryKeyName").innerHTML;
+            var pathname='HOME';
 
 	        // var language=document.getElementById("language").innerHTML
 	        // var originSite=document.getElementById("originSite").innerHTML
@@ -63,12 +64,14 @@ $(document).ready(function () {
             console.log("***" + name + '****');
             // console.log(originSite + "/public/Delete_form.php?Ref=" + reference)
              // window.open(originSite + '/public/Delete_form.php?lang=' + language + '&Ref=' + reference, '_blank').focus;
-             console.log("https://www.smweblou.fr/DEV_SMWEB/public/DB/LEGO/DELETE/" + name + '/' + reference)
+            console.log(location)
              // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
-             window.open('https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/DELETE/' + name + '/' + reference, '_blank').focus;
-        }
+             pathname = location.href.substring(0,location.href.indexOf('HOME'));
+             console.log(pathname);
+             window.open(pathname + 'DELETE/' + name + '/' + reference, '_blank').focus;
+         }
     });
-    
+
     document.getElementById("sm-lego-navbar-link-edit-img").addEventListener("click", function(event) {
         if (document.getElementById("primaryKey").innerHTML == 'primaryKey') {
             alert("NOTHING SELECTED")
@@ -76,16 +79,18 @@ $(document).ready(function () {
         else {
 	        var reference=document.getElementById("primaryKey").innerHTML
             var name=document.getElementById("primaryKeyName").innerHTML;
+            var pathname='HOME';
 
 	        // var language=document.getElementById("language").innerHTML
 	        // var originSite=document.getElementById("originSite").innerHTML
             console.log("***" + reference + '****');
             console.log("***" + name + '****');
-            // console.log(originSite + "/public/Delete_form.php?Ref=" + reference)
-             // window.open(originSite + '/public/Delete_form.php?lang=' + language + '&Ref=' + reference, '_blank').focus;
-             console.log("https://www.smweblou.fr/DEV_SMWEB/public/DB/LEGO/EDIT/" + name + '/' + reference)
+            console.log(location)
              // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
-             window.open('https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/EDIT/' + name + '/' + reference, '_blank').focus;
+
+            pathname = location.href.substring(0,location.href.indexOf('HOME'));
+            console.log(pathname);
+            window.open(pathname + 'EDIT/' + name + '/' + reference, '_blank').focus;
         }
     });
 });
