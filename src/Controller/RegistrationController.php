@@ -11,17 +11,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\HomeTableRepository;
+
+// #[IsGranted('ROLE_ADMIN)')]
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, 
+                            UserPasswordHasherInterface $userPasswordHasher, 
+                            EntityManagerInterface $entityManager,
+                            HomeTableRepository $homeTableRepository): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        
+        $table_name = $this->getParameter('app.database_home_table_name');
+        $db = $homeTableRepository->findOneby(['name' => $table_name]);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -39,7 +49,16 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('index.html.twig', [
+            'controller_name' => 'SecurityController',
+            'title' => 'Login SMWEB',
+            'show_register' => true,
+            'icon' => $db->getIcon(),
+            'background' => $db->getBackground(),
+            'header_title' => $_SERVER['HTTP_HOST'],
+            'news' => '',
+            'db' => $db->getName(),
+            'server_base' => $_SERVER['BASE'],
             'registrationForm' => $form->createView(),
         ]);
     }

@@ -106,12 +106,16 @@ body {
 {
     --bs-nav-link-hover-color: var(--sm-red-color);
     color: var(--bs-warning);
-
 }
 
 .sm-lego-brand {
     width: 96px;
     height: 96px;    
+}
+
+.sm-login-form i {
+    display: flex;
+    cursor: pointer;
 }
 // ////////////
 // GALLERY
@@ -126,17 +130,18 @@ body {
     height: 8vw;
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
     .sm-card-database-img  {
         width: 80%;
         height: 10vw;
     }
     .sm-card-subdomain-img  {
         width: 50%;
-        height: 10vw;
+        height: 15vw;
     }
 } 
    
+
 @media screen and (max-width: 780px) {
         .sm-card-database-img  {
             width: 60%;
@@ -144,9 +149,21 @@ body {
         }
         .sm-card-subdomain-img  {
             width: 50%;
+            height: 20vw;
+        }
+    }    
+
+@media screen and (max-width: 576px) {
+        .sm-card-database-img  {
+            width: 60%;
             height: 10vw;
-        }}    
- 
+        }
+        .sm-card-subdomain-img  {
+            width: 50%;
+            height: 20vw;
+        }
+    }    
+ */
 // ////////////
 // LEGO
 // ////////////
@@ -165,7 +182,7 @@ td .hover_img { position:relative; }
 td .hover_img span { position:absolute; display:none; z-index:99; }
 td:hover .hover_img  span { display:block; }
 
-.sm-lego-table tbody tr.selected {background-color: orange;}
+// .sm-lego-table tbody tr.selected {background-color: orange;}
 
 .sm-gallery-card {
     background-color: white;
@@ -197,19 +214,19 @@ input[type="search"]:focus {
 }
 
 input[type="search"]::placeholder {
-  color: #bbb;
-}
+    color: #bbb;
+  }
 
 input.nosubmit {
-  width: 260px;
-  border: 1px solid #555;
-  display: block;
-  padding: 9px 4px 9px 40px;
-  background: white 
-  var(--sm-search-icon) no-repeat 8px center;
-  background-size: 24px
+    width: 260px;
+    border: 1px solid #555;
+    display: block;
+    padding: 9px 4px 9px 40px;
+    background: white 
+    var(--sm-search-icon) no-repeat 8px center;
+    background-size: 24px
 }
-
+    
 .list-icon {
     width: 32px;
     height: 32px;
@@ -275,3 +292,7 @@ input.nosubmit {
     color: $sm-breadcrumb-color;
 }
 
+.input-group-text {
+    background-color: $sm-breadcrumb-color;
+
+}

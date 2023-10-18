@@ -1,26 +1,13 @@
 <div class='container-fluid px-4'>
-    <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
-        {% for database in databases %}
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{ server_base }}/images/background/{{ database.background }}" 
-                        class="card-img mx-auto sm-card-database-img" alt="{{ database.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title text-truncate">{{ database.name }}</h5>
-                        <a class="btn btn-primary" href="{{ server_base }}{{ database.url }}" 
-                            target='_blank'>GO</a>                
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 mt-2">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-6 g-4 mt-2">
         {% for subdomain in subdomains %}
             <div class="col">
                 <div class="card h-100">
-                    <img src="{{ server_base }}/images/icon/{{ subdomain.icon }}" 
-                        class="card-img mx-auto sm-card-subdomain-img" alt="...">
-                    <div class="card-body">
+                    <img src="{{ server_base }}/images/background/{{ subdomain.icon }}"
+                        {# class="card-img mx-auto sm-card-subdomain-img" alt="..."> #}
+                        class="card-img mx-auto" alt="...">
+                    <div class="card-body"><br>
                         <h5 class="card-title text-truncate">{{ subdomain.name }}</h5>
                         <a class="btn btn-primary" href="{{ subdomain.url }}" 
                             target='_blank'>GO</a>                

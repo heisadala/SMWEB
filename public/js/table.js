@@ -3,11 +3,16 @@ $(document).ready(function () {
     $('tr').click(function() {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
+            $(this).removeClass('table-warning');
             document.getElementById("primaryKey").innerHTML = 'primaryKey';
         }
         else {
             $(this).addClass('selected').siblings().removeClass('selected');
+            $(this).siblings().removeClass('table-warning');
+            $(this).addClass('table-warning');
+            console.log('selected: ', $(this));
             cells = $(this).find('td');
+
             reference=document.getElementById("primaryKeyPlace").innerHTML;
             selected_ref = cells.eq(reference - 1).html();
             document.getElementById("primaryKey").innerHTML = selected_ref.replace(/\s/g, '');

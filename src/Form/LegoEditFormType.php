@@ -20,6 +20,12 @@ class LegoEditFormType extends AbstractType
         // }
         $builder
             ->add('reference')
+            ->add('name', TextType::class, [
+                'attr' => [
+                    'oninput'=> 'legoFormCheckValidity(this)',
+                ],
+                'required' => true
+            ])
             ->add('name')
             ->add('theme')
             ->add('price')
@@ -41,7 +47,7 @@ class LegoEditFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => LegoTable::class,
             'attr' => [
-                'readonly' => true,
+                'readonly' => false,
             ],
 ]);
     }

@@ -59,7 +59,12 @@
     {% if show_form is defined and show_form == 'EDIT' %}
         {% include ( "#{db|lower}/edit_form.html.twig" ) %}
     {% endif %}
-{% endblock %}
+    {% if show_login is defined and show_login == true %}
+        {% include ( "security/login.html.twig" ) %}
+    {% endif %}
+    {% if show_register is defined and show_register == true %}
+        {% include ( "registration/register.html.twig" ) %}
+    {% endif %}{% endblock %}
 
 {% block footer %} {% endblock %}
 

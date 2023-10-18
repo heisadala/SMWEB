@@ -40,7 +40,7 @@
             </div>            
         </div>
 
-        <div class="row row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 mt-2 sm-lego-gallery">
+        <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-6 g-4 mt-2 sm-lego-gallery">
             {% set color = 'white' %}
             {% for row in lego_table_content %}
                 {% for theme in lego_theme_content %}
@@ -53,14 +53,14 @@
 
                     <div class="card h-100 sm-gallery-card">
                         <img src='https://images.brickset.com/sets/large/{{ row.reference }}-1.jpg' 
-                            class='card-img mx-auto sm-card-database-img'/>
+                            class='card-img mx-auto' alt='{{ row.name }}' onerror="this.src='{{ server_base }}/images/icon/Lego-1.png';"/>
                         <div class="sm-gallery-card-pk" hidden>{{ loop.index }}</div>
                         <div class="card-body">
                             <h5 class="card-title text-truncate"><a href={{ row.url }} target='_blank'> {{ row.name }} </a></h5>
-                            <p class="card-text" id="sm-gallery-card-reference-{{ loop.index }}"> {{ row.reference }} </p>
-                            <p class="card-text" id="sm-gallery-card-theme-{{ loop.index }}"><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></p>
-                            <p class="card-text" id="sm-gallery-card-price-{{ loop.index }}"> {{ row.price }} </p>
-                            <p class="card-text" id="sm-gallery-card-state-{{ loop.index }}"> {{ row.state }} </p>
+                            <p class="card-text fs-3" id="sm-gallery-card-reference-{{ loop.index }}"> {{ row.reference }} </p>
+                            <p class="card-text fs-3" id="sm-gallery-card-theme-{{ loop.index }}"><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></p>
+                            <p class="card-text fs-3" id="sm-gallery-card-price-{{ loop.index }}"> {{ row.price }} </p>
+                            <p class="card-text fs-3" id="sm-gallery-card-state-{{ loop.index }}"> {{ row.state }} </p>
                         </div>
                     </div>
                 </div>
