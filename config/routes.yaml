@@ -37,9 +37,32 @@ kinder_homepage:
     path: /DB/KINDER
     controller: App\Controller\Kinder\KinderHomeController::index
 
+gifts_homepage:
+    path: /DB/GIFTS/HOME/{viewFormat}/{rowNumbers}
+    controller: App\Controller\Gifts\GiftsHomeController::index
+    defaults:  
+        viewFormat: 'table' 
+        rowNumbers: 10 
+
+gifts_add:
+    path: /DB/GIFTS/ADD
+    controller: App\Controller\Gifts\GiftsHomeController::add
+
+gifts_edit:
+    path: /DB/GIFTS/EDIT/{pk_name}/{ref}
+    controller: App\Controller\Gifts\GiftsHomeController::edit
+
+gifts_delete:
+    path: /DB/GIFTS/DELETE/{pk_name}/{ref}
+    controller: App\Controller\Gifts\GiftsHomeController::delete
+
 rental_homepage:
     path: /DB/RENTAL
     controller: App\Controller\Rental\RentalHomeController::index
+
+shopping_homepage:
+    path: /DB/SHOPPING
+    controller: App\Controller\Shopping\ShoppingHomeController::index
 
 app_register:
     path: /register
@@ -48,6 +71,9 @@ app_register:
 app_login:
     path: /login
     controller: App\Controller\SecurityController::login
+
+login_check:
+    path: /login_check
 
 app_logout:
     path: /logout

@@ -15,6 +15,7 @@ $(document).ready(function () {
 
             reference=document.getElementById("primaryKeyPlace").innerHTML;
             selected_ref = cells.eq(reference - 1).html();
+            console.log('selected ref: ', selected_ref);
             document.getElementById("primaryKey").innerHTML = selected_ref.replace(/\s/g, '');
         }
     });

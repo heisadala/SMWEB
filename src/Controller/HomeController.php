@@ -34,6 +34,11 @@ class HomeController extends AbstractController
             $debug->debug ($subdomain->getName());
         }
         $debug->debug ($db->getIcon());
+        //dd ($this->getUser());
+        $username = "";
+        if ($this->getUser()) {
+            $username = $this->getUser()->getUsername();
+        }
 
         return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',
@@ -41,13 +46,14 @@ class HomeController extends AbstractController
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => $_SERVER['HTTP_HOST'],
-            'news' => '',
+            'news' => 'BREAKING NEWS',
             'show_navbar' => true,
             'show_gallery' => true,
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'subdomains' => $subdomains,
             'databases' => $databases,
+            'username' => $username,
         ]);
     }
 

@@ -56,11 +56,11 @@
                             class='card-img mx-auto' alt='{{ row.name }}' onerror="this.src='{{ server_base }}/images/icon/Lego-1.png';"/>
                         <div class="sm-gallery-card-pk" hidden>{{ loop.index }}</div>
                         <div class="card-body">
-                            <h5 class="card-title text-truncate"><a href={{ row.url }} target='_blank'> {{ row.name }} </a></h5>
-                            <p class="card-text fs-3" id="sm-gallery-card-reference-{{ loop.index }}"> {{ row.reference }} </p>
-                            <p class="card-text fs-3" id="sm-gallery-card-theme-{{ loop.index }}"><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></p>
-                            <p class="card-text fs-3" id="sm-gallery-card-price-{{ loop.index }}"> {{ row.price }} </p>
-                            <p class="card-text fs-3" id="sm-gallery-card-state-{{ loop.index }}"> {{ row.state }} </p>
+                            <h5 class="card-title fs-4 text-truncate"><a href={{ row.url }} target='_blank'> {{ row.name }} </a></h5>
+                            <p class="card-text fs-5" id="sm-gallery-card-reference-{{ loop.index }}"> {{ row.reference }} </p>
+                            <p class="card-text fs-5" id="sm-gallery-card-theme-{{ loop.index }}"><span style='background-color:{{ color }};border-radius:5px;'> {{ row.theme }} </span></p>
+                            <p class="card-text fs-5" id="sm-gallery-card-price-{{ loop.index }}"> {{ row.price }} </p>
+                            <p class="card-text fs-5" id="sm-gallery-card-state-{{ loop.index }}"> {{ row.state }} </p>
                         </div>
                     </div>
                 </div>

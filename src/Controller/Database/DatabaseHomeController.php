@@ -28,6 +28,10 @@ class DatabaseHomeController extends AbstractController
 
         $databases = $databaseTableRepository->findAll();
 
+        $username = "";
+        if ($this->getUser()) {
+            $username = $this->getUser()->getUsername();
+        }
         
         return $this->render('index.html.twig', [
             'controller_name' => 'DatabaseHomeController',
@@ -42,6 +46,7 @@ class DatabaseHomeController extends AbstractController
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'databases' => $databases,
+            'username' => $username,
         ]);
     }
 

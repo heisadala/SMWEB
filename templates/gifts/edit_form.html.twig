@@ -20,9 +20,9 @@
                         </li>
                           <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ server_base }}/DB/LEGO/HOME">
-                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Lego.png"
-                              alt='LEGO'
-                              title='LEGO'
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Gifts.png"
+                              alt='GIFTS'
+                              title='GIFTS'
                             ></a>
                         </li>
                     </ul>
@@ -32,21 +32,21 @@
         class="col m-5 border border-warning border-5 rounded-4 bg-iceblue">
         <div class="container text-white mt-3">
 
-            {{ form_start(lego_form,  {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_start(gifts_form,  {'attr': {'novalidate': 'novalidate'}}) }}
 
             <p class='text-center'><b>ITEM</b></p>
-            {{ form_label(lego_form.reference) }}
-            {{ form_widget(lego_form.reference) }}
-            <div class='invalid-feedback' id='lego_edit_form_reference_feedback'></div>
+            {{ form_label(gifts_form.name) }}
+            {{ form_widget(gifts_form.name) }}
 
-            {{ form_label(lego_form.name) }}
-            {{ form_widget(lego_form.name) }}
-            <div class='invalid-feedback' id='lego_edit_form_name_feedback'></div>
+            {{ form_label(gifts_form.gift) }}
+            {{ form_widget(gifts_form.gift) }}
+            <div class='invalid-feedback' id='gifts_add_form_gift_feedback'></div>
+
 
             {# {{ form_label(lego_form.theme) }} #}
             {# {{ form_widget(lego_form.theme, {'value': 'City'}) }} #}
 
-            {{ form_end(lego_form) }}
+            {{ form_end(gifts_form) }}
         </div>
     </div>
     <div id='sm-body-lego-edit-form-col-3' class="col-3 d-none d-lg-block"></div>
@@ -54,38 +54,24 @@
 </div>
 
 <script>
-function legoFormCheckValidity(element) {
+function giftsFormCheckValidity(element) {
 
     var error = false;
-    document.getElementById('lego_edit_form_Update').disabled = false;
+    document.getElementById('gifts_edit_form_Update').disabled = false;
 
-    var reference = document.forms['lego_edit_form']['lego_edit_form_reference'];
-    var reference_feedback = document.getElementById("lego_edit_form_reference_feedback");
-    reference_feedback.innerHTML = "";
+    var gift = document.forms['gifts_edit_form']['gifts_edit_form_gift'];
+    var gift_feedback = document.getElementById("gifts_edit_form_gift_feedback");
+    gift_feedback.innerHTML = "";
 
-    var name = document.forms['lego_edit_form']['lego_edit_form_name'];
-    var name_feedback = document.getElementById("lego_edit_form_name_feedback");
-    name_feedback.innerHTML = "";
-
-    if (!reference.checkValidity()) {
-        reference_feedback.innerHTML = "Please provide valid number";
-        document.forms['lego_edit_form']['lego_edit_form_url'].value = "https://brickset.com/sets/";
-
+    if (!gift.checkValidity()) {
+        gift_feedback.innerHTML = "Please provide valid name of gift";
         error = true;
-    } else {
-        if ((element.id).localeCompare(reference.id) == 0) {
-            document.forms['lego_edit_form']['lego_edit_form_url'].value = "https://brickset.com/sets/" + element.value + "-1";
-        }
-    }
-    if (!name.checkValidity()) {
-        name_feedback.innerHTML = "Please provide valid name";
-        error = true;
-    }
+    } 
 
-    document.forms['lego_edit_form'].classList.add('was-validated');
+    document.forms['gifts_edit_form'].classList.add('was-validated');
 
     if (error) {
-        document.getElementById('lego_edit_form_Update').disabled = true;
+        document.getElementById('gifts_edit_form_Update').disabled = true;
     }
 }
 

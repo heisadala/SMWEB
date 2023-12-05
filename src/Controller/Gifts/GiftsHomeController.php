@@ -1,29 +1,27 @@
 <?php
 
-namespace App\Controller\Lego;
+namespace App\Controller\Gifts;
 
-use App\Entity\LegoTable;
-use App\Form\LegoAddFormType;
-use App\Form\LegoDeleteFormType;
-use App\Form\LegoEditFormType;
 use App\Repository\DatabaseTableRepository;
-use App\Repository\FormTableRepository;
-use App\Repository\LegoTableRepository;
-use App\Repository\LegoThemeRepository;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Debug;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\GiftsTableRepository;
+use App\Repository\FormTableRepository;
+use App\Entity\GiftsTable;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Mime\Message;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Form\GiftsAddFormType;
+use App\Form\GiftsDeleteFormType;
+use App\Form\GiftsEditFormType;
 
-
-class LegoHomeController extends AbstractController
+class GiftsHomeController extends AbstractController
 {
-
+    /**
+     * 
+     */
     function get_pk_column($table_header_fields, $table_primary_key_name)
     {
         $i = 0;
@@ -36,16 +34,13 @@ class LegoHomeController extends AbstractController
         }
         return $pk_column;
     }
-    /**
-     * 
-     */
+
     public function index(string $viewFormat, int $rowNumbers, Debug $debug, 
-                        DatabaseTableRepository $databaseTableRepository, 
-                        LegoTableRepository $legoTableRepository,
-                        LegoThemeRepository $legoThemeRepository
-                            ): Response
+                            DatabaseTableRepository $databaseTableRepository, 
+                            GiftsTableRepository $giftsTableRepository
+                        ): Response
     {
-        $app = 'LEGO';
+        $app = 'GIFTS';
 
         $username = "";
         if ($this->getUser()) {
@@ -53,9 +48,9 @@ class LegoHomeController extends AbstractController
         }
  
         $db = $databaseTableRepository->findOneBy(array('name' => $app));
-        $table_header_fields = $legoTableRepository->fetch_header_fields_from_table($db->getTableName());
+        $table_header_fields = $giftsTableRepository->fetch_header_fields_from_table($db->getTableName());
 
-        $primary_key_name = $legoTableRepository->get_pk_name($db->getTableName());
+        $primary_key_name = $giftsTableRepository->get_pk_name($db->getTableName());
         // dd($table_header_fields);
         $primary_key_column = $this->get_pk_column($table_header_fields, $primary_key_name);
 
@@ -64,10 +59,8 @@ class LegoHomeController extends AbstractController
         $up_or_down = $sort_order == 'ASC' ? 'down' : 'up';
         $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
 
-        $lego_table_content = $legoTableRepository->fetch_class_from_table_ordered($db->getTableName(),
+        $gifts_table_content = $giftsTableRepository->fetch_class_from_table_ordered($db->getTableName(),
                                                                                    $sort, $sort_order);
-        // dd (count($lego_table_content));
-        $lego_theme_content = $legoThemeRepository->findAll();
 
         $showTable = true;
         $showGallery = false;
@@ -78,17 +71,17 @@ class LegoHomeController extends AbstractController
             $showTable = false;
             $showGallery = true;
         }
-        // dd($sort, $sort_order, $lego_table_content);
-        // dd($table_header_fields);
+
         $debug->debug ($db->getName());
 
+
         return $this->render('index.html.twig', [
-            'controller_name' => 'LegoHomeController',
+            'controller_name' => 'GiftsHomeController',
             'title' => 'Home ' . $app,
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => "",
-            'header_image' => "Inventory",
+            'header_image' => "Gifts",
             'news' => '',
             'show_navbar' => true,
             'show_table' => $showTable,
@@ -96,8 +89,7 @@ class LegoHomeController extends AbstractController
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
             'table_header_fields' => $table_header_fields,
-            'lego_table_content' => $lego_table_content,
-            'lego_theme_content' => $lego_theme_content,
+            'gifts_table_content' => $gifts_table_content,
             'primary_key_name' => $primary_key_name,
             'primary_key_column' => $primary_key_column,
             'show_row_number' => $rowNumbers,
@@ -107,36 +99,30 @@ class LegoHomeController extends AbstractController
         ]);
     }
 
-
     public function add(FormTableRepository $formTableRepository,
                         Request $request,
                         EntityManagerInterface $em,
                         ValidatorInterface $validator
                         ): Response
     {
-        $app = 'LEGO';
+        $app = 'GIFTS';
         $form_title = 'ADD';
-        $username = "";
-        if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
-        }
- 
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
 
-        $lego_table = new LegoTable();
-        $form = $this->createForm(LegoAddFormType::class, $lego_table);
+        $gifts_table = new GiftsTable();
+        $form = $this->createForm(GiftsAddFormType::class, $gifts_table);
 
         $form-> handlerequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
              // dd($lego_table);
-             $em->persist($lego_table);
+             $em->persist($gifts_table);
              $em->flush();
-             return $this->redirectToRoute('lego_homepage');
+             return $this->redirectToRoute('gifts_homepage');
         }
 
         return $this->render('index.html.twig',[
-                             'controller_name' => 'LegoHomeController',
+                             'controller_name' => 'GiftsHomeController',
                              'title' => $form_title . ' ' . $app . ' ITEM',
                              'icon' => $form_db->getIcon(),
                              'background' => $form_db->getBackground(),
@@ -146,69 +132,69 @@ class LegoHomeController extends AbstractController
                              'db' => $app,
                              'news' => '',
                              'show_form' => $form_title,
-                             'lego_form' => $form->createView(),
-                             'username' => $username
+                             'gifts_form' => $form->createView(),
                              ]
                             );
 
     }
 
+
     public function delete(string $pk_name, int $ref,
-                            Request $request,
-                            EntityManagerInterface $em,
-                            FormTableRepository $formTableRepository,
-                            LegoTableRepository $legoTableRepository
-                            ): Response
+    Request $request,
+    EntityManagerInterface $em,
+    FormTableRepository $formTableRepository,
+    GiftsTableRepository $giftsTableRepository
+    ): Response
     {
 
-        $app = 'LEGO';
+        $app = 'GIFTS';
         $form_title = 'DELETE';
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+        $username = $this->getUser()->getUsername();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
-        $lego_table = new LegoTable();
-        $article = $legoTableRepository->findOneBy(array($pk_name => $ref));
+        $gifts_table = new GiftsTable();
+        $article = $giftsTableRepository->findOneBy(array($pk_name => $ref));
         // dd($article);
-        $form = $this->createForm(LegoDeleteFormType::class, $article);
+        $form = $this->createForm(GiftsDeleteFormType::class, $article);
 
         $form-> handlerequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-             // dd($lego_table);
-             $legoTableRepository->remove($article, true);
-             
-             return $this->redirectToRoute('lego_homepage');
+        // dd($lego_table);
+        $giftsTableRepository->remove($article, true);
+
+        return $this->redirectToRoute('gifts_homepage');
         }
 
         return $this->render('index.html.twig',[
-            'controller_name' => 'LegoHomeController',
-            'title' => $form_title . ' ' . $app . ' ITEM',
-            'icon' => $form_db->getIcon(),
-            'background' => $form_db->getBackground(),
-            'header_title' => '',
-            'header_image' => "delete-item",
-            'server_base' => $_SERVER['BASE'],
-            'db' => $app,
-            'news' => '',
-            'show_form' => $form_title,
-            'lego_form' => $form->createView(),
-            'username' => $username
-            ]
-           );
+        'controller_name' => 'GiftsHomeController',
+        'title' => $form_title . ' ' . $app . ' ITEM',
+        'icon' => $form_db->getIcon(),
+        'background' => $form_db->getBackground(),
+        'header_title' => '',
+        'header_image' => "delete-item",
+        'server_base' => $_SERVER['BASE'],
+        'db' => $app,
+        'news' => '',
+        'show_form' => $form_title,
+        'gifts_form' => $form->createView(),
+        'username' => $username
+        ]
+        );
     }
 
     public function edit(string $pk_name, int $ref,
                         Request $request,
                         EntityManagerInterface $em,
                         FormTableRepository $formTableRepository,
-                        LegoTableRepository $legoTableRepository
+                        GiftsTableRepository $giftsTableRepository
                         ): Response
     {
 
-        $app = 'LEGO';
+        $app = 'GIFTS';
         $form_title = 'EDIT';
         $username = "";
         if ($this->getUser()) {
@@ -216,22 +202,22 @@ class LegoHomeController extends AbstractController
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
-        $lego_table = new LegoTable();
-        $article = $legoTableRepository->findOneBy(array($pk_name => $ref));
+        $gifts_table = new GiftsTable();
+        $article = $giftsTableRepository->findOneBy(array($pk_name => $ref));
         // dd($article);
-        $form = $this->createForm(LegoEditFormType::class, $article);
+        $form = $this->createForm(GiftsEditFormType::class, $article);
 
         $form-> handlerequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
         // dd($lego_table);
-        $legoTableRepository->add($article, true);
+        $giftsTableRepository->add($article, true);
 
-        return $this->redirectToRoute('lego_homepage');
+        return $this->redirectToRoute('gifts_homepage');
         }
 
         return $this->render('index.html.twig',[
-        'controller_name' => 'LegoHomeController',
+        'controller_name' => 'GiftsHomeController',
         'title' => $form_title . ' ' . $app . ' ITEM',
         'icon' => $form_db->getIcon(),
         'background' => $form_db->getBackground(),
@@ -241,10 +227,11 @@ class LegoHomeController extends AbstractController
         'db' => $app,
         'news' => '',
         'show_form' => $form_title,
-        'lego_form' => $form->createView(),
+        'gifts_form' => $form->createView(),
         'username' => $username
         ]
         );
     }
+
 
 }

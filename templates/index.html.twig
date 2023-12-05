@@ -27,15 +27,28 @@
                             >
                 {% endif %}
             </div>
+
             <div class='col m-2 sm-body-header-flag'>
-                <img class='img-fluid sm-body-header-flag-img'
-                    src="{{ server_base }}/images/flag/united_kingdom_flag_128.png">
+                {% if username is defined and username != '' %}
+
+                    <button class="btn " data-bs-toggle="dropdown" type="button">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/account_48.png">
+                    </button>
+                    <ul class="dropdown-menu sm-body-header-account">
+                        <li><a class="dropdown-item" href="{{ server_base }}/logout">Logout</a></li>
+                    </ul>
+                {% endif %}
+
+                {# <span><i class="bi bi-person-fill fs-3"></i></span>   #}
+                {# <a class="btn btn-primary" href=" " target='_blank'>{{ username }}</a>   #}
+                <img class='img-fluid sm-body-header-flag-img rounded-circle'
+                    src="{{ server_base }}/images/flag/united_kingdom_circle_96.png">
             </div>
         </header>
     </div>
 {% endblock %}
 
-{% block news %} {{ news }} {% endblock %}
+{% block news %} <div> {{ news }} </div> {% endblock %}
 
 {% block navbar %}
     {% if show_navbar is defined and show_navbar == true %}

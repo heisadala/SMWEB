@@ -21,7 +21,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    private UrlGeneratorInterface $urlGenerator;
+    private $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
@@ -31,6 +31,8 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     public function authenticate(Request $request): Passport
     {
         $username = $request->request->get('username', '');
+
+        //dd($username);
 
         $request->getSession()->set(Security::LAST_USERNAME, $username);
 
@@ -45,13 +47,14 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+/*         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
+ */
 
         // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('database_homepage'));
+        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl(Request $request): string

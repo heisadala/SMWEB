@@ -50,11 +50,8 @@
 
         <style>
             :root {
-                --sm-toggler-icon: url('{{ server_base }}/images/icon/burger-182.png');
                 --sm-search-icon: url('{{ server_base }}/images/icon/search.svg') ;
                 --sm-eye-slash-icon: url('{{ server_base }}/images/icon/eye-slash.svg') ;
-                --sm-list-icon: url('{{ server_base }}/images/icon/list.svg') ;
-                --sm-chevron-down-icon: url('{{ server_base }}/images/icon/chevron-down.svg') ;
             }
         </style>
 
@@ -74,12 +71,12 @@
         {# ##################
         #      news 
         # ##################}
-        <div class='row m-0'>
-            <div class='d-flex m-1 p-1 justify-content-center text-red sm-body-news-content'>
-                <div>{% block news %}{% endblock %}</div>
+        <div class='row justify-content-between m-0'>
+            <div class='d-flex mt-1 p-1 justify-content-center text-red sm-body-news-content'>
+                {% block news %}{% endblock %}
             </div>
         </div>
-        <div class='row  justify-content-between' 
+        <div class='row  justify-content-between m-0' 
             style='height: 10px;'>
         </div>
         {# ##################
@@ -91,7 +88,7 @@
         #      content 
         # ##################}
         {% block content %}{% endblock %}
-        <div class='row  justify-content-between' 
+        <div class='row  justify-content-between m-0' 
             style='height: 10px;'>
         </div>
         {# ##################

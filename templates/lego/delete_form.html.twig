@@ -1,19 +1,37 @@
-<nav style="--bs-breadcrumb-divider: '>>>';"  aria-label="breadcrumb">
-    <div class="container-fluid">
-        <ul class="breadcrumb" style="align-items: center;">
-            <li class="breadcrumb-item"><a href='{{ path('homepage') }}'><img src="{{ server_base }}/images/icon/squared-menu-96.png"></img></a></li>
-            <li class="breadcrumb-item"><a href='{{ path('database_homepage') }}'><img src="{{ server_base }}/images/icon/Database.png" width="64px" height="64px"></img></a></li>
-            <li class="breadcrumb-item"><a href='{{ path('lego_homepage') }}'><img src="{{ server_base }}/images/icon/Lego.png" width="64px" height="64px"></img></a></li>
-            <li class="breadcrumb-item active" aria-current="page"><img src="{{ server_base }}/images/icon/delete-row-144.png" width="64px" height="64px"></img></li>
-        </ul>
-    </div>
-</nav>
-
-<div class='row  justify-content-between' style='height: 20px;'></div>
 <div class='row  justify-content-between'>
-    <div class="col-3 d-none d-lg-block"></div>
-    <div class="col m-5 border border-warning border-5 rounded-4 bg-iceblue">
+    <div class="col-3">
+         <div class="dropdown">
+                      <button class="btn " data-bs-toggle="dropdown" type="button">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
+                    </button>
+                    <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
+                        <li><a class="dropdown-item" href="{{ server_base }}">
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Home.png"
+                              alt='HOME'
+                              title='HOME'
+                            ></a>
+                        </li>
+                          <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ server_base }}/DB">
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Database.png"
+                              alt='DATABASE'
+                              title='DATABASE'
+                            ></a>
+                        </li>
+                          <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ server_base }}/DB/LEGO/HOME">
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Lego.png"
+                              alt='LEGO'
+                              title='LEGO'
+                            ></a>
+                        </li>
+                    </ul>
+        </div>
+    </div>
+    <div id='sm-body-lego-edit-form-col-2' 
+        class="col m-5 border border-warning border-5 rounded-4 bg-iceblue">
         <div class="container text-white mt-3">
+
             {{ form_start(lego_form,  {'attr': {'novalidate': 'novalidate'}}) }}
 
             <p class='text-center'><b>ITEM</b></p>
@@ -25,29 +43,3 @@
 
 </div>
 
-<script>
-
-
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-{# (function () {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})() #}
-
-</script>

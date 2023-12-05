@@ -14,12 +14,17 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils,
                         HomeTableRepository $homeTableRepository): Response
     {
+
         if ($this->getUser()) {
             return $this->redirectToRoute('homepage');
         }
 
         $table_name = $this->getParameter('app.database_home_table_name');
         $db = $homeTableRepository->findOneby(['name' => $table_name]);
+        $username = "";
+        if ($this->getUser()) {
+            $username = $this->getUser()->getUsername();
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -38,12 +43,13 @@ class SecurityController extends AbstractController
             'news' => '',
             'db' => $db->getName(),
             'server_base' => $_SERVER['BASE'],
+            'username' => $username,
      
         ]);
 
     }
     public function logout(): void
     {
-        // throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
