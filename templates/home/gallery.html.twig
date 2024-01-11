@@ -9,8 +9,23 @@
                         class="card-img mx-auto" alt="...">
                     <div class="card-body"><br>
                         <h5 class="card-title text-truncate">{{ subdomain.name }}</h5>
-                        <a class="btn btn-primary" href="{{ subdomain.url }}" 
-                            target='_blank'>GO</a>                
+                        {% if '192.168' in header_title %}
+                            {% if subdomain.name == 'DB' and 'DEV_' in server_base %}
+                                <a class="btn btn-primary" href="{{ subdomain.url_local|replace({'SMWEB' : 'DEV_SMWEB'}) }}"
+                                    target='_blank'>GO</a>                
+                            {% else %}
+                                <a class="btn btn-primary" href="{{ subdomain.url_local }}" 
+                                    target='_blank'>GO</a>                
+                            {% endif %}
+                        {% else %}
+                            {% if subdomain.name == 'DB' and 'DEV_' in server_base %}
+                                <a class="btn btn-primary" href="{{ subdomain.url|replace({'SMWEB' : 'DEV_SMWEB'}) }}"
+                                    target='_blank'>GO</a>                
+                            {% else %}
+                                <a class="btn btn-primary" href="{{ subdomain.url }}" 
+                                    target='_blank'>GO</a>                
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

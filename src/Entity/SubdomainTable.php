@@ -32,6 +32,11 @@ class SubdomainTable
      */
     private $url;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $url_local;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class SubdomainTable
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getUrl_local(): ?string
+    {
+        return $this->url_local;
+    }
+
+    public function setUrl_local(?string $url_local): self
+    {
+        $this->url = $url_local;
 
         return $this;
     }
