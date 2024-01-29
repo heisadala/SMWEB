@@ -1,0 +1,53 @@
+<nav class="navbar">
+  <div class="container-fluid justify-content-start">
+    <div class="dropdown">
+                <button class="btn " data-bs-toggle="dropdown" type="button">
+                       <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
+                    </button>
+                    <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Home', 'subdir' : ''} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Database', 'subdir' : 'DB'} %}
+                        <li><hr class="dropdown-divider"></li>
+
+                        {% for giftuser in giftusers %}
+                          <li>
+                            {% if username is defined and username|upper == giftuser.name %}
+                              <a class="dropdown-item disabled" href='{{ path('gifts_userpage') }}/'>
+                            {% else %}
+                              <a class="dropdown-item" href='{{ path('gifts_userpage') }}/table/10/{{ giftuser.name }}'>
+                            {% endif %}
+
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/dropdown/{{ giftuser.icon }}"
+                              alt={{ giftuser.name }}
+                              title={{ giftuser.name }}
+                            ></a>
+                          </li>
+                          <li><hr class="dropdown-divider"></li>
+                        {% endfor %}
+                        
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Archive', 'subdir' : 'DB/GIFTS/ARCHIVEPAGE'} %}
+                    </ul>
+        </div>
+    {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'add-row-144',
+                                                        'item_path' : path('gifts_add'),
+                                                        'item_id' : 'sm-lego-navbar-link',
+                                                        'item_title' : 'ADD' } %}
+
+    {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'edit-row-144',
+                                                        'item_path' : '#',
+                                                        'item_id' : 'sm-lego-navbar-link-edit-img',
+                                                        'item_title' : 'EDIT' } %}
+
+    {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'archive-row-144',
+                                                        'item_path' : '#',
+                                                        'item_id' : 'sm-lego-navbar-link-archive-img',
+                                                        'item_title' : 'ARCHIVE' } %}
+
+    {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'delete-row-144',
+                                                        'item_path' : '#',
+                                                        'item_id' : 'sm-lego-navbar-link-delete-img',
+                                                        'item_title' : 'DELETE' } %}
+
+  </div>
+</nav>

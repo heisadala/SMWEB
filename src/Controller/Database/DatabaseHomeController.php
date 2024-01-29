@@ -35,11 +35,11 @@ class DatabaseHomeController extends AbstractController
         
         return $this->render('index.html.twig', [
             'controller_name' => 'DatabaseHomeController',
-            'title' => 'Home DB',
+            'title' => 'Home',
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),
             'header_title' => "",
-            'header_image' => "Database",
+            'header_image' => $db->getIcon(),
             'news' => '',
             'show_navbar' => true,
             'show_gallery' => true,

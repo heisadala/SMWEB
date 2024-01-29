@@ -36,6 +36,28 @@ class Database
         return($this->prepare_execute_and_fetch($conn, $sql_cmd));
 
     }
+    function fetch_class_from_table_filter_and_ordered($conn, $table_name, $user, $ordered_by, $sort_order)
+    {
+        // Get contents
+        $sql_cmd = "SELECT * FROM $table_name WHERE name='$user' ORDER by $ordered_by $sort_order;";
+        return($this->prepare_execute_and_fetch($conn, $sql_cmd));
+
+    }
+
+    function fetch_class_from_table_all_ordered($conn, $table_name, $archive, $userlist, $ordered_by, $sort_order)
+    {
+        // Get contents
+        $sql_cmd = "SELECT * FROM $table_name WHERE archive='$archive' AND userlist='$userlist' ORDER by $ordered_by $sort_order;";
+        return($this->prepare_execute_and_fetch($conn, $sql_cmd));
+
+    }
+    function fetch_class_from_table_user_ordered($conn, $table_name, $user, $archive, $ordered_by, $sort_order)
+    {
+        // Get contents
+        $sql_cmd = "SELECT * FROM $table_name WHERE name='$user' AND archive='$archive'  ORDER by $ordered_by $sort_order;";
+        return($this->prepare_execute_and_fetch($conn, $sql_cmd));
+    }
+
 }
 
 ?>

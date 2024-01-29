@@ -122,7 +122,8 @@ $(document).ready(function () {
         location.href = pathname + 'HOME/table/' + rowsShown;
     });
 
-    document.getElementById("sm-lego-navbar-link-delete-img").addEventListener("click", function(event) {
+    if (document.getElementById("sm-lego-navbar-link-delete-img") != null) {
+        document.getElementById("sm-lego-navbar-link-delete-img").addEventListener("click", function(event) {
         if (document.getElementById("primaryKey").innerHTML == 'primaryKey') {
             alert("NOTHING SELECTED")
         }
@@ -143,9 +144,61 @@ $(document).ready(function () {
              console.log(pathname);
              window.open(pathname + 'DELETE/' + name + '/' + reference, '_blank').focus;
          }
-    });
+        });
+    }
 
-    document.getElementById("sm-lego-navbar-link-edit-img").addEventListener("click", function(event) {
+    if (document.getElementById("sm-lego-navbar-link-archive-img") != null) {
+        document.getElementById("sm-lego-navbar-link-archive-img").addEventListener("click", function(event) {
+            if (document.getElementById("primaryKey").innerHTML == 'primaryKey') {
+                alert("NOTHING SELECTED")
+            }
+            else {
+                var reference=document.getElementById("primaryKey").innerHTML
+                var name=document.getElementById("primaryKeyName").innerHTML;
+                var pathname='HOME';
+
+                // var language=document.getElementById("language").innerHTML
+                // var originSite=document.getElementById("originSite").innerHTML
+                console.log("***" + reference + '****');
+                console.log("***" + name + '****');
+                // console.log(originSite + "/public/Delete_form.php?Ref=" + reference)
+                // window.open(originSite + '/public/Delete_form.php?lang=' + language + '&Ref=' + reference, '_blank').focus;
+                console.log(location)
+                // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
+                pathname = location.href.substring(0,location.href.indexOf('HOME'));
+                console.log(pathname);
+                window.open(pathname + 'ARCHIVE/' + name + '/' + reference, '_blank').focus;
+            }
+        });
+    }
+    if (document.getElementById("sm-lego-navbar-link-unarchive-img") != null) {
+        document.getElementById("sm-lego-navbar-link-unarchive-img").addEventListener("click", function(event) {
+        if (document.getElementById("primaryKey").innerHTML == 'primaryKey') {
+            alert("NOTHING SELECTED")
+        }
+        else {
+	        var reference=document.getElementById("primaryKey").innerHTML
+            var name=document.getElementById("primaryKeyName").innerHTML;
+            var pathname='HOME';
+
+	        // var language=document.getElementById("language").innerHTML
+	        // var originSite=document.getElementById("originSite").innerHTML
+            console.log("***" + reference + '****');
+            console.log("***" + name + '****');
+            // console.log(originSite + "/public/Delete_form.php?Ref=" + reference)
+             // window.open(originSite + '/public/Delete_form.php?lang=' + language + '&Ref=' + reference, '_blank').focus;
+            console.log(location)
+             // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
+             pathname = location.href.substring(0,location.href.indexOf('HOME'));
+             console.log(pathname);
+             window.open(pathname + 'UNARCHIVE/' + name + '/' + reference, '_blank').focus;
+         }
+        });
+    }
+
+
+    if (document.getElementById("sm-lego-navbar-link-edit-img") != null) {
+        document.getElementById("sm-lego-navbar-link-edit-img").addEventListener("click", function(event) {
         if (document.getElementById("primaryKey").innerHTML == 'primaryKey') {
             alert("NOTHING SELECTED")
         }
@@ -165,5 +218,6 @@ $(document).ready(function () {
             console.log(pathname);
             window.open(pathname + 'EDIT/' + name + '/' + reference, '_blank').focus;
         }
-    });
+        });
+    }
 });

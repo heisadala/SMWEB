@@ -17,26 +17,11 @@
                         <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
                     </button>
                     <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
-                        <li><a class="dropdown-item" href="{{ server_base }}">
-                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Home.png"
-                              alt='HOME'
-                              title='HOME'
-                            ></a>
-                        </li>
-                          <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ server_base }}/DB">
-                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Database.png"
-                              alt='DATABASE'
-                              title='DATABASE'
-                            ></a>
-                        </li>
-                          <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ server_base }}/DB/LEGO/HOME">
-                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/Lego.png"
-                              alt='LEGO'
-                              title='LEGO'
-                            ></a>
-                        </li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Home', 'subdir' : ''} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Database', 'subdir' : 'DB'} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Lego', 'subdir' : 'DB/LEGO/HOME'} %}
                     </ul>
         </div>
     </div>

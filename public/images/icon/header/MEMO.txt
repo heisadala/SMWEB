@@ -1,0 +1,5 @@
+HEADER logo
+==========================
+Size: 96*96 pixel
+property image -> detail
+modification: Paint

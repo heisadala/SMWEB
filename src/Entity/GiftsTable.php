@@ -31,6 +31,15 @@ class GiftsTable
      * @ORM\Column(type="string", length=1024, nullable=true)
      */
     private $url;
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $archive;
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $userlist;
+
 
     public function getId(): ?int
     {
@@ -69,6 +78,29 @@ class GiftsTable
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+    
+    public function getArchive(): ?string
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(string $archive): self
+    {
+        $this->archive = $archive;
+
+        return $this;
+    }
+public function getUserlist(): ?string
+    {
+        return $this->userlist;
+    }
+
+    public function setUserlist(string $userlist): self
+    {
+        $this->userlist = $userlist;
 
         return $this;
     }

@@ -44,6 +44,27 @@ gifts_homepage:
         viewFormat: 'table' 
         rowNumbers: 10 
 
+gifts_archivepage:
+    path: /DB/GIFTS/ARCHIVEPAGE/{viewFormat}/{rowNumbers}
+    controller: App\Controller\Gifts\GiftsHomeController::archive_page
+    defaults:  
+        viewFormat: 'table' 
+        rowNumbers: 10 
+
+gifts_user_add:
+    path: /DB/GIFTS/USER/ADD/{user}
+    controller: App\Controller\Gifts\GiftsHomeController::user_add
+    defaults:  
+        user: 'USER'
+
+gifts_userpage:
+    path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+    controller: App\Controller\Gifts\GiftsHomeController::user
+    defaults:  
+        viewFormat: 'table' 
+        rowNumbers: 10 
+        user: 'USER'
+
 gifts_add:
     path: /DB/GIFTS/ADD
     controller: App\Controller\Gifts\GiftsHomeController::add
@@ -52,9 +73,75 @@ gifts_edit:
     path: /DB/GIFTS/EDIT/{pk_name}/{ref}
     controller: App\Controller\Gifts\GiftsHomeController::edit
 
+gifts_archive:
+    path: /DB/GIFTS/ARCHIVE/{pk_name}/{ref}
+    controller: App\Controller\Gifts\GiftsHomeController::archive
+
+gifts_unarchive:
+    path: /DB/GIFTS/UNARCHIVE/{pk_name}/{ref}
+    controller: App\Controller\Gifts\GiftsHomeController::unarchive
+
 gifts_delete:
     path: /DB/GIFTS/DELETE/{pk_name}/{ref}
     controller: App\Controller\Gifts\GiftsHomeController::delete
+
+
+
+# gifts_lara:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'LARA'
+
+# gifts_heidi:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'HEIDI'
+
+# gifts_daphne:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'DAPHNE'
+
+# gifts_sabine:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'SABINE'
+
+# gifts_raphael:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'RAPHAEL'
+
+# gifts_maman:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'MAMAN'
+
+# gifts_papa:
+#     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}
+#     controller: App\Controller\Gifts\GiftsHomeController::user
+#     defaults:  
+#         viewFormat: 'table' 
+#         rowNumbers: 10 
+#         user: 'PAPA'
 
 rental_homepage:
     path: /DB/RENTAL

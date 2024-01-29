@@ -39,7 +39,14 @@ class GiftsTableRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-/*
+    public function archive(GiftsTable $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+        // dd($entity);
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }/*
   ADDED FUNCTIONS
 */
     function get_connection ()
@@ -63,6 +70,27 @@ class GiftsTableRepository extends ServiceEntityRepository
         $db = new Database;
         return ($db->fetch_class_from_table_ordered($this->get_connection(), $table_name, 
                                                     $ordered_by, $sort_order));
+
+    }
+    public function fetch_class_from_table_all_ordered ($table_name, $archive, $userlist, $ordered_by, $sort_order)
+    {
+        $db = new Database;
+        return ($db->fetch_class_from_table_all_ordered($this->get_connection(), $table_name, $archive,
+                                                    $userlist, $ordered_by, $sort_order));
+
+    }
+    public function fetch_class_from_table_user_ordered ($table_name, $user, $archive, $ordered_by, $sort_order)
+    {
+        $db = new Database;
+        return ($db->fetch_class_from_table_user_ordered($this->get_connection(), $table_name, $user,
+                                                    $archive, $ordered_by, $sort_order));
+
+    }
+    public function fetch_class_from_table_archive_user_ordered ($table_name, $archive, $user, $ordered_by, $sort_order)
+    {
+        $db = new Database;
+        return ($db->fetch_class_from_table_archive_user_ordered($this->get_connection(), $table_name, $archive,
+                                                    $user, $ordered_by, $sort_order));
 
     }
 

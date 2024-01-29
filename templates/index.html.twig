@@ -20,21 +20,26 @@
                     <h1>{% block header_title %} {{ header_title }} {% endblock %}</h1>
                 {% endif %}
                 {% if header_image is defined and header_image != '' %}
-                        <img class='img-fluid'
-                            src="{{ server_base }}/images/icon/header/{{ header_image }}.png" 
-                            alt={{ header_image }} 
-                            title={{ header_image }} 
-                            >
+                    {% set title = header_image|split('.') %}
+                    <img class='img-fluid'
+                        src="{{ server_base }}/images/icon/header/{{ header_image }}" 
+                        alt={{ title[0] }} 
+                        title={{ title[0] }} 
+                    >
                 {% endif %}
             </div>
 
             <div class='col m-2 sm-body-header-flag'>
                 {% if username is defined and username != '' %}
-
                     <button class="btn " data-bs-toggle="dropdown" type="button">
-                        <img class="rounded-circle" src="{{ server_base }}/images/icon/account_48.png">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/account_48.png"
+                            alt={{ username }}
+                            title={{ username }}
+                        >
                     </button>
                     <ul class="dropdown-menu sm-body-header-account">
+                        <li><a class="dropdown-item disabled" >{{ username }}</a></li>
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ server_base }}/logout">Logout</a></li>
                     </ul>
                 {% endif %}
@@ -69,6 +74,12 @@
     {% if show_form is defined and show_form == 'DELETE' %}
         {% include ( "#{db|lower}/delete_form.html.twig" ) %}
     {% endif %}
+    {% if show_form is defined and show_form == 'ARCHIVE' %}
+        {% include ( "#{db|lower}/archive_form.html.twig" ) %}
+    {% endif %}
+    {% if show_form is defined and show_form == 'UNARCHIVE' %}
+        {% include ( "#{db|lower}/unarchive_form.html.twig" ) %}
+    {% endif %}
     {% if show_form is defined and show_form == 'EDIT' %}
         {% include ( "#{db|lower}/edit_form.html.twig" ) %}
     {% endif %}
@@ -79,7 +90,11 @@
         {% include ( "registration/register.html.twig" ) %}
     {% endif %}{% endblock %}
 
-{% block footer %} {% endblock %}
+{% block footer %}
+        <div class='d-flex justify-content-center m-0'>
+            <a target="_blank" href="https://icons8.com">Icons by Icons8</a>
+        </div>
+{% endblock %}
 
 {% block java %}
     {% if inc_java is defined and inc_java == true %}

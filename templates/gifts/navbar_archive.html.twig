@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="container-fluid justify-content-start">
+        <div class="dropdown">
+                      <button class="btn " data-bs-toggle="dropdown" type="button">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
+                    </button>
+                    <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Home', 'subdir' : ''} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Database', 'subdir' : 'DB'} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Gifts', 'subdir' : 'DB/GIFTS/HOME'} %}
+                    </ul>
+    </div>
+    {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'unarchive-row-144',
+                                                        'item_path' : '#',
+                                                        'item_id' : 'sm-lego-navbar-link-unarchive-img',
+                                                        'item_title' : 'UNARCHIVE' } %}
+
+    {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'delete-row-144',
+                                                        'item_path' : '#',
+                                                        'item_id' : 'sm-lego-navbar-link-delete-img',
+                                                        'item_title' : 'DELETE' } %}
+
+  </div>
+</nav>

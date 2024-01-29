@@ -47,13 +47,16 @@
                                 {% if header.Field |upper == 'ID' %}
                                     <th hidden class='text-truncate'> {{ header.Field |upper }} </th>
                                 {% endif %}
-                                {% if header.Field |upper != 'ID' %}
+                                {% if header.Field |upper != 'ID' and header.Field |upper != 'ARCHIVE' and header.Field |upper != 'USERLIST'%}
 
                                     <th class='text-truncate'> {{ header.Field |upper }} &nbsp;&nbsp;&nbsp;
                                     <a href='?sort={{ header.Field |upper }}&order={{ asc_or_desc }}'>
                                     <i class='material-icons' style='color: white'>keyboard_arrow_{{ up_or_down }}</i></a>
                                     </th>
                                 {% endif %}
+{#                                 {% if header.Field |upper == 'ARCHIVE' %}
+                                    <th hidden class='text-truncate'> {{ header.Field |upper }} </th>
+                                {% endif %} #}
 
                             {% endfor %}
                         </tr>

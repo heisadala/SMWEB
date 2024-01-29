@@ -1,4 +1,4 @@
-     <nav class="navbar navbar-expand-lg">
+{#      <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a href='{{ server_base }}'>
             <img class="img-fluid" 
@@ -9,3 +9,23 @@
             </a>
         </div>
     </nav>
+
+ #}
+
+<nav class="navbar">
+  <div class="container-fluid justify-content-start">
+        <div class="dropdown">
+                      <button class="btn " data-bs-toggle="dropdown" type="button">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
+                    </button>
+                    <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
+                        <li><a class="dropdown-item" href="{{ server_base }}">
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/dropdown/Home.png"
+                              alt='HOME'
+                              title='HOME'
+                            ></a>
+                        </li>
+
+        </div>
+    </div>
+</nav>
