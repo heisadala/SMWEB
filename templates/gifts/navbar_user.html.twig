@@ -10,6 +10,25 @@
                         {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Database', 'subdir' : 'DB'} %}
                         <li><hr class="dropdown-divider"></li>
                         {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Gifts', 'subdir' : 'DB/GIFTS/HOME'} %}
+                        <li><hr class="dropdown-divider"></li>
+
+                        {% for giftuser in giftusers %}
+                          <li>
+                            {% if username is defined and username|upper == giftuser.name %}
+                              <a class="dropdown-item disabled" href='{{ path('gifts_userpage') }}/'>
+                            {% else %}
+                              <a class="dropdown-item" href='{{ path('gifts_userpage') }}/table/10/{{ giftuser.name }}'>
+                            {% endif %}
+
+                            <img class="img-fluid" width='36' height='36' src="{{ server_base }}/images/icon/dropdown/{{ giftuser.icon }}"
+                              alt={{ giftuser.name }}
+                              title={{ giftuser.name }}
+                            ></a>
+                          </li>
+                          <li><hr class="dropdown-divider"></li>
+                        {% endfor %}
+                        
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Archive', 'subdir' : 'DB/GIFTS/ARCHIVEPAGE'} %}
                     </ul>
     </div>
     {% include ( "navbar_brand_item.html.twig" ) with { 'item': 'add-row-144',

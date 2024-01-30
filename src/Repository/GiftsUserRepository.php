@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\GiftsUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Service\Database;
 
 /**
  * @extends ServiceEntityRepository<GiftsUser>
@@ -37,6 +38,18 @@ class GiftsUserRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    function get_connection ()
+    {
+        return $this->getEntityManager()->getConnection();
+    }
+
+    public function fetch_users_from_table ($user)
+    {
+        $sql_cmd = "SELECT * FROM gifts_user WHERE NOT name='$user'";
+        $db = new Database;
+        return($db->prepare_execute_and_fetch($this->get_connection(), $sql_cmd));
     }
 
 //    /**

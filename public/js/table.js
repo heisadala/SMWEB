@@ -140,8 +140,17 @@ $(document).ready(function () {
              // window.open(originSite + '/public/Delete_form.php?lang=' + language + '&Ref=' + reference, '_blank').focus;
             console.log(location)
              // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
-             pathname = location.href.substring(0,location.href.indexOf('HOME'));
-             console.log(pathname);
+             if (location.href.includes('USER')) {
+                // user = location.href.substring(location.href.lastIndexOf('/')+1);
+                // console.log(" USER: " + user);
+                // console.log(" LOCATION: " + location.href);
+                pathname = location.href.substring(0,location.href.indexOf('USER'));
+                console.log(" PATHNAME: " + pathname);
+            }
+            else {
+                pathname = location.href.substring(0,location.href.indexOf('HOME'));
+            }
+            console.log(pathname);
              window.open(pathname + 'DELETE/' + name + '/' + reference, '_blank').focus;
          }
         });
@@ -165,7 +174,16 @@ $(document).ready(function () {
                 // window.open(originSite + '/public/Delete_form.php?lang=' + language + '&Ref=' + reference, '_blank').focus;
                 console.log(location)
                 // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
-                pathname = location.href.substring(0,location.href.indexOf('HOME'));
+                if (location.href.includes('USER')) {
+                    // user = location.href.substring(location.href.lastIndexOf('/')+1);
+                    // console.log(" USER: " + user);
+                    // console.log(" LOCATION: " + location.href);
+                    pathname = location.href.substring(0,location.href.indexOf('USER'));
+                    console.log(" PATHNAME: " + pathname);
+                }
+                else {
+                    pathname = location.href.substring(0,location.href.indexOf('HOME'));
+                }
                 console.log(pathname);
                 window.open(pathname + 'ARCHIVE/' + name + '/' + reference, '_blank').focus;
             }
@@ -206,6 +224,7 @@ $(document).ready(function () {
 	        var reference=document.getElementById("primaryKey").innerHTML
             var name=document.getElementById("primaryKeyName").innerHTML;
             var pathname='HOME';
+            var user='USER';
 
 	        // var language=document.getElementById("language").innerHTML
 	        // var originSite=document.getElementById("originSite").innerHTML
@@ -214,7 +233,16 @@ $(document).ready(function () {
             console.log(location)
              // location.href = 'https://' + location.host + '/DEV_SMWEB/public/DB/LEGO/HOME/' + rowsShown;
 
-            pathname = location.href.substring(0,location.href.indexOf('HOME'));
+            if (location.href.includes('USER')) {
+                // user = location.href.substring(location.href.lastIndexOf('/')+1);
+                // console.log(" USER: " + user);
+                // console.log(" LOCATION: " + location.href);
+                pathname = location.href.substring(0,location.href.indexOf('USER'));
+                console.log(" PATHNAME: " + pathname);
+            }
+            else {
+                pathname = location.href.substring(0,location.href.indexOf('HOME'));
+            }
             console.log(pathname);
             window.open(pathname + 'EDIT/' + name + '/' + reference, '_blank').focus;
         }

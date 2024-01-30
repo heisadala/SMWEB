@@ -21,37 +21,42 @@ class GiftsEditFormType extends AbstractType
         //     // dd($row->getName());
         //     array_push($allowedThemes, $row->getName());
         // }
+
+
         $selected_name = $options['data']->getName();
-        $builder
-        ->add('name', EntityType::class, [
-            'class' => GiftsUser::class,
-            'query_builder' => function (EntityRepository $repo) {
-                return $repo->createQueryBuilder('gifts_user')
-                ->orderBy('gifts_user.name', 'ASC');
-            },
-            'choice_label' => 'name',
-            'choice_value' => 'name',
-            'choice_attr' => function($name) use ($selected_name) {
-                $selected = false;
-                if($name->getName() == $selected_name) {
-                    $selected = true;
+        $userlist = $options['data']->getUserlist();
 
-                }
-                return ['selected' => $selected];
-            },
-            'placeholder' => false,
-            'required' => false
+        if ($userlist == 'NO') {
+            $builder
+            ->add('name', EntityType::class, [
+                'class' => GiftsUser::class,
+                'query_builder' => function (EntityRepository $repo) {
+                    return $repo->createQueryBuilder('gifts_user')
+                    ->orderBy('gifts_user.name', 'ASC');
+                },
+                'choice_label' => 'name',
+                'choice_value' => 'name',
+                'choice_attr' => function($name) use ($selected_name) {
+                    $selected = false;
+                    if($name->getName() == $selected_name) {
+                        $selected = true;
 
-        ])
-        ->add('gift', TextType::class, [
-            'attr' => [
-                // 'class' => 'is-valid',
-                'placeholder' => 'Gift *',
-                'oninput'=> 'giftsFormCheckValidity(this)',
-            ],
-            'required' => true
-        ])
-        ->add('url')
+                    }
+                    return ['selected' => $selected];
+                },
+                'placeholder' => false,
+                'required' => false
+
+            ])
+            ->add('gift', TextType::class, [
+                'attr' => [
+                    // 'class' => 'is-valid',
+                    'placeholder' => 'Gift *',
+                    'oninput'=> 'giftsFormCheckValidity(this)',
+                ],
+                'required' => true
+            ])
+            ->add('url')
 
 
              ->add('Update', SubmitType::class, [
@@ -60,6 +65,35 @@ class GiftsEditFormType extends AbstractType
                 ],
             ])
         ;
+            } else {
+                $builder
+                ->add('name', null, [
+                    'attr' => [
+                        // 'class' => 'is-valid',
+                        'value' => $selected_name,
+                        'readonly' => true,
+                    ],
+                    'required' => false,
+                ])
+    
+                ->add('gift', TextType::class, [
+                    'attr' => [
+                        // 'class' => 'is-valid',
+                        'placeholder' => 'Gift *',
+                        'oninput'=> 'giftsFormCheckValidity(this)',
+                    ],
+                    'required' => true
+                ])
+                ->add('url')
+    
+    
+                 ->add('Update', SubmitType::class, [
+                    'attr' => [
+                        'class' => 'btn-warning'
+                    ],
+                ])
+            ;
+            }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

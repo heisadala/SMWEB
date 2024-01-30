@@ -47,7 +47,7 @@ class GiftsHomeController extends AbstractController
             $username = $this->getUser()->getUsername();
         }
  
-        $giftsUsers = $giftsUserRepository->findAll();
+        $giftsUsers = $giftsUserRepository->fetch_users_from_table(strtoupper($username));
         $db = $databaseTableRepository->findOneBy(array('name' => $app));
         $table_header_fields = $giftsTableRepository->fetch_header_fields_from_table($db->getTableName());
 
@@ -106,7 +106,8 @@ class GiftsHomeController extends AbstractController
 
     public function archive_page(string $viewFormat, int $rowNumbers, Debug $debug, 
                             DatabaseTableRepository $databaseTableRepository, 
-                            GiftsTableRepository $giftsTableRepository
+                            GiftsTableRepository $giftsTableRepository,
+                            GiftsUserRepository $giftsUserRepository
                         ): Response
     {
         $app = 'GIFTS';
@@ -116,6 +117,7 @@ class GiftsHomeController extends AbstractController
             $username = $this->getUser()->getUsername();
         }
  
+        $giftsUsers = $giftsUserRepository->fetch_users_from_table(strtoupper($username));
         $db = $databaseTableRepository->findOneBy(array('name' => $app));
         $table_header_fields = $giftsTableRepository->fetch_header_fields_from_table($db->getTableName());
 
@@ -165,7 +167,8 @@ class GiftsHomeController extends AbstractController
             'show_row_number' => $rowNumbers,
             'asc_or_desc' => $asc_or_desc,
             'up_or_down' => $up_or_down,
-            'username' => $username
+            'username' => $username,
+            'giftusers' => $giftsUsers
         ]);
     }
 
@@ -292,7 +295,17 @@ class GiftsHomeController extends AbstractController
             // dd($lego_table);
             $giftsTableRepository->add($article, true);
 
-            return $this->redirectToRoute('gifts_homepage');
+            $userlist = $article->getUserlist();
+            $user = $article->getName();
+            if ($userlist == 'YES') {
+                return $this->redirectToRoute('gifts_userpage', array('viewFormat ' => 'table',
+                'rowNumbers' => '10',
+                'user' => $user
+                ));
+
+            } else {
+                return $this->redirectToRoute('gifts_homepage');
+            }
         }
 
         return $this->render('index.html.twig',[
@@ -422,6 +435,7 @@ class GiftsHomeController extends AbstractController
             $username = $this->getUser()->getUsername();
         }
  
+        $giftsUsers = $giftsUserRepository->fetch_users_from_table(strtoupper($username));
         $db = $giftsUserRepository->findOneBy(array('name' => $app));
         $table_header_fields = $giftsTableRepository->fetch_header_fields_from_table($db->getTableName());
 
@@ -435,7 +449,7 @@ class GiftsHomeController extends AbstractController
         $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
 
         $gifts_table_content = $giftsTableRepository->fetch_class_from_table_user_ordered($db->getTableName(),
-                                                                                   $user, 'NO', $sort, $sort_order);
+                                                                        $user, 'NO', $sort, $sort_order);
 
         $showTable = true;
         $showGallery = false;
@@ -472,7 +486,8 @@ class GiftsHomeController extends AbstractController
             'asc_or_desc' => $asc_or_desc,
             'up_or_down' => $up_or_down,
             'username' => $username,
-            'user' => $user
+            'user' => $user,
+            'giftusers' => $giftsUsers
         ]);
 
     }
@@ -499,7 +514,10 @@ class GiftsHomeController extends AbstractController
              $gifts_table->setUserlist('YES');
              $em->persist($gifts_table);
              $em->flush();
-             return $this->redirectToRoute('gifts_homepage');
+             return $this->redirectToRoute('gifts_userpage', array('viewFormat ' => 'table',
+                                                'rowNumbers' => '10',
+                                                'user' => $user
+                                                ));
         }
 
         return $this->render('index.html.twig',[
