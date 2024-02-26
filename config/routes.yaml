@@ -14,6 +14,12 @@ cars_homepage:
     path: /DB/CARS
     controller: App\Controller\Cars\CarsHomeController::index
 
+cars_detail:
+    path: /DB/CARS/DETAIL/{plate}
+    controller: App\Controller\Cars\CarsHomeController::plate
+    defaults:  
+        plate: '9209-XF-22' 
+
 lego_homepage:
     path: /DB/LEGO/HOME/{viewFormat}/{rowNumbers}
     controller: App\Controller\Lego\LegoHomeController::index

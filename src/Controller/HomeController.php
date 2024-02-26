@@ -34,7 +34,7 @@ class HomeController extends AbstractController
             $debug->debug ($subdomain->getName());
         }
         $debug->debug ($db->getIcon());
-        //dd ($this->getUser());
+        // dd ($this->getUser());
         $username = "";
         if ($this->getUser()) {
             $username = $this->getUser()->getUsername();

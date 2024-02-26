@@ -1,0 +1,6 @@
+    {% if show_navbar_home is defined and show_navbar_home == true %}
+        {% include ( "#{db|lower}/navbar_home.html.twig" ) %}
+    {% endif %}
+    {% if show_navbar_car is defined and show_navbar_car == true %}
+        {% include ( "#{db|lower}/navbar_car.html.twig" ) %}
+    {% endif %}
