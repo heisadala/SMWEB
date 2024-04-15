@@ -12,6 +12,7 @@ use App\Service\Debug;
 use App\Repository\CarsTableRepository;
 use App\Repository\CarsFactureTableRepository;
 use App\Repository\CarsCtTableRepository;
+use App\Repository\CarsAssuranceTableRepository;
 
 
 
@@ -58,7 +59,8 @@ class CarsHomeController extends AbstractController
                             DatabaseTableRepository $databaseTableRepository,
                             CarsTableRepository $carsTableRepository,
                             CarsFactureTableRepository $carsFactureTableRepository,
-                            CarsCtTableRepository $carsCtTableRepository
+                            CarsCtTableRepository $carsCtTableRepository,
+                            CarsAssuranceTableRepository $carsAssuranceTableRepository
                             ): Response
     {
         $db = $databaseTableRepository->findOneBy(array('name' => 'CARS'));
@@ -75,6 +77,9 @@ class CarsHomeController extends AbstractController
 
         $ct_table_header_fields = $carsCtTableRepository->fetch_header_fields_from_table('cars_ct_table');
         $ct_table_content = $carsCtTableRepository->findBy(array('plate' => $plate),array('date' => 'DESC'));
+
+        $ass_table_header_fields = $carsAssuranceTableRepository->fetch_header_fields_from_table('cars_assurance_table');
+        $ass_table_content = $carsAssuranceTableRepository->findBy(array('plate' => $plate),array('insurance' => 'DESC'));
 
 
         return $this->render('index.html.twig', [
@@ -96,6 +101,8 @@ class CarsHomeController extends AbstractController
                 'facture_table_header_fields' => $facture_table_header_fields,
                 'ct_table_content' => $ct_table_content,
                 'ct_table_header_fields' => $ct_table_header_fields,
+                'ass_table_content' => $ass_table_content,
+                'ass_table_header_fields' => $ass_table_header_fields,
                 'show_navbar_car' => true,
 
         ]);
