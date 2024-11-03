@@ -6,19 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\DatabaseTableRepository;
-use App\Service\Debug;
 
 class ShoppingHomeController extends AbstractController
 {
     /**
      */
-    public function index(Debug $debug, 
+    public function index(
                             DatabaseTableRepository $databaseTableRepository
                         ): Response
     {
         $db = $databaseTableRepository->findOneBy(array('name' => 'SHOPPING'));
 
-        $debug->debug ($db->getName());
 
         return $this->render('index.html.twig', [
             'controller_name' => 'ShoppingHomeController',

@@ -5,42 +5,28 @@ namespace App\Entity;
 use App\Repository\DatabaseTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=DatabaseTableRepository::class)
- */
+ #[ORM\Entity(repositoryClass:DatabaseTableRepository::class)]
 class DatabaseTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $name;
+    #[ORM\Column(length: 20)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $table_name;
+    #[ORM\Column(length: 20)]
+    private ?string $tbl = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $icon;
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $icon = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $background;
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $background = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $url;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $url = null;
 
     public function getId(): ?int
     {
@@ -52,21 +38,21 @@ class DatabaseTable
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getDbName(): ?string
+    public function geTbl(): ?string
     {
-        return $this->table_name;
+        return $this->tbl;
     }
 
-    public function setDbName(?string $table_name): self
+    public function setTbl(?string $tbl): static
     {
-        $this->table_name = $table_name;
+        $this->tbl = $tbl;
 
         return $this;
     }
@@ -76,7 +62,7 @@ class DatabaseTable
         return $this->icon;
     }
 
-    public function setIcon(?string $icon): self
+    public function setIcon(?string $icon): static
     {
         $this->icon = $icon;
 
@@ -88,7 +74,7 @@ class DatabaseTable
         return $this->background;
     }
 
-    public function setBackground(?string $background): self
+    public function setBackground(?string $background): static
     {
         $this->background = $background;
 
@@ -100,7 +86,7 @@ class DatabaseTable
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 
@@ -109,10 +95,10 @@ class DatabaseTable
 
     public function getTableName(): ?string
     {
-        return $this->table_name;
+        return $this->tbl;
     }
 
-    public function setTableName(?string $table_name): self
+    public function setTableName(?string $table_name): static
     {
         $this->table_name = $table_name;
 

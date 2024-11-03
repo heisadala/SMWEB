@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Service\Debug;
 use App\Repository\GiftsTableRepository;
 use App\Repository\FormTableRepository;
 use App\Entity\GiftsTable;
@@ -34,7 +33,7 @@ class GiftsHomeController extends AbstractController
         return $pk_column;
     }
 
-    public function index(string $viewFormat, int $rowNumbers, Debug $debug, 
+    public function index(string $viewFormat, int $rowNumbers,  
                             DatabaseTableRepository $databaseTableRepository, 
                             GiftsTableRepository $giftsTableRepository,
                             GiftsUserRepository $giftsUserRepository
@@ -44,7 +43,7 @@ class GiftsHomeController extends AbstractController
 
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
  
         $giftsUsers = $giftsUserRepository->fetch_users_from_table(strtoupper($username));
@@ -73,7 +72,6 @@ class GiftsHomeController extends AbstractController
             $showGallery = true;
         }
 
-        $debug->debug ($db->getName());
 
 
         return $this->render('index.html.twig', [
@@ -104,7 +102,7 @@ class GiftsHomeController extends AbstractController
     }
 
 
-    public function archive_page(string $viewFormat, int $rowNumbers, Debug $debug, 
+    public function archive_page(string $viewFormat, int $rowNumbers,  
                             DatabaseTableRepository $databaseTableRepository, 
                             GiftsTableRepository $giftsTableRepository,
                             GiftsUserRepository $giftsUserRepository
@@ -114,7 +112,7 @@ class GiftsHomeController extends AbstractController
 
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
  
         $giftsUsers = $giftsUserRepository->fetch_users_from_table(strtoupper($username));
@@ -143,7 +141,6 @@ class GiftsHomeController extends AbstractController
             $showGallery = true;
         }
 
-        $debug->debug ($db->getName());
 
 
         return $this->render('index.html.twig', [
@@ -183,7 +180,7 @@ class GiftsHomeController extends AbstractController
 
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
  
 
@@ -235,7 +232,7 @@ class GiftsHomeController extends AbstractController
         $form_title = 'DELETE';
         $username = "";
         if ($this->getUser()) {
-        $username = $this->getUser()->getUsername();
+        $username = $this->getUser()->getUserIdentifier();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
@@ -282,7 +279,7 @@ class GiftsHomeController extends AbstractController
         $form_title = 'EDIT';
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
@@ -338,7 +335,7 @@ class GiftsHomeController extends AbstractController
         $form_title = 'ARCHIVE';
         $username = "";
         if ($this->getUser()) {
-        $username = $this->getUser()->getUsername();
+        $username = $this->getUser()->getUserIdentifier();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
@@ -386,7 +383,7 @@ class GiftsHomeController extends AbstractController
         $form_title = 'UNARCHIVE';
         $username = "";
         if ($this->getUser()) {
-        $username = $this->getUser()->getUsername();
+        $username = $this->getUser()->getUserIdentifier();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
@@ -423,7 +420,7 @@ class GiftsHomeController extends AbstractController
         );
     }
 
-    public function user(string $viewFormat, int $rowNumbers, string $user, Debug $debug, 
+    public function user(string $viewFormat, int $rowNumbers, string $user, 
                             GiftsUserRepository $giftsUserRepository, 
                             GiftsTableRepository $giftsTableRepository
                         ): Response
@@ -432,7 +429,7 @@ class GiftsHomeController extends AbstractController
         // dd ($user);
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
  
         $giftsUsers = $giftsUserRepository->fetch_users_from_table(strtoupper($username));
@@ -461,7 +458,6 @@ class GiftsHomeController extends AbstractController
             $showGallery = true;
         }
 
-        $debug->debug ($db->getName());
 
 
         return $this->render('index.html.twig', [

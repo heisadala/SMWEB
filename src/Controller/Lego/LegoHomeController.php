@@ -39,7 +39,7 @@ class LegoHomeController extends AbstractController
     /**
      * 
      */
-    public function index(string $viewFormat, int $rowNumbers, Debug $debug, 
+    public function index(string $viewFormat, int $rowNumbers,  
                         DatabaseTableRepository $databaseTableRepository, 
                         LegoTableRepository $legoTableRepository,
                         LegoThemeRepository $legoThemeRepository
@@ -49,7 +49,7 @@ class LegoHomeController extends AbstractController
 
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
  
         $db = $databaseTableRepository->findOneBy(array('name' => $app));
@@ -80,7 +80,6 @@ class LegoHomeController extends AbstractController
         }
         // dd($sort, $sort_order, $lego_table_content);
         // dd($table_header_fields);
-        $debug->debug ($db->getName());
 
         return $this->render('index.html.twig', [
             'controller_name' => 'LegoHomeController',
@@ -118,7 +117,7 @@ class LegoHomeController extends AbstractController
         $form_title = 'ADD';
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
  
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
@@ -165,7 +164,7 @@ class LegoHomeController extends AbstractController
         $form_title = 'DELETE';
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);
@@ -212,7 +211,7 @@ class LegoHomeController extends AbstractController
         $form_title = 'EDIT';
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
         $form_db = $formTableRepository->findOneBy(array('name' => $app . '_' . $form_title));
         // dd($form_db);

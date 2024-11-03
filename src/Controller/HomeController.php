@@ -7,21 +7,14 @@ use App\Repository\SubdomainTableRepository;
 use App\Repository\DatabaseTableRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Service\Debug;
-use App\Entity\HomeTable;
-use App\Entity\SubdomainTable;
+
 
 
 
 class HomeController extends AbstractController
 {
-    /**
-     * 
-     */
-    public function index(Debug $debug, HomeTableRepository $homeTableRepository, 
+
+    public function index(HomeTableRepository $homeTableRepository, 
                             SubdomainTableRepository $subdomainTableRepository,
                             DatabaseTableRepository $databaseTableRepository
                         ): Response
@@ -30,15 +23,15 @@ class HomeController extends AbstractController
         $db = $homeTableRepository->findOneby(['name' => $table_name]);
         $subdomains = $subdomainTableRepository->findAll();
         $databases = $databaseTableRepository->findAll();
-        foreach ($subdomains as $subdomain) {
-            $debug->debug ($subdomain->getName());
-        }
-        $debug->debug ($db->getIcon());
+
         // dd ($this->getUser());
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
+        // dd ($_SERVER);
+        // $_SERVER['HTTP_HOST'] = '192.168.1.49';
+        // $_SERVER['BASE'] = '/DEV_EDT/public';
 
         return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',

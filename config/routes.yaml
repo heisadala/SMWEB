@@ -50,6 +50,7 @@ gifts_homepage:
         viewFormat: 'table' 
         rowNumbers: 10 
 
+
 gifts_archivepage:
     path: /DB/GIFTS/ARCHIVEPAGE/{viewFormat}/{rowNumbers}
     controller: App\Controller\Gifts\GiftsHomeController::archive_page
@@ -91,7 +92,24 @@ gifts_delete:
     path: /DB/GIFTS/DELETE/{pk_name}/{ref}
     controller: App\Controller\Gifts\GiftsHomeController::delete
 
+promo_homepage:
+    path: /DB/PROMO/HOME/{viewFormat}/{rowNumbers}
+    controller: App\Controller\Promo\PromoController::index
+    defaults:  
+        viewFormat: 'table' 
+        rowNumbers: 10 
 
+promo_add:
+    path: /DB/PROMO/ADD
+    controller: App\Controller\Promo\PromoController::add
+
+promo_edit:
+    path: /DB/PROMO/EDIT/{pk_name}/{ref}
+    controller: App\Controller\Promo\PromoController::edit
+
+promo_delete:
+    path: /DB/PROMO/DELETE/{pk_name}/{ref}
+    controller: App\Controller\Promo\PromoController::delete
 
 # gifts_lara:
 #     path: /DB/GIFTS/USER/{viewFormat}/{rowNumbers}/{user}

@@ -1,0 +1,30 @@
+<div class='row  justify-content-between'>
+    <div class="col-3">
+         <div class="dropdown">
+                      <button class="btn " data-bs-toggle="dropdown" type="button">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
+                    </button>
+                      <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Home', 'subdir' : ''} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Database', 'subdir' : 'DB'} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Promo', 'subdir' : 'DB/PROMO/HOME'} %}
+                    </ul>
+        </div>
+    </div>
+    <div id='sm-body-lego-edit-form-col-2' 
+        class="col m-5 border border-warning border-5 rounded-4 bg-iceblue">
+        <div class="container text-white mt-3">
+
+            {{ form_start(promo_form,  {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <p class='text-center'><b>ITEM</b></p>
+
+            {{ form_end(promo_form) }}
+        </div>
+    </div>
+    <div class="col-3 d-none d-lg-block"></div>
+
+</div>
+

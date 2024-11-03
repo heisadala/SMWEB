@@ -4,58 +4,47 @@ namespace App\Entity;
 
 use App\Repository\CarsFactureTableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
-/**
- * @ORM\Entity(repositoryClass=CarsFactureTableRepository::class)
- */
+#[ORM\Entity(repositoryClass:CarsFactureTableRepository::class)]
 class CarsFactureTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $plate;
+    #[ORM\Column(length: 50)]
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $model;
+    private ?string $plate = null;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
+    #[ORM\Column(length: 50)]
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $garage;
+    private ?string $model = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $city;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $km;
+    private ?\DateTimeInterface $date = null;
 
-    /**
-     * @ORM\Column(type="string", length=200)
-     */
-    private $comment;
+    #[ORM\Column(length: 50)]
 
-    /**
-     * @ORM\Column(type="decimal", precision=6, scale=2)
-     */
-    private $price;
+    private $garage = null;
+
+    #[ORM\Column(length: 50)]
+
+    private $city = null;
+
+    #[ORM\Column]
+
+    private ?int $km = null;
+
+    #[ORM\Column(length: 200)]
+
+    private $comment = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2)]
+
+    private ?string $price = null;
 
     public function getId(): ?int
     {
@@ -67,7 +56,7 @@ class CarsFactureTable
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
 
@@ -79,7 +68,7 @@ class CarsFactureTable
         return $this->garage;
     }
 
-    public function setGarage(string $garage): self
+    public function setGarage(string $garage): static
     {
         $this->garage = $garage;
 
@@ -91,7 +80,7 @@ class CarsFactureTable
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(string $city): static
     {
         $this->city = $city;
 
@@ -103,7 +92,7 @@ class CarsFactureTable
         return $this->km;
     }
 
-    public function setKm(int $km): self
+    public function setKm(int $km): static
     {
         $this->km = $km;
 
@@ -115,7 +104,7 @@ class CarsFactureTable
         return $this->comment;
     }
 
-    public function setComment(string $comment): self
+    public function setComment(string $comment): static
     {
         $this->comment = $comment;
 
@@ -127,7 +116,7 @@ class CarsFactureTable
         return $this->price;
     }
 
-    public function setPrice(string $price): self
+    public function setPrice(string $price): static
     {
         $this->price = $price;
 

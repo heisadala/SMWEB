@@ -1,0 +1,94 @@
+<div class='row  justify-content-between'>
+    {# <div class="container-fluid"> #}
+    <div class="col-3">
+         <div class="dropdown">
+                      <button class="btn " data-bs-toggle="dropdown" type="button">
+                        <img class="rounded-circle" src="{{ server_base }}/images/icon/squared-menu-96.png">
+                    </button>
+                    <ul class="dropdown-menu p-2 dropdown-menu-end sm-lego-dropdown" >
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Home', 'subdir' : ''} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Database', 'subdir' : 'DB'} %}
+                        <li><hr class="dropdown-divider"></li>
+                        {% include ( "navbar_dropdown_item.html.twig" ) with {'item': 'Promo', 'subdir' : 'DB/PROMO/HOME'} %}
+                    </ul>
+        </div>
+    </div>
+    {# <div id='sm-body-lego-add-form-col-1' class="col-3 d-none d-lg-block"></div> #}
+    <div id='sm-body-lego-add-form-col-2' 
+        class="col m-5 border border-warning border-5 rounded-4 bg-iceblue">
+        <div class="container text-white mt-3">
+            {{ form_start(promo_form,  {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <p class='text-center'><b>ITEM</b></p>
+
+            {{ form_label(promo_form.marchand) }}
+            {{ form_widget(promo_form.marchand) }}
+            <div class='invalid-feedback' id='promo_add_form_marchand_feedback'></div>
+
+            {{ form_label(promo_form.code) }}
+            {{ form_widget(promo_form.code) }}
+            <div class='invalid-feedback' id='promo_add_form_code_feedback'></div>
+
+            {{ form_end(promo_form) }}
+        </div>
+    </div>
+    <div id='sm-body-lego-add-form-col-3' class="col-3 d-none d-lg-block"></div>
+
+</div>
+
+<script>
+function promoFormCheckValidity(element) {
+
+    var error = false;
+    document.getElementById('promo_add_form_Add').disabled = false;
+
+    var marchand = document.forms['promo_add_form']['promo_add_form_marchand'];
+    var marchand_feedback = document.getElementById("promo_add_form_marchand_feedback");
+    marchand_feedback.innerHTML = "";
+
+    var code = document.forms['promo_add_form']['promo_add_form_code'];
+    var code_feedback = document.getElementById("promo_add_form_code_feedback");
+    code_feedback.innerHTML = "";
+
+    if (!code.checkValidity()) {
+        code_feedback.innerHTML = "Please provide valid code";
+        error = true;
+    } 
+    if (!marchand.checkValidity()) {
+        marchand_feedback.innerHTML = "Please provide valid name of marchand";
+        error = true;
+    }
+
+
+
+    document.forms['promo_add_form'].classList.add('was-validated');
+
+    if (error) {
+        document.getElementById('promo_add_form_Add').disabled = true;
+    }
+}
+
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+{# (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})() #}
+
+</script>

@@ -4,72 +4,47 @@ namespace App\Entity;
 
 use App\Repository\CarsTableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
-/**
- * @ORM\Entity(repositoryClass=CarsTableRepository::class)
- */
+#[ORM\Entity(repositoryClass:CarsTableRepository::class)]
 class CarsTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="string")
-     */
-    private $plate;
+    #[ORM\Id]
+    #[ORM\Column]
+    private ?string $plate = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $brand;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $brand;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $logo;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $logo;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $model;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $model;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $registration;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $registration = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $color;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $color = null;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $next_control;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $next_control = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $last_service_km;
+    #[ORM\Column(length: 6, nullable: false)]
+    private ?int $last_service_km = null;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $next_service;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $next_service = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $mail;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $mail = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $assurance;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $assurance = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=6, scale=2, nullable=true)
-     */
-    private $amount;
+    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2, nullable: true)]
+    private ?string $amount = null;
 
 
     public function getPlate(): ?string
@@ -77,7 +52,7 @@ class CarsTable
         return $this->plate;
     }
 
-    public function setPlate(string $plate): self
+    public function setPlate(string $plate): static
     {
         $this->plate = $plate;
 
@@ -89,14 +64,14 @@ class CarsTable
         return $this->brand;
     }
 
-    public function setBrand(string $brand): self
+    public function setBrand(string $brand): static
     {
         $this->brand = $brand;
 
         return $this;
     }
 
-    public function setLogo(string $logo): self
+    public function setLogo(string $logo): static
     {
         $this->logo = $logo;
 
@@ -113,7 +88,7 @@ class CarsTable
         return $this->model;
     }
 
-    public function setModel(?string $model): self
+    public function setModel(?string $model): static
     {
         $this->model = $model;
 
@@ -125,7 +100,7 @@ class CarsTable
         return $this->registration;
     }
 
-    public function setRegistration(?\DateTimeInterface $registration): self
+    public function setRegistration(?\DateTimeInterface $registration): static
     {
         $this->registration = $registration;
 
@@ -137,7 +112,7 @@ class CarsTable
         return $this->color;
     }
 
-    public function setColor(?string $color): self
+    public function setColor(?string $color): static
     {
         $this->color = $color;
 
@@ -149,7 +124,7 @@ class CarsTable
         return $this->next_control;
     }
 
-    public function setNextControl(?\DateTimeInterface $next_control): self
+    public function setNextControl(?\DateTimeInterface $next_control): static
     {
         $this->next_control = $next_control;
 
@@ -161,7 +136,7 @@ class CarsTable
         return $this->last_service_km;
     }
 
-    public function setLastServiceKm(int $last_service_km): self
+    public function setLastServiceKm(int $last_service_km): static
     {
         $this->last_service_km = $last_service_km;
 
@@ -174,7 +149,7 @@ class CarsTable
         return $this->next_service;
     }
 
-    public function setNextService(?\DateTimeInterface $next_service): self
+    public function setNextService(?\DateTimeInterface $next_service): static
     {
         $this->next_service = $next_service;
 
@@ -186,7 +161,7 @@ class CarsTable
         return $this->mail;
     }
 
-    public function setMail(string $mail): self
+    public function setMail(string $mail): static
     {
         $this->mail = $mail;
 
@@ -198,7 +173,7 @@ class CarsTable
         return $this->assurance;
     }
 
-    public function setAssurance(string $assurance): self
+    public function setAssurance(string $assurance): static
     {
         $this->assurance = $assurance;
 
@@ -210,7 +185,7 @@ class CarsTable
         return $this->amount;
     }
 
-    public function setAmount(?string $amount): self
+    public function setAmount(?string $amount): static
     {
         $this->amount = $amount;
 

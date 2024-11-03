@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\Debug;
 
 
 
@@ -17,13 +16,12 @@ class KinderHomeController extends AbstractController
     /**
      * 
      */
-    public function index(Debug $debug, 
+    public function index( 
                             DatabaseTableRepository $databaseTableRepository
                         ): Response
     {
         $db = $databaseTableRepository->findOneBy(array('name' => 'KINDER'));
 
-        $debug->debug ($db->getName());
 
         return $this->render('index.html.twig', [
             'controller_name' => 'KinderHomeController',

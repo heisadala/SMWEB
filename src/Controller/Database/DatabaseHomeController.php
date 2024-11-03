@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\Debug;
 use App\Entity\HomeTable;
 use App\Entity\SubdomainTable;
 
@@ -20,7 +19,7 @@ class DatabaseHomeController extends AbstractController
     /**
      * 
      */
-    public function index(Debug $debug,  
+    public function index(
                             DatabaseTableRepository $databaseTableRepository
                         ): Response
     {
@@ -30,7 +29,7 @@ class DatabaseHomeController extends AbstractController
 
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
         
         return $this->render('index.html.twig', [

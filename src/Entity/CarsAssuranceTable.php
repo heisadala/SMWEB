@@ -3,44 +3,31 @@
 namespace App\Entity;
 
 use App\Repository\CarsAssuranceTableRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=CarsAssuranceTableRepository::class)
- */
+#[ORM\Entity(repositoryClass: CarsAssuranceTableRepository::class)]
 class CarsAssuranceTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $plate;
+    #[ORM\Column(length: 50)]
+    private ?string $plate = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $model;
+    #[ORM\Column(length: 50)]
+    private ?string $model = null;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $insurance;
+    #[ORM\Column(length: 20)]
+    private ?string $insurance = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=6, scale=2, nullable=true)
-     */
-    private $rate;
+    #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2, nullable: true)]
+    private ?string $rate = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $drivers;
+    #[ORM\Column(length: 50)]
+    private ?string $drivers = null;
 
     public function getId(): ?int
     {
@@ -52,7 +39,7 @@ class CarsAssuranceTable
         return $this->plate;
     }
 
-    public function setPlate(string $plate): self
+    public function setPlate(string $plate): static
     {
         $this->plate = $plate;
 
@@ -64,7 +51,7 @@ class CarsAssuranceTable
         return $this->model;
     }
 
-    public function setModel(string $model): self
+    public function setModel(string $model): static
     {
         $this->model = $model;
 
@@ -76,7 +63,7 @@ class CarsAssuranceTable
         return $this->insurance;
     }
 
-    public function setInsurance(string $insurance): self
+    public function setInsurance(string $insurance): static
     {
         $this->insurance = $insurance;
 
@@ -88,7 +75,7 @@ class CarsAssuranceTable
         return $this->rate;
     }
 
-    public function setRate(?string $rate): self
+    public function setRate(?string $rate): static
     {
         $this->rate = $rate;
 
@@ -100,7 +87,7 @@ class CarsAssuranceTable
         return $this->drivers;
     }
 
-    public function setDrivers(string $drivers): self
+    public function setDrivers(string $drivers): static
     {
         $this->drivers = $drivers;
 

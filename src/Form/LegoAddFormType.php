@@ -70,8 +70,8 @@ class LegoAddFormType extends AbstractType
             ])
             ->add('date', BirthdayType::class, [
                 'years' => range(date('Y') - 70, date('Y') - 0),
-                'format' => 'dd-MMMM-yyyy',
-                'data' => new \DateTime('now'),
+            //     'format' => 'dd-MMMM-yyyy',
+            //     'data' => new \DateTime('now'),
                 'required' => false
                 
             ])

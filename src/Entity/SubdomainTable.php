@@ -5,37 +5,25 @@ namespace App\Entity;
 use App\Repository\SubdomainTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=SubdomainTableRepository::class)
- */
+#[ORM\Entity(repositoryClass: SubdomainTableRepository::class)]
 class SubdomainTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $name;
+    #[ORM\Column(length: 20)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $icon;
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $icon = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $url;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $url = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $url_local;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $url_local = null;
 
     public function getId(): ?int
     {
@@ -47,7 +35,7 @@ class SubdomainTable
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -59,7 +47,7 @@ class SubdomainTable
         return $this->icon;
     }
 
-    public function setIcon(?string $icon): self
+    public function setIcon(?string $icon): static
     {
         $this->icon = $icon;
 
@@ -71,7 +59,7 @@ class SubdomainTable
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 
@@ -83,7 +71,7 @@ class SubdomainTable
         return $this->url_local;
     }
 
-    public function setUrl_local(?string $url_local): self
+    public function setUrl_local(?string $url_local): static
     {
         $this->url = $url_local;
 

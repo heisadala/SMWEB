@@ -4,61 +4,45 @@ namespace App\Entity;
 
 use App\Repository\LegoTableRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-/**
- * @ORM\Entity(repositoryClass=LegoTableRepository::class)
- */
+use Doctrine\DBAL\Types\Types;
+
+#[ORM\Entity(repositoryClass:LegoTableRepository::class)]
 class LegoTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @Assert\Type(
-     *     type="integer",
-     *     message="The value {{ value }} is not a valid {{ type }}."
-     * )
-     */
-    #[Assert\NotBlank]
+    #[ORM\Id]
+    #[ORM\Column]
 
-    private $reference;
+    private ?int $reference = null;
 
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    #[Assert\NotBlank]
-    private $name;
+    #[ORM\Column(length: 128, nullable: true)]
 
-    /**
-     * @ORM\Column(type="string", length=128, nullable=true)
-     */
-    private $theme;
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=6, scale=2, nullable=true)
-     */
-    #[Assert\NotBlank]
-    private $price;
+    #[ORM\Column(length: 128, nullable: true)]
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $date;
+    private ?string $theme = null;
 
-    /**
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $state;
+    #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2, nullable: true)]
 
-    /**
-     * @ORM\Column(type="string", length=512, nullable=true)
-     */
-    private $url;
+    private ?string $price = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+
+    private ?string $state = null;
+
+    #[ORM\Column(length: 512, nullable: true)]
+
+    private ?string $url = null;
 
     public function getReference(): ?int
     {
         return $this->reference;
     }
-    public function setReference(int $reference): self
+    public function setReference(int $reference): static
     {
         $this->reference = $reference;
         return $this;
@@ -70,7 +54,7 @@ class LegoTable
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -82,7 +66,7 @@ class LegoTable
         return $this->theme;
     }
 
-    public function setTheme(?string $theme): self
+    public function setTheme(?string $theme): static
     {
         $this->theme = $theme;
 
@@ -94,7 +78,7 @@ class LegoTable
         return $this->price;
     }
 
-    public function setPrice(?string $price): self
+    public function setPrice(?string $price): static
     {
         $this->price = $price;
 
@@ -106,7 +90,7 @@ class LegoTable
         return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $date): self
+    public function setDate(?\DateTimeInterface $date): static
     {
         $this->date = $date;
 
@@ -118,7 +102,7 @@ class LegoTable
         return $this->state;
     }
 
-    public function setState(?string $state): self
+    public function setState(?string $state): static
     {
         $this->state = $state;
 
@@ -130,7 +114,7 @@ class LegoTable
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 

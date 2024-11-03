@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\Debug;
 use App\Repository\CarsTableRepository;
 use App\Repository\CarsFactureTableRepository;
 use App\Repository\CarsCtTableRepository;
@@ -21,17 +20,16 @@ class CarsHomeController extends AbstractController
     /**
      * 
      */
-    public function index(Debug $debug, 
+    public function index(
                             DatabaseTableRepository $databaseTableRepository,
                             CarsTableRepository $carsTableRepository
                         ): Response
     {
         $db = $databaseTableRepository->findOneBy(array('name' => 'CARS'));
 
-        $debug->debug ($db->getName());
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
         $databases = $carsTableRepository->fetch_class_from_table_ordered('cars_table','registration', 'DESC');
 
@@ -55,7 +53,7 @@ class CarsHomeController extends AbstractController
         ]);
     }
 
-    public function plate(string $plate, Debug $debug, 
+    public function plate(string $plate, 
                             DatabaseTableRepository $databaseTableRepository,
                             CarsTableRepository $carsTableRepository,
                             CarsFactureTableRepository $carsFactureTableRepository,
@@ -65,10 +63,9 @@ class CarsHomeController extends AbstractController
     {
         $db = $databaseTableRepository->findOneBy(array('name' => 'CARS'));
 
-        $debug->debug ($db->getName());
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
         // $databases = $carsFactureTableRepository->findAll();
         $cars_table = $carsTableRepository->findOneBy(array('plate' => $plate));

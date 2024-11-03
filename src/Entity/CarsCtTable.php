@@ -4,38 +4,27 @@ namespace App\Entity;
 
 use App\Repository\CarsCtTableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
-/**
- * @ORM\Entity(repositoryClass=CarsCtTableRepository::class)
- */
+#[ORM\Entity(repositoryClass:CarsCtTableRepository::class)]
 class CarsCtTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $plate;
+    #[ORM\Column(length: 50)]
+    private ?string $plate = null;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $model;
+    #[ORM\Column(length: 50)]
+    private ?string $model = null;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface  $date = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $km;
+    #[ORM\Column(length: 6, nullable: true)]
+    private ?int $km = null;
 
     public function getId(): ?int
     {
@@ -47,7 +36,7 @@ class CarsCtTable
         return $this->plate;
     }
 
-    public function setPlate(string $plate): self
+    public function setPlate(string $plate): static
     {
         $this->plate = $plate;
 
@@ -59,7 +48,7 @@ class CarsCtTable
         return $this->model;
     }
 
-    public function setModel(string $model): self
+    public function setModel(string $model): static
     {
         $this->model = $model;
 
@@ -71,7 +60,7 @@ class CarsCtTable
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
 
@@ -83,7 +72,7 @@ class CarsCtTable
         return $this->km;
     }
 
-    public function setKm(int $km): self
+    public function setKm(int $km): static
     {
         $this->km = $km;
 

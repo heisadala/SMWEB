@@ -5,41 +5,29 @@ namespace App\Entity;
 use App\Repository\HomeTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=HomeTableRepository::class)
- */
+#[ORM\Entity(repositoryClass: HomeTableRepository::class)]
 class HomeTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $name;
-/**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $table;
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $icon;
+    #[ORM\Column(length: 20)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $background;
+    #[ORM\Column(length: 20)]
+    private ?string $tbl = null;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $url;
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $icon = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $background = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $url = null;
 
     public function getId(): ?int
     {
@@ -51,20 +39,20 @@ class HomeTable
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
-    public function getTable(): ?string
+    public function getTbl(): ?string
     {
-        return $this->table;
+        return $this->tbl;
     }
     
-    public function setTable(string $table): self
+    public function setTbl(string $tbl): static
     {
-        $this->table = $table;
+        $this->tbl = $tbl;
         return $this;
     }
 
@@ -73,7 +61,7 @@ class HomeTable
         return $this->icon;
     }
 
-    public function setIcon(?string $icon): self
+    public function setIcon(?string $icon): static
     {
         $this->icon = $icon;
 
@@ -85,7 +73,7 @@ class HomeTable
         return $this->background;
     }
 
-    public function setBackground(?string $background): self
+    public function setBackground(?string $background): static
     {
         $this->background = $background;
 
@@ -97,7 +85,7 @@ class HomeTable
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 

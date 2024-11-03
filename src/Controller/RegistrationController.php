@@ -32,6 +32,7 @@ class RegistrationController extends AbstractController
         
         $table_name = $this->getParameter('app.database_home_table_name');
         $db = $homeTableRepository->findOneby(['name' => $table_name]);
+        dd ($_SERVER['BASE']);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -48,10 +49,10 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
-
+        if ($_SERVER['HTTP_HOST'] == '') { $_SERVER['HTTP_HOST'] = '192.168.1.49';}
         return $this->render('index.html.twig', [
-            'controller_name' => 'SecurityController',
-            'title' => 'Login SMWEB',
+            'controller_name' => 'RegistrationController',
+            'title' => 'Register EDT user',
             'show_register' => true,
             'icon' => $db->getIcon(),
             'background' => $db->getBackground(),

@@ -5,22 +5,17 @@ namespace App\Entity;
 use App\Repository\LegoConditionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=LegoConditionRepository::class)
- */
+#[ORM\Entity(repositoryClass:LegoConditionRepository::class)]
 class LegoCondition
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $name;
+    #[ORM\Column(length: 30, nullable: true)]
+
+    private ?string $name = null;
 
     public function getId(): ?int
     {
@@ -32,7 +27,7 @@ class LegoCondition
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 

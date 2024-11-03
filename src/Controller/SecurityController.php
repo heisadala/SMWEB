@@ -14,7 +14,6 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils,
                         HomeTableRepository $homeTableRepository): Response
     {
-
         if ($this->getUser()) {
             return $this->redirectToRoute('homepage');
         }
@@ -23,7 +22,7 @@ class SecurityController extends AbstractController
         $db = $homeTableRepository->findOneby(['name' => $table_name]);
         $username = "";
         if ($this->getUser()) {
-            $username = $this->getUser()->getUsername();
+            $username = $this->getUser()->getUserIdentifier();
         }
 
         // get the login error if there is one
@@ -31,6 +30,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        if ($_SERVER['HTTP_HOST'] == '') { $_SERVER['HTTP_HOST'] = '192.168.1.49';}
         return $this->render('index.html.twig', [
             'last_username' => $lastUsername, 
             'error' => $error,

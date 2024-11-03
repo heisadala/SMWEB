@@ -5,27 +5,21 @@ namespace App\Entity;
 use App\Repository\LegoThemeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=LegoThemeRepository::class)
- */
+#[ORM\Entity(repositoryClass:LegoThemeRepository::class)]
 class LegoTheme
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $name;
+    #[ORM\Column(length: 30, nullable: true)]
 
-    /**
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $color;
+    private ?string $name = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+
+    private ?string $color = null;
 
     public function getId(): ?int
     {
@@ -37,7 +31,7 @@ class LegoTheme
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -49,7 +43,7 @@ class LegoTheme
         return $this->color;
     }
 
-    public function setColor(?string $color): self
+    public function setColor(?string $color): static
     {
         $this->color = $color;
 

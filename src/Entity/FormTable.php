@@ -5,37 +5,29 @@ namespace App\Entity;
 use App\Repository\FormTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=FormTableRepository::class)
- */
+#[ORM\Entity(repositoryClass:FormTableRepository::class)]
 class FormTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $name;
+    #[ORM\Column(length: 20)]
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $icon;
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $background;
+    #[ORM\Column(length: 20)]
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $url;
+    private ?string $icon = null;
+
+    #[ORM\Column(length: 20)]
+
+    private ?string $background = null;
+
+    #[ORM\Column(length: 50)]
+
+    private ?string $url = null;
 
     public function getId(): ?int
     {
@@ -47,7 +39,7 @@ class FormTable
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -59,7 +51,7 @@ class FormTable
         return $this->icon;
     }
 
-    public function setIcon(?string $icon): self
+    public function setIcon(?string $icon): static
     {
         $this->icon = $icon;
 
@@ -71,7 +63,7 @@ class FormTable
         return $this->background;
     }
 
-    public function setBackground(?string $background): self
+    public function setBackground(?string $background): static
     {
         $this->background = $background;
 
@@ -83,7 +75,7 @@ class FormTable
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 

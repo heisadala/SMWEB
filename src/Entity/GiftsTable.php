@@ -5,40 +5,32 @@ namespace App\Entity;
 use App\Repository\GiftsTableRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=GiftsTableRepository::class)
- */
+#[ORM\Entity(repositoryClass:GiftsTableRepository::class)]
 class GiftsTable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $name;
+    #[ORM\Column(length: 20, nullable: true)]
 
-    /**
-     * @ORM\Column(type="string", length=1024, nullable=true)
-     */
-    private $gift;
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=1024, nullable=true)
-     */
-    private $url;
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $archive;
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $userlist;
+    #[ORM\Column(length: 1024, nullable: true)]
+
+    private ?string $gift = null;
+
+    #[ORM\Column(length: 1024, nullable: true)]
+
+    private ?string $url = null;
+    #[ORM\Column(length: 10, nullable: true)]
+
+    private ?string $archive = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+
+    private ?string $userlist = null;
 
 
     public function getId(): ?int
@@ -51,7 +43,7 @@ class GiftsTable
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -63,7 +55,7 @@ class GiftsTable
         return $this->gift;
     }
 
-    public function setGift(?string $gift): self
+    public function setGift(?string $gift): static
     {
         $this->gift = $gift;
 
@@ -75,7 +67,7 @@ class GiftsTable
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 
@@ -87,7 +79,7 @@ class GiftsTable
         return $this->archive;
     }
 
-    public function setArchive(string $archive): self
+    public function setArchive(string $archive): static
     {
         $this->archive = $archive;
 
@@ -98,7 +90,7 @@ public function getUserlist(): ?string
         return $this->userlist;
     }
 
-    public function setUserlist(string $userlist): self
+    public function setUserlist(string $userlist): static
     {
         $this->userlist = $userlist;
 
