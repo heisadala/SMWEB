@@ -98,9 +98,9 @@ class DatabaseTable
         return $this->tbl;
     }
 
-    public function setTableName(?string $table_name): static
+    public function setTableName(?string $tbl): static
     {
-        $this->table_name = $table_name;
+        $this->tbl = $tbl;
 
         return $this;
     }
