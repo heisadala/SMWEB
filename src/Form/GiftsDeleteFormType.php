@@ -22,6 +22,7 @@ class GiftsDeleteFormType extends AbstractType
             ->add('name', null, [
                 'required' => false,
             ])
+            ->add('date')
             ->add('gift')
             ->add('url')
             ->add('Delete', SubmitType::class, [
