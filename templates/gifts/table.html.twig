@@ -68,6 +68,7 @@
                                 <tr>
                                 <td hidden >{{ row.id }} </td>
                                 <td>{{ row.name }} </td>
+                                <td>{{ row.date|date("d-m-Y") }} </td>
                                 <td> {{ row.gift }} </td>
                                 {% if row.url == 'NOURL' %}
                                     <td></td>

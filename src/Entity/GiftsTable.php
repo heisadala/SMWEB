@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\GiftsTableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass:GiftsTableRepository::class)]
 class GiftsTable
@@ -21,8 +22,10 @@ class GiftsTable
 
     private ?string $gift = null;
 
-    #[ORM\Column(length: 1024, nullable: true)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface  $date = null;
 
+    #[ORM\Column(length: 1024, nullable: true)]
     private ?string $url = null;
     #[ORM\Column(length: 10, nullable: true)]
 
@@ -58,6 +61,18 @@ class GiftsTable
     public function setGift(?string $gift): static
     {
         $this->gift = $gift;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): static
+    {
+        $this->date = $date;
 
         return $this;
     }

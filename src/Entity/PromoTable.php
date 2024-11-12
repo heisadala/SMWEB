@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PromoTableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass:PromoTableRepository::class)]
 class PromoTable
@@ -19,6 +20,9 @@ class PromoTable
     #[ORM\Column(length: 50)]
 
     private ?string $code = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface  $validite = null;
+    
     #[ORM\Column(length: 1024)]
 
     private ?string $comment = null;
@@ -52,6 +56,18 @@ class PromoTable
     public function setCode(string $code): static
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    public function getValidite(): ?\DateTimeInterface
+    {
+        return $this->validite;
+    }
+
+    public function setValidite(\DateTimeInterface $validite): static
+    {
+        $this->validite = $validite;
 
         return $this;
     }

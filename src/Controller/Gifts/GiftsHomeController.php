@@ -54,8 +54,10 @@ class GiftsHomeController extends AbstractController
         // dd($table_header_fields);
         $primary_key_column = $this->get_pk_column($table_header_fields, $primary_key_name);
 
-        $sort = isset($_GET['sort']) ? $_GET['sort'] : $primary_key_name;
-        $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+        // $sort = isset($_GET['sort']) ? $_GET['sort'] : $primary_key_name;
+        // $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : 'DATE';
+        $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'asc' ? 'ASC' : 'DESC';
         $up_or_down = $sort_order == 'ASC' ? 'down' : 'up';
         $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
 

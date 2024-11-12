@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\GiftsUser;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class GiftsEditFormType extends AbstractType
 {
@@ -45,10 +46,21 @@ class GiftsEditFormType extends AbstractType
                     return ['selected' => $selected];
                 },
                 'placeholder' => false,
-                'required' => false
+                'required' => true
 
             ])
-            ->add('gift', TextType::class, [
+            ->add('date', BirthdayType::class, [
+                //   'years' => range(date('Y') - 70, date('Y') - 0),
+                     //'format' => 'dd-MM-yyyy',
+                     'widget' => 'single_text',
+                     'data' => new \DateTime('now'),
+                     'attr' => [
+                        'readonly' => true,
+                    ],
+                    'required' => false,
+                    
+                ])
+                ->add('gift', TextType::class, [
                 'attr' => [
                     // 'class' => 'is-valid',
                     'placeholder' => 'Gift *',

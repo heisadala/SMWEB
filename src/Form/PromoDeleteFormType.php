@@ -15,6 +15,7 @@ class PromoDeleteFormType extends AbstractType
         $builder
             ->add('marchand')
             ->add('code')
+            ->add('validite')
             ->add('comment')
             ->add('url')
             ->add('Delete', SubmitType::class, [

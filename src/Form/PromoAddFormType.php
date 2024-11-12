@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class PromoAddFormType extends AbstractType
 {
@@ -30,7 +31,15 @@ class PromoAddFormType extends AbstractType
                 ],
                 'required' => true
             ])
+            ->add('validite', BirthdayType::class, [
+                //   'years' => range(date('Y') - 70, date('Y') - 0),
+                     //'format' => 'dd-MM-yyyy',
+                     'widget' => 'single_text',
+                     'data' => new \DateTime('now'),
 
+                    'required' => false,
+                    
+                ])
             ->add('comment', null, [
                 'attr' => [
                     // 'class' => 'is-valid',

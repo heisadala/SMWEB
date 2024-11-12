@@ -68,7 +68,8 @@
                                 <tr>
                                 <td hidden >{{ row.id }} </td>
                                 <td>{{ row.marchand }} </td>
-                                <td> {{ row.code }} </td>
+                                <td> {{ row.code }} </td> 
+                                <td> {{ row.validite|date("d-m-Y")  }} </td>
                                 {% if row.comment == 'NOCOMMENT' %}
                                     <td></td>
                                 {% else %}
