@@ -81,6 +81,17 @@ class GiftsAddFormType extends AbstractType
                 ],
                 'required' => false,
             ])
+            ->add('date', BirthdayType::class, [
+                //   'years' => range(date('Y') - 70, date('Y') - 0),
+                     //'format' => 'dd-MM-yyyy',
+                     'widget' => 'single_text',
+                     'data' => new \DateTime('now'),
+                     'attr' => [
+                        'readonly' => true,
+                    ],
+                    'required' => false,
+                    
+                ])
             ->add('gift', TextType::class, [
                 'attr' => [
                     // 'class' => 'is-valid',

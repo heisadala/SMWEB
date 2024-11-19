@@ -21,6 +21,7 @@ class GiftsUnarchiveFormType extends AbstractType
             ->add('name', null, [
                 'required' => false,
             ])
+            ->add('date')
             ->add('gift')
             ->add('url')
             ->add('Unarchive', SubmitType::class, [
